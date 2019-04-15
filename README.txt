@@ -1,0 +1,1 @@
+This is a J2ee project by using SSM framework.
