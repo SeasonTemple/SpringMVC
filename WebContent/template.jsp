@@ -5,15 +5,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Xxx管理系统</title>
-<%-- <script src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="js/bootstrap.min.css"> --%>
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
-   <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="js/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+<script src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
+ <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <script src="${pageContext.request.contextPath}/js/es6-promise-auto-min.js"></script>
 <script src="${pageContext.request.contextPath}/js/sweetalert.min.js"></script>
 <link rel="js/sweetalert.css">
+
+<style type="text/css">
+	.ul{
+			position:absolute;
+			left:5px;
+			bottom:10px;
+			magin: 0 auto;
+	}
+	#carousel-700475.carousel-inner>.item>img{
+			display: block;
+			width:100%;
+			height:750px;
+	}
+	#myModal{
+			top: 270px;
+ 			left: 120px;
+ 			margin: 0 auto;
+	}
+</style>
 </head>
 <body>
 <div class="container-fluid">
@@ -54,16 +73,16 @@
 					</form>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-						 <a class="navbar-brand" href="https://github.com/SeasonTemple/SpringMVC">
-						 	<img alt="Brand" style="max-width:100px;margin-top:-15px;" src="${pageContext.request.contextPath}/image/github_black_48px.png">
-						 </a>
-						</li>
-						<li>
-							 <a href="#">登录</a>
+						 	<a class="navbar-brand" href="https://github.com/SeasonTemple/SpringMVC">
+						 		<img alt="Brand" style="max-width:100px;margin-top:-15px;margin-right:-15px" src="${pageContext.request.contextPath}/image/github_black_48px.png">
+						 	</a>
 						</li>
 						<li class="dropdown">
-							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">${username}<strong class="caret"></strong></a>
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">username<strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
+								<li>
+									 <a href="#">账户登录</a>
+								</li>	
 								<li>
 									 <a href="#">账户管理</a>
 								</li>
@@ -93,7 +112,7 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;本系统是基于Spring+SpringMVC+Mybatis+Redis构建的一个用于管理xxx信息的系统网站，由于尚处测试阶段，功能还不够完善，十分抱歉。
 				</p>
 				<p>
-					 <a class="btn btn-primary btn-large" href="#">了解更多</a>
+					 <a class="btn btn-primary btn-large" href="#">了解更多...</a>
 				</p>
 			</div>
 		</div>
@@ -108,8 +127,8 @@
 					 <label for="exampleInputPassword1">密码</label><input type="password" class="form-control" id="exampleInputPassword1" />
 				</div>
 				<div class="form-group" style="text-align: center">
-				<input type="submit" class="btn btn-default" value="登录" title="这是注册按钮" data-placement="left">&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="submit" class="btn btn-default" value="注册" data-toggle="modal" data-target="#myModal" title="这是注册按钮" data-placement="right">
+				<input type="submit" class="btn btn-primary" value="登录" data-toggle="tooltip" title="这是登录按钮" data-placement="bottom">&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="button" class="btn btn-default" value="注册" data-toggle="modal" data-target="#myModal" title="这是注册按钮" data-placement="bottom">
 				</div>
 			</form>
 			<div class="modal fade" id="myModal"  data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -130,37 +149,14 @@
 			        </div><!-- /.modal-content -->
 			      </div><!-- /.modal-dialog -->
 			</div>
-			<div class="alert alert-success alert-dismissable">
+			<div class="alert alert-danger alert-dismissable">
 			 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 				<h4>
-					注意!
-				</h4> <strong>Warning!</strong> Best check yo self, you're not looking too good. <a href="#" class="alert-link">alert link</a>
+					<strong>警告!</strong>
+				</h4> 
+					您的账户或密码有误, 请重新输入. <a href="#" class="alert-link">alert link</a>
 			</div>
 			<ul>
-				<li>
-					Lorem ipsum dolor sit amet
-				</li>
-				<li>
-					Consectetur adipiscing elit
-				</li>
-				<li>
-					Integer molestie lorem at massa
-				</li>
-				<li>
-					Facilisis in pretium nisl aliquet
-				</li>
-				<li>
-					Nulla volutpat aliquam velit
-				</li>
-				<li>
-					Faucibus porta lacus fringilla vel
-				</li>
-				<li>
-					Aenean sit amet erat nunc
-				</li>
-				<li>
-					Eget porttitor lorem
-				</li>
 				<li>
 					Lorem ipsum dolor sit amet
 				</li>
@@ -278,13 +274,13 @@
 		<div class="col-md-12 column">
 			<ul class="breadcrumb">
 				<li>
-					 <a href="#">Home</a>
+					 <a href="#">主页</a>
 				</li>
 				<li>
-					 <a href="#">Library</a>
+					 <a href="#">帮助</a>
 				</li>
 				<li class="active">
-					Data
+					 <a href="#">简介</a>
 				</li>
 			</ul>
 		</div>
@@ -294,6 +290,8 @@
 	window.onload=function(){
 		$('#carousel-700475').carousel('cycle');
 	}
+   $(function () { $("[data-toggle='tooltip']").tooltip(); });
+   $(function () { $("[data-toggle='modal']").tooltip(); });
 
 </script>
 </body>

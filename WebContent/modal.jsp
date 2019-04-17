@@ -11,11 +11,11 @@
 <script src="${pageContext.request.contextPath}/js/sweetalert.min.js"></script>
 <link rel="js/sweetalert.css">
 <style type="text/css">
-/* .middle {
-	margin: 0 auto;
-	padding: 200px 200px 100px;
-} */
-  *{margin: 0;padding: 0}
+ 		.middle {
+			margin: 0 auto;
+			padding: 200px 200px 100px;
+		}
+  		*{margin: 0;padding: 0}
         html,body{height: 100%}     /*这里很关键*/
  
         .outer-wrap{
@@ -47,7 +47,12 @@
 			text-shadow: 2px 2px 2px rgb(88, 126, 156);
 		}
 		input{
- 			margin: 15px;
+ 			margin: 10px;
+		}
+		#myModal{
+			top: 270px;
+ 			left: 120px;
+ 			margin: 0 auto;
 		}
 </style>
 </head>
