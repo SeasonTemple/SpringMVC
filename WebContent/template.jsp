@@ -78,7 +78,7 @@
 						 	</a>
 						</li>
 						<li class="dropdown">
-							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">username<strong class="caret"></strong></a>
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">账户名<strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
 								<li>
 									 <a href="#">账户登录</a>
@@ -135,11 +135,15 @@
 				<div class="modal-dialog">
 			        <div class="modal-content">
 			          <div class="modal-header">
-			            <h6 class="modal-title">提问</h6>
 			            <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			            <h2 class="modal-title" style="text-align: center">注册</h2>
 			          </div>
 			          <div class="modal-body">
-			            <p>问题描述</p>
+			            <p>用户名</p>
+			            <textarea class="form-control"></textarea>
+			            <p>密码</p>
+			            <textarea class="form-control"></textarea>
+			            <p>确认密码</p>
 			            <textarea class="form-control"></textarea>
 			          </div>
 			          <div class="modal-footer">
@@ -287,12 +291,26 @@
 	</div>
 </div>
 <script type="text/javascript">
-	window.onload=function(){
+	window.onload = function() {
 		$('#carousel-700475').carousel('cycle');
 	}
-   $(function () { $("[data-toggle='tooltip']").tooltip(); });
-   $(function () { $("[data-toggle='modal']").tooltip(); });
-
+	
+	$(function() {
+		$("[data-toggle='tooltip']").tooltip();
+	});
+	
+	$(function() {
+		$("[data-toggle='modal']").tooltip();
+	});
+	
+	$("#sublimt").click(function() {
+		swal("信息已经提交", '', 'success');
+		$("#myModal").modal('hide');
+	});
+	
+	$("#close").click(function() {
+		$("#myModal").modal('hide');
+	});
 </script>
 </body>
 </html>

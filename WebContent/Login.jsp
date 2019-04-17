@@ -8,6 +8,12 @@
 <script src="/lib/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/lib/sweetalert.css"/>
 <style type="text/css">
+#test{
+	top: -270px;
+	left: -120px;
+	margin: 0 auto;
+}
+
 #staff_info fieldset {
 	background: rgba(255, 255, 255, .3);
 	border-color: rgba(255, 255, 255, .6);
@@ -51,7 +57,6 @@ table {
 	padding-radius: 10px;
 	border-style: solid;
     border-width: 3px;
-	
 }
 
 input[type=submit] { /* 按钮美化 */
@@ -93,6 +98,7 @@ input[type=reset]:hover { /* 鼠标移入按钮范围时改变颜色 */
 </style>
 </head>
 <body bgcolor="#615650">
+<div id="test">
 	<div id="Layer1" style="position: absolute; width: 100%; height: 100%; z-index: -1">
 		<img id="myimage" src="image/timg.jpeg" height="100%" width="100%" />
 	</div>
@@ -121,6 +127,7 @@ input[type=reset]:hover { /* 鼠标移入按钮范围时改变颜色 */
 			</table>
 		</fieldset>
 	</form>
+</div>
 </body>
 <script type="text/javascript">
 	function check() {

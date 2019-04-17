@@ -76,8 +76,8 @@
 	<div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h6 class="modal-title">提问</h6>
             <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" style="text-align: center">注册</h4>
           </div>
           <div class="modal-body">
             <p>问题描述</p>
