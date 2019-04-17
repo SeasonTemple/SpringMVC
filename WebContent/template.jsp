@@ -147,7 +147,7 @@
 				</ol>
 				<div class="carousel-inner">
 					<div class="item active">
-						<img alt="" src="v3/default.jpg" />
+						<img alt="" src="${pageContext.request.contextPath}/image/timg.jpeg" />
 						<div class="carousel-caption">
 							<h4>
 								First Thumbnail label
@@ -169,7 +169,7 @@
 						</div>
 					</div>
 					<div class="item">
-						<img alt="" src="v3/default2.jpg" />
+						<img alt="" src="${pageContext.request.contextPath}/image/exit.jpg" />
 						<div class="carousel-caption">
 							<h4>
 								Third Thumbnail label
