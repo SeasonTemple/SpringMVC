@@ -47,14 +47,16 @@
 							</ul>
 						</li>
 					</ul>
-					<form class="navbar-form navbar-left" role="search">
+					<form class="navbar-form navbar-left" role="search" >
 						<div class="form-group">
 							<input type="text" class="form-control" />
 						</div> <button type="submit" class="btn btn-default">搜索</button>
 					</form>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							 <a href="#"><img src="#"></a>
+						 <a class="navbar-brand" href="https://github.com/SeasonTemple/SpringMVC">
+						 	<img alt="Brand" style="max-width:100px;margin-top:-15px;" src="${pageContext.request.contextPath}/image/github_black_48px.png">
+						 </a>
 						</li>
 						<li>
 							 <a href="#">登录</a>
@@ -129,11 +131,61 @@
 			      </div><!-- /.modal-dialog -->
 			</div>
 			<div class="alert alert-success alert-dismissable">
-				 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+			 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 				<h4>
 					注意!
 				</h4> <strong>Warning!</strong> Best check yo self, you're not looking too good. <a href="#" class="alert-link">alert link</a>
 			</div>
+			<ul>
+				<li>
+					Lorem ipsum dolor sit amet
+				</li>
+				<li>
+					Consectetur adipiscing elit
+				</li>
+				<li>
+					Integer molestie lorem at massa
+				</li>
+				<li>
+					Facilisis in pretium nisl aliquet
+				</li>
+				<li>
+					Nulla volutpat aliquam velit
+				</li>
+				<li>
+					Faucibus porta lacus fringilla vel
+				</li>
+				<li>
+					Aenean sit amet erat nunc
+				</li>
+				<li>
+					Eget porttitor lorem
+				</li>
+				<li>
+					Lorem ipsum dolor sit amet
+				</li>
+				<li>
+					Consectetur adipiscing elit
+				</li>
+				<li>
+					Integer molestie lorem at massa
+				</li>
+				<li>
+					Facilisis in pretium nisl aliquet
+				</li>
+				<li>
+					Nulla volutpat aliquam velit
+				</li>
+				<li>
+					Faucibus porta lacus fringilla vel
+				</li>
+				<li>
+					Aenean sit amet erat nunc
+				</li>
+				<li>
+					Eget porttitor lorem
+				</li>
+			</ul>
 		</div>
 		<div class="col-md-10 column">
 			<div class="carousel slide" id="carousel-700475">
@@ -145,9 +197,9 @@
 					<li data-slide-to="2" data-target="#carousel-700475">
 					</li>
 				</ol>
-				<div class="carousel-inner">
+				<div class="carousel-inner" >
 					<div class="item active">
-						<img alt="" src="${pageContext.request.contextPath}/image/timg.jpeg" />
+						<img alt="" src="${pageContext.request.contextPath}/image/vs.jpg" />
 						<div class="carousel-caption">
 							<h4>
 								First Thumbnail label
@@ -158,7 +210,7 @@
 						</div>
 					</div>
 					<div class="item">
-						<img alt="" src="v3/default1.jpg" />
+						<img alt="" src="${pageContext.request.contextPath}/image/jump.jpg" />
 						<div class="carousel-caption">
 							<h4>
 								Second Thumbnail label
@@ -169,7 +221,7 @@
 						</div>
 					</div>
 					<div class="item">
-						<img alt="" src="${pageContext.request.contextPath}/image/exit.jpg" />
+						<img alt="" src="${pageContext.request.contextPath}/image/girl.jpg" />
 						<div class="carousel-caption">
 							<h4>
 								Third Thumbnail label
@@ -179,8 +231,14 @@
 							</p>
 						</div>
 					</div>
-				</div> <a class="left carousel-control" href="#carousel-700475" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-700475" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-			</div>
+				</div>
+					<a class="left carousel-control" href="#carousel-700475" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+					</a> 
+					<a class="right carousel-control" href="#carousel-700475" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div>
 		</div>
 	</div>
 	<div class="row clearfix">
@@ -232,5 +290,11 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	window.onload=function(){
+		$('#carousel-700475').carousel('cycle');
+	}
+
+</script>
 </body>
 </html>
