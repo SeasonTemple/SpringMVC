@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Xxx管理系统</title>
-<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="js/bootstrap.min.css">
 <!-- <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
-<script src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <script src="${pageContext.request.contextPath}/js/es6-promise-auto-min.js"></script>
 <script src="${pageContext.request.contextPath}/js/sweetalert.min.js"></script>
@@ -28,9 +28,18 @@
 			height:750px;
 	}
 	#myModal{
-			top: 270px;
- 			left: 120px;
+			top: 250px;
+ 			left: 100px;
  			margin: 0 auto;
+	}
+	#h2{
+			font-size: 30px;
+			font-style: 宋体;
+			text-align: center;
+			text-shadow: 2px 2px 2px rgb(88, 126, 156);
+	}
+	h4{
+			font-weight: bold;
 	}
 </style>
 </head>
@@ -136,17 +145,19 @@
 			        <div class="modal-content">
 			          <div class="modal-header">
 			            <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-			            <h2 class="modal-title" style="text-align: center">注册</h2>
+			            <h2 class="modal-title" style="text-align: center"><span id="h2">注&nbsp;&nbsp;&nbsp;&nbsp;册</span></h2>
 			          </div>
-			          <div class="modal-body">
-			            <p>用户名</p>
-			            <textarea class="form-control"></textarea>
-			            <p>密码</p>
-			            <textarea class="form-control"></textarea>
-			            <p>确认密码</p>
-			            <textarea class="form-control"></textarea>
-			          </div>
-			          <div class="modal-footer">
+						<div class="modal-body" style="width: 80%; margin: 0 auto;">
+							<h4>用户名</h4>
+							<input class="form-control" type="text">
+							<h4>密码</h4>
+							<input class="form-control" type="password">
+							<h4>确认密码</h4>
+							<input class="form-control" type="password">
+							<h4>个人描述</h4>
+							<textarea class="form-control input-xxlarge"></textarea>
+						</div>
+					  <div class="modal-footer">
 			            <button data-dismiss="modal" class="btn btn-default" type="button" id = "close">关闭</button>
 			            <button class="btn btn-primary" type="button" id = "sublimt">提交</button>
 			          </div>
@@ -299,7 +310,7 @@
 		$("[data-toggle='tooltip']").tooltip();
 	});
 	
-	$(function() {
+  	$(function() {
 		$("[data-toggle='modal']").tooltip();
 	});
 	

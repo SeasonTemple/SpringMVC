@@ -79,9 +79,20 @@
             <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
             <h4 class="modal-title" style="text-align: center">注册</h4>
           </div>
-          <div class="modal-body">
-            <p>问题描述</p>
-            <textarea class="form-control"></textarea>
+          <div class="modal-body" >
+			<div style="margin: 0 auto;">
+				<form class="bs-example bs-example-form" role="form">
+					<div class="input-group input-group">
+						<input type="text" class="form-control" placeholder="Twitterhandle">
+					</div><br>
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Twitterhandle">
+					</div><br>
+					<div class="input-group input-group">
+						<input type="text" class="form-control" placeholder="Twitterhandle">
+					</div>
+				</form>
+			</div>
           </div>
           <div class="modal-footer">
             <button data-dismiss="modal" class="btn btn-default" type="button" id = "close">关闭</button>
