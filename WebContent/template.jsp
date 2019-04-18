@@ -16,9 +16,9 @@
 <link rel="resources/js/sweetalert.css">
 <style type="text/css">
 	#ulw{
-			left:0px;
+			left: -30px;
 			margin: 0 auto;
-			position:absolute;
+			position:relative;
 	}
 	#carousel-700475.carousel-inner>.item>img{
 			display: block;
@@ -96,7 +96,7 @@
 								<li class="divider">
 								</li>
 								<li>
-									 <a href="#">赞助我们</a>
+									 <a href="https://github.com/SeasonTemple" target="_blank">关注我们</a>
 								</li>
 							</ul>
 						</li>
@@ -249,7 +249,7 @@
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-12 column">
-			<dl>
+			<dl class="dl-horizontal">
 				<dt>
 					Description lists
 				</dt>
