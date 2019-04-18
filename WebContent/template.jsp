@@ -39,9 +39,25 @@
 	h4{
 			font-weight: bold;
 	}
+	#gradient{
+    background: #000000;
+    background: -moz-linear-gradient(top,  #CCEEFF 40%, #000000 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(20%,#CCEEFF));
+    background: -webkit-linear-gradient(top,  #CCEEFF 40%,#000000 100%);
+    background: -o-linear-gradient(top,  #CCEEFF 40%,#000000 100%);
+    background: -ms-linear-gradient(top,  #CCEEFF 40%,#000000 100%);
+    background: linear-gradient(to bottom,  #CCEEFF 40%,#000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCEEFF', endColorstr='#000000',GradientType=0 );
+	}
+	:root .gradient{filter:none;}
+	#ulr{
+		background: rgba(255, 255, 255, .4);
+	}a{
+		color:rgba(255, 255, 255, .8);
+	}
 </style>
 </head>
-<body>
+<body id="gradient">
 <span id="as"></span>
 <div class="container-fluid">
 	<div class="row clearfix">
@@ -256,7 +272,7 @@
 		</div>
 	</div>
 	<div class="row clearfix">
-		<div class="col-md-12 column">
+		<div class="col-md-12 column" style="color: rgba(255, 255, 255, .8)">
 			<dl class="dl-horizontal">
 				<dt>
 					Description lists
@@ -288,9 +304,9 @@
 			</dl>
 		</div>
 	</div>
-	<div class="row clearfix">
+	<div class="row clearfix" >
 		<div class="col-md-12 column">
-			<ul class="breadcrumb">
+			<ul class="breadcrumb" id="ulr">
 				<li>
 					 <a href="#">主页</a>
 				</li>
@@ -307,6 +323,7 @@
 		</div>
 	</div>
 </div>
+</body>
 <script type="text/javascript">
 	window.onload = function() {
 		$('#carousel-700475').carousel('cycle');
@@ -329,5 +346,4 @@
 		$("#myModal").modal('hide');
 	});
 </script>
-</body>
 </html>
