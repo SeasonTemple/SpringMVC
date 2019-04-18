@@ -6,10 +6,10 @@
 <meta charset="UTF-8">
 <title>modal</title>
 <link rel="stylesheet" href="js/bootstrap.min.css">  
-<script src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/sweetalert.min.js"></script>
-<link rel="js/sweetalert.css">
+<script src="${pageContext.request.contextPath}/resource/js/jquery-2.1.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/resource/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resource/js/sweetalert.min.js"></script>
+<link rel="resource/js/sweetalert.css">
 <style type="text/css">
  		.middle {
 			margin: 0 auto;

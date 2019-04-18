@@ -8,8 +8,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <!--     <script src="https://cdn.bootcss.com/limonte-sweetalert2/7.21.1/sweetalert2.all.js"></script>
     <link rel="stylesheet" href="https://cdn.bootcss.com/limonte-sweetalert2/7.21.1/sweetalert2.css"> -->
-    <script src="${pageContext.request.contextPath}/js/sweetalert2.all.min.js"></script>
-	<link rel="stylesheet" href="/js/sweetalert2.min.css">
+    <script src="${pageContext.request.contextPath}/resource/js/sweetalert2.all.min.js"></script>
+	<link rel="stylesheet" href="resource/js/sweetalert2.min.css">
 </head>
 <body>
 <button>查询按钮</button>

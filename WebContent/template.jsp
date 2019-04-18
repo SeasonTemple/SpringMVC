@@ -8,12 +8,12 @@
 <!-- <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
 <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-<script src="${pageContext.request.contextPath}/recourse/js/jquery-2.1.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/recourse/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="recourse/js/bootstrap.min.css">
-<script src="${pageContext.request.contextPath}/recourse/js/es6-promise-auto-min.js"></script>
-<script src="${pageContext.request.contextPath}/recourse/js/sweetalert.min.js"></script>
-<link rel="recourse/js/sweetalert.css">
+<script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="resources/js/bootstrap.min.css">
+<script src="${pageContext.request.contextPath}/resources/js/es6-promise-auto-min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/sweetalert.min.js"></script>
+<link rel="resources/js/sweetalert.css">
 <style type="text/css">
 	#ulw{
 			left:0px;
@@ -48,7 +48,7 @@
 			<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="https://github.com/SeasonTemple/SpringMVC">
-						<img alt="Brand" style="max-width:100px;margin-top:-15px;margin-right:-10px" src="${pageContext.request.contextPath}/recourse/image/github_black_48px.png">
+						<img alt="Brand" style="max-width:100px;margin-top:-15px;margin-right:-10px" src="${pageContext.request.contextPath}/resources/image/github_black_48px.png">
 					</a>
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -205,7 +205,7 @@
 				</ol>
 				<div class="carousel-inner" >
 					<div class="item active">
-						<img alt="" src="${pageContext.request.contextPath}/recourse/image/vs.jpg" />
+						<img alt="" src="${pageContext.request.contextPath}/resources/image/vs.jpg" />
 						<div class="carousel-caption">
 							<h4>
 								First Picture.
@@ -216,7 +216,7 @@
 						</div>
 					</div>
 					<div class="item">
-						<img alt="" src="${pageContext.request.contextPath}/recourse/image/jump.jpg" />
+						<img alt="" src="${pageContext.request.contextPath}/resources/image/jump.jpg" />
 						<div class="carousel-caption">
 							<h4>
 								Second Picture.
@@ -227,7 +227,7 @@
 						</div>
 					</div>
 					<div class="item">
-						<img alt="" src="${pageContext.request.contextPath}/recourse/image/girl.jpg" />
+						<img alt="" src="${pageContext.request.contextPath}/resources/image/girl.jpg" />
 						<div class="carousel-caption">
 							<h4>
 								Third Picture.
