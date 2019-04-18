@@ -28,6 +28,7 @@
 	#myModal{
 			top: 170px;
  			margin: 0 auto;
+ 			color: #111111;
 	}
 	#h2{
 			font-size: 30px;
@@ -85,18 +86,18 @@
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">账户名<strong class="caret"></strong></a>
 							<ul class="dropdown-menu" style="min-width:50px;">
 								<li>
-									 <a href="#">账户管理</a>
+									 <a href="#" style="opacity: 0.9">账户管理</a>
 								</li>
 								<li>
-									 <a href="#">相关设置</a>
+									 <a href="#" style="opacity: 0.8">相关设置</a>
 								</li>
 								<li>
-									 <a href="#">账户注销</a>
+									 <a href="#" style="opacity: 0.7">账户注销</a>
 								</li>
 								<li class="divider">
 								</li>
 								<li>
-									 <a href="https://github.com/SeasonTemple" target="_blank">关注我们</a>
+									 <a href="https://github.com/SeasonTemple" target="_blank" style="opacity: 0.5">关注我们</a>
 								</li>
 							</ul>
 						</li>
@@ -135,22 +136,29 @@
 				<input type="button" class="btn btn-default" value="注册" data-toggle="modal" data-target="#myModal" title="这是注册按钮" data-placement="bottom">
 				</div>
 			</form>
-			<div class="modal fade" id="myModal"  data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				<div class="modal-dialog">
-			        <div class="modal-content">
+			<div class="modal fade" id="myModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" >
+			        <div class="modal-content" style="background-color:rgba(255, 255, 255, .3);border-color:rgba(255, 255, 255, .6);">
 			          <div class="modal-header">
 			            <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 			            <h2 class="modal-title" style="text-align: center"><span id="h2">注&nbsp;&nbsp;&nbsp;&nbsp;册</span></h2>
 			          </div>
 						<div class="modal-body" style="width: 80%; margin: 0 auto;">
-							<h4>用户名</h4>
-							<input class="form-control" type="text">
-							<h4>密码</h4>
-							<input class="form-control" type="password">
-							<h4>确认密码</h4>
-							<input class="form-control" type="password">
-							<h4>个人描述</h4>
-							<textarea class="form-control input-xxlarge"></textarea>
+							<form class="bs-example bs-example-form" role="form" >
+								<h4>用户名</h4>
+								<input class="form-control" type="text">
+								<h4>密码</h4>
+								<input class="form-control" type="password">
+								<h4>确认密码</h4>
+								<input class="form-control" type="password">
+								<h4>邮箱</h4>
+								<div class="input-group ">
+									<input class="form-control" type="text">
+									<span class="input-group-addon">@qq.com</span>
+								</div>
+								<h4>个人描述</h4>
+								<textarea class="form-control input-xxlarge"></textarea>
+							</form>
 						</div>
 					  <div class="modal-footer">
 			            <button data-dismiss="modal" class="btn btn-default" type="button" id = "close">关闭</button>
