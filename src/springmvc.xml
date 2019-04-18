@@ -21,8 +21,9 @@
       
 	<mvc:annotation-driven />
 	
-	<mvc:resources location="/js/" mapping="/js/**"/>
-	<mvc:resources location="/image/" mapping="/image/**"/>
+	<mvc:resources location="/WEB-INF/fonts/" mapping="/WEB-INF/fonts/**"/>
+	<mvc:resources location="/WEB-INF/js/" mapping="/WEB-INF/js/**"/>
+	<mvc:resources location="/WEB-INF/image/" mapping="/WEB-INF/image/**"/>
       
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/" />

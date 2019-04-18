@@ -19,7 +19,19 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
- 
+ 	
+ 	<servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.ttf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.woff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.woff2</url-pattern>
+    </servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>springmvc</servlet-name>
 		<url-pattern>/</url-pattern>

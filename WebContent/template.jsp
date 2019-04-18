@@ -82,7 +82,7 @@
 					</form>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-						 	<a class="navbar-brand" href="https://github.com/SeasonTemple/SpringMVC">
+						 	<a class="navbar-brand" href="https://github.com/SeasonTemple/SpringMVC" target="_blank">
 						 		<img alt="Brand" style="max-width:100px;margin-top:-15px;margin-right:-15px" src="${pageContext.request.contextPath}/image/github_black_48px.png">
 						 	</a>
 						</li>
@@ -115,10 +115,10 @@
 			</div>
 			<div class="jumbotron">
 				<h1>
-					&nbsp;欢迎使用<small>xxx管理系统测试版</small>
+					&nbsp;欢迎使用<small>Xxx管理系统测试版</small>
 				</h1>
 				<p>
-					&nbsp;&nbsp;&nbsp;&nbsp;本系统是基于Spring+SpringMVC+Mybatis+Redis构建的一个用于管理xxx信息的系统网站，由于尚处测试阶段，功能还不够完善，十分抱歉。
+					&nbsp;&nbsp;&nbsp;&nbsp;本系统是基于Spring+SpringMVC+Mybatis+Redis构建的一个用于管理Xxx信息的系统网站，由于尚处测试阶段，功能还不够完善，十分抱歉。
 				</p>
 				<p>
 					 <a class="btn btn-primary btn-large" href="#">了解更多...</a>
