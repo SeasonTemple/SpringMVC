@@ -44,6 +44,5 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-webmvc-5.1.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-websocket-5.1.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/standard.jar"/>
-	<classpathentry kind="lib" path="WebContent/js/es6-promise-3.2.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

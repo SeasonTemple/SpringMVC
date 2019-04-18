@@ -19,8 +19,8 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
- 	
- 	<servlet-mapping>
+	
+	<servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>*.ttf</url-pattern>
     </servlet-mapping>

@@ -5,16 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Xxx管理系统</title>
-<script src="${pageContext.request.contextPath}/js/jquery-2.1.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/recourse/js/jquery-2.1.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/recourse/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="js/bootstrap.min.css">
 <!-- <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
 <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-<script src="${pageContext.request.contextPath}/js/es6-promise-auto-min.js"></script>
-<script src="${pageContext.request.contextPath}/js/sweetalert.min.js"></script>
+<script src="${pageContext.request.contextPath}/recourse/js/es6-promise-auto-min.js"></script>
+<script src="${pageContext.request.contextPath}/recourse/js/sweetalert.min.js"></script>
 <link rel="js/sweetalert.css">
-
 <style type="text/css">
 	.ul{
 			position:absolute;
@@ -44,6 +43,7 @@
 </style>
 </head>
 <body>
+<span id="as"></span>
 <div class="container-fluid">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
@@ -55,7 +55,7 @@
 					<ul class="nav navbar-nav">
 						<li class="dropdown">
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">功能(测试)<strong class="caret"></strong></a>
-							<ul class="dropdown-menu">
+							<ul class="dropdown-menu" style="min-width:100%">
 								<li>
 									 <a href="#">学生管理</a>
 								</li>
@@ -83,30 +83,30 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li>
 						 	<a class="navbar-brand" href="https://github.com/SeasonTemple/SpringMVC" target="_blank">
-						 		<img alt="Brand" style="max-width:100px;margin-top:-15px;margin-right:-15px" src="${pageContext.request.contextPath}/image/github_black_48px.png">
+						 		<img alt="Brand" style="max-width:100px;margin-top:-15px;margin-right:-15px" src="${pageContext.request.contextPath}/recourse/image/github_black_48px.png">
 						 	</a>
 						</li>
 						<li class="dropdown">
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">账户名<strong class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<li>
-									 <a href="#">账户登录</a>
-								</li>	
+							<ul class="dropdown-menu" style="min-width:50px;">
 								<li>
 									 <a href="#">账户管理</a>
 								</li>
 								<li>
-									 <a href="#">页面设置</a>
-								</li>
-								<li>
-									 <a href="#">赞助我们</a>
-								</li>
-								<li class="divider">
+									 <a href="#">相关设置</a>
 								</li>
 								<li>
 									 <a href="#">账户注销</a>
 								</li>
+								<li class="divider">
+								</li>
+								<li>
+									 <a href="#">赞助我们</a>
+								</li>
 							</ul>
+						</li>
+						<li>
+							<a href="#"></a>
 						</li>
 					</ul>
 				</div>
@@ -121,7 +121,7 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;本系统是基于Spring+SpringMVC+Mybatis+Redis构建的一个用于管理Xxx信息的系统网站，由于尚处测试阶段，功能还不够完善，十分抱歉。
 				</p>
 				<p>
-					 <a class="btn btn-primary btn-large" href="#">了解更多...</a>
+					 <a class="btn btn-primary btn-large" href="https://github.com/SeasonTemple/SpringMVC">了解更多...</a>
 				</p>
 			</div>
 		</div>
@@ -210,36 +210,36 @@
 				</ol>
 				<div class="carousel-inner" >
 					<div class="item active">
-						<img alt="" src="${pageContext.request.contextPath}/image/vs.jpg" />
+						<img alt="" src="${pageContext.request.contextPath}/recourse/image/vs.jpg" />
 						<div class="carousel-caption">
 							<h4>
-								First Thumbnail label
+								First Picture.
 							</h4>
-							<p>
+<!-- 							<p>
 								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-							</p>
+							</p> -->
 						</div>
 					</div>
 					<div class="item">
-						<img alt="" src="${pageContext.request.contextPath}/image/jump.jpg" />
+						<img alt="" src="${pageContext.request.contextPath}/recourse/image/jump.jpg" />
 						<div class="carousel-caption">
 							<h4>
-								Second Thumbnail label
+								Second Picture.
 							</h4>
-							<p>
+<!-- 							<p>
 								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-							</p>
+							</p> -->
 						</div>
 					</div>
 					<div class="item">
-						<img alt="" src="${pageContext.request.contextPath}/image/girl.jpg" />
+						<img alt="" src="${pageContext.request.contextPath}/recourse/image/girl.jpg" />
 						<div class="carousel-caption">
 							<h4>
-								Third Thumbnail label
+								Third Picture.
 							</h4>
-							<p>
+<!-- 							<p>
 								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-							</p>
+							</p> -->
 						</div>
 					</div>
 				</div>
@@ -294,8 +294,11 @@
 				<li>
 					 <a href="#">帮助</a>
 				</li>
-				<li class="active">
+				<li>
 					 <a href="#">简介</a>
+				</li>
+				<li>
+					 <a href="https://github.com/SeasonTemple/SpringMVC">了解更多</a>
 				</li>
 			</ul>
 		</div>
