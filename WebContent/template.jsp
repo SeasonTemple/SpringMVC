@@ -5,21 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Xxx管理系统</title>
-<script src="${pageContext.request.contextPath}/recourse/js/jquery-2.1.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/recourse/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="js/bootstrap.min.css">
 <!-- <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
 <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+<script src="${pageContext.request.contextPath}/recourse/js/jquery-2.1.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/recourse/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="recourse/js/bootstrap.min.css">
 <script src="${pageContext.request.contextPath}/recourse/js/es6-promise-auto-min.js"></script>
 <script src="${pageContext.request.contextPath}/recourse/js/sweetalert.min.js"></script>
-<link rel="js/sweetalert.css">
+<link rel="recourse/js/sweetalert.css">
 <style type="text/css">
-	.ul{
+	#ulw{
+			left:0px;
+			margin: 0 auto;
 			position:absolute;
-			left:5px;
-			bottom:10px;
-			magin: 0 auto;
 	}
 	#carousel-700475.carousel-inner>.item>img{
 			display: block;
@@ -27,8 +26,7 @@
 			height:750px;
 	}
 	#myModal{
-			top: 250px;
- 			left: 100px;
+			top: 170px;
  			margin: 0 auto;
 	}
 	#h2{
@@ -49,7 +47,9 @@
 		<div class="col-md-12 column">
 			<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
 				<div class="navbar-header">
-					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">主页</a>
+					<a class="navbar-brand" href="https://github.com/SeasonTemple/SpringMVC">
+						<img alt="Brand" style="max-width:100px;margin-top:-15px;margin-right:-10px" src="${pageContext.request.contextPath}/recourse/image/github_black_48px.png">
+					</a>
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
@@ -81,11 +81,6 @@
 						</div> <button type="submit" class="btn btn-default">搜索</button>
 					</form>
 					<ul class="nav navbar-nav navbar-right">
-						<li>
-						 	<a class="navbar-brand" href="https://github.com/SeasonTemple/SpringMVC" target="_blank">
-						 		<img alt="Brand" style="max-width:100px;margin-top:-15px;margin-right:-15px" src="${pageContext.request.contextPath}/recourse/image/github_black_48px.png">
-						 	</a>
-						</li>
 						<li class="dropdown">
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">账户名<strong class="caret"></strong></a>
 							<ul class="dropdown-menu" style="min-width:50px;">
@@ -130,10 +125,10 @@
 		<div class="col-md-2 column">
 			<form role="form">
 				<div class="form-group">
-					 <label for="exampleInputEmail1">用户名</label><input type="text" class="form-control" id="exampleInputEmail1" />
+					 <label for="exampleInputEmail1" style="font-size: 18px;">用户名</label><input type="text" class="form-control" id="exampleInputEmail1" />
 				</div>
 				<div class="form-group">
-					 <label for="exampleInputPassword1">密码</label><input type="password" class="form-control" id="exampleInputPassword1" />
+					 <label for="exampleInputPassword1" style="font-size: 18px;">密码</label><input type="password" class="form-control" id="exampleInputPassword1" />
 				</div>
 				<div class="form-group" style="text-align: center">
 				<input type="submit" class="btn btn-primary" value="登录" data-toggle="tooltip" title="这是登录按钮" data-placement="bottom">&nbsp;&nbsp;&nbsp;&nbsp;
@@ -171,7 +166,7 @@
 				</h4> 
 					您的账户或密码有误, 请重新输入. <a href="#" class="alert-link">alert link</a>
 			</div>
-			<ul>
+			<ul id="ulw" >
 				<li>
 					Lorem ipsum dolor sit amet
 				</li>
