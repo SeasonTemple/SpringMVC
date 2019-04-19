@@ -102,7 +102,7 @@ input[type=reset]:hover { /* 鼠标移入按钮范围时改变颜色 */
 	<div id="Layer1" style="position: absolute; width: 100%; height: 100%; z-index: -1">
 		<img id="myimage" src="resources/image/timg.jpeg" height="100%" width="100%" />
 	</div>
-	<form id="staff_info" action="${pageContext.request.contextPath}/log" method="post">
+	<form id="staff_info" action="log" method="post">
 		<fieldset style="text-align: center">
 			<legend style="text-align: center">Personalia</legend>
 			<table>
