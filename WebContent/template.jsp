@@ -12,8 +12,8 @@
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="resources/js/bootstrap.min.css">
 <script src="${pageContext.request.contextPath}/resources/js/es6-promise-auto-min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/sweetalert.min.js"></script>
-<link rel="resources/js/sweetalert.css">
+<link rel="resources/js/sweetalert2.min.css">
+<script src="${pageContext.request.contextPath}/resources/js/sweetalert2.all.min.js"></script>
 <style type="text/css">
 	#ulw{
 			left: -30px;
@@ -148,7 +148,7 @@
 					 <label for="exampleInputPassword1" style="font-size: 18px;">密码</label><input type="password" class="form-control" id="exampleInputPassword1" />
 				</div>
 				<div class="form-group" style="text-align: center">
-				<input type="submit" class="btn btn-primary" value="登录" data-toggle="tooltip" title="这是登录按钮" data-placement="bottom">&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="submit" class="btn btn-primary" value="登录" data-toggle="tooltip" title="这是登录按钮" data-placement="bottom" id="login">&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="button" class="btn btn-default" value="注册" data-toggle="modal" data-target="#myModal" title="这是注册按钮" data-placement="bottom">
 				</div>
 			</form>
@@ -344,6 +344,12 @@
 	
 	$("#close").click(function() {
 		$("#myModal").modal('hide');
+	});
+	
+	$("#login").click(function() {
+		var a = 5;
+		swal.showLoading();
+		swal.hideLoading();
 	});
 </script>
 </html>

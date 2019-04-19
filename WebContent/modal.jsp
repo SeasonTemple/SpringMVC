@@ -8,8 +8,8 @@
 <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.min.js"></script>
 <link rel="stylesheet" href="resources/js/bootstrap.min.css">  
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/sweetalert.min.js"></script>
-<link rel="resources/js/sweetalert.css">
+<link rel="resources/js/sweetalert2.min.css">
+<script src="${pageContext.request.contextPath}/resources/js/sweetalert2.all.min.js"></script>
 <style type="text/css">
  		.middle {
 			margin: 0 auto;
