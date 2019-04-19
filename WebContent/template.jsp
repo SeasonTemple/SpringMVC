@@ -165,8 +165,8 @@
 								<input class="form-control" type="text">
 								<h4>密码</h4>
 								<input class="form-control" type="password">
-								<h4>确认密码</h4>
-								<input class="form-control" type="password">
+<!-- 								<h4>确认密码</h4>
+								<input class="form-control" type="password"> -->
 								<h4>邮箱</h4>
 								<div class="input-group ">
 									<input class="form-control" type="text">
