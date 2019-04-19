@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@	taglib prefix="form" uri="http://www.springframework.org/tags/form"	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,7 +100,7 @@
 					</form>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">账户名<strong class="caret"></strong></a>
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">登录<strong class="caret"></strong></a>
 							<ul class="dropdown-menu" style="min-width:50px;">
 								<li>
 									 <a href="#" style="opacity: 0.9">账户管理</a>
@@ -140,18 +141,24 @@
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-2 column">
-			<form role="form">
+			<form:form role="form" action="user/login" method="post" modelAttribute="user">
 				<div class="form-group">
-					 <label for="exampleInputEmail1" style="font-size: 18px;">用户名</label><input type="text" class="form-control" id="exampleInputEmail1" />
+					 <label for="example" style="font-size: 18px;">用户名</label><input type="text" class="form-control" id="uname" value="${user.name}" />
 				</div>
 				<div class="form-group">
-					 <label for="exampleInputPassword1" style="font-size: 18px;">密码</label><input type="password" class="form-control" id="exampleInputPassword1" />
+					 <label for="example" style="font-size: 18px;">密码</label><input type="password" class="form-control" id="pwd" />
+				</div>
+				<div class="input-group">
+					 <label for="example" style="font-size: 18px;">验证码</label>
+					 <img id="code" src="validateCode"/>
+					 <input type="text" class="form-control" name="code" />
+					 <a href="javascript:refreshCode();"><font color="blue">看不清，换一个！</font></a>
 				</div>
 				<div class="form-group" style="text-align: center">
-				<input type="submit" class="btn btn-primary" value="登录" data-toggle="tooltip" title="这是登录按钮" data-placement="bottom" id="login">&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="button" class="btn btn-default" value="注册" data-toggle="modal" data-target="#myModal" title="这是注册按钮" data-placement="bottom">
+					<input type="button" class="btn btn-default" value="注册" data-toggle="modal" data-target="#myModal" title="这是注册按钮" data-placement="bottom" id="register">&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="submit" class="btn btn-primary" value="登录" data-toggle="tooltip" title="这是登录按钮" data-placement="bottom" id="login">
 				</div>
-			</form>
+			</form:form>
 			<div class="modal fade" id="myModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				<div class="modal-dialog" >
 			        <div class="modal-content" style="background-color:rgba(255, 255, 255, .3);border-color:rgba(255, 255, 255, .6);">
@@ -160,7 +167,7 @@
 			            <h2 class="modal-title" style="text-align: center"><span id="h2">注&nbsp;&nbsp;&nbsp;&nbsp;册</span></h2>
 			          </div>
 						<div class="modal-body" style="width: 80%; margin: 0 auto;">
-							<form class="bs-example bs-example-form" role="form" >
+							<form:form class="bs-example bs-example-form" role="form" >
 								<h4>用户名</h4>
 								<input class="form-control" type="text">
 								<h4>密码</h4>
@@ -170,11 +177,11 @@
 								<h4>邮箱</h4>
 								<div class="input-group ">
 									<input class="form-control" type="text">
-									<span class="input-group-addon">@qq.com</span>
+									<span class="input-group-addon">@163.com</span>
 								</div>
 								<h4>个人描述</h4>
 								<textarea class="form-control input-xxlarge"></textarea>
-							</form>
+							</form:form>
 						</div>
 					  <div class="modal-footer">
 			            <button data-dismiss="modal" class="btn btn-default" type="button" id = "close">关闭</button>
@@ -304,6 +311,7 @@
 			</dl>
 		</div>
 	</div>
+
 	<div class="row clearfix" >
 		<div class="col-md-12 column">
 			<ul class="breadcrumb" id="ulr">
@@ -345,11 +353,8 @@
 	$("#close").click(function() {
 		$("#myModal").modal('hide');
 	});
-	
-	$("#login").click(function() {
-		var a = 5;
-		swal.showLoading();
-		swal.hideLoading();
-	});
+	function refreshCode(){
+		document.getElementById("code").src = "validateCode?" + Math.random();
+    }
 </script>
 </html>

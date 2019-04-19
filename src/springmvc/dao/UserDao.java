@@ -10,4 +10,5 @@ import springmvc.entity.User;
 public interface UserDao {
 	
 	public User checkUser(User u);
+	public int register(User u);
 }
