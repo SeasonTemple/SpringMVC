@@ -64,7 +64,7 @@
 		<div class="col-md-12 column">
 			<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="https://github.com/SeasonTemple/SpringMVC">
+					<a class="navbar-brand" href="https://github.com/SeasonTemple/SpringMVC" target="_blank">
 						<img alt="Brand" style="max-width:100px;margin-top:-15px;margin-right:-10px" src="${pageContext.request.contextPath}/resources/image/github_black_48px.png">
 					</a>
 				</div>
@@ -133,7 +133,7 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;本系统是基于SSM框架构建的一个用于管理Xxx信息的系统网站，由于尚处测试阶段，功能还不够完善，十分抱歉。
 				</p>
 				<p>
-					 <a class="btn btn-primary btn-large" href="https://github.com/SeasonTemple/SpringMVC">了解更多...</a>
+					 <a class="btn btn-primary btn-large" href="https://github.com/SeasonTemple" target="_blank">了解更多...</a>
 				</p>
 			</div>
 		</div>
@@ -317,7 +317,7 @@
 					 <a href="#">简介</a>
 				</li>
 				<li>
-					 <a href="https://github.com/SeasonTemple/SpringMVC">了解更多</a>
+					 <a href="https://github.com/SeasonTemple/SpringMVC" target="_blank">更多</a>
 				</li>
 			</ul>
 		</div>

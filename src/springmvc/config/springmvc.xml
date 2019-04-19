@@ -18,13 +18,15 @@
             http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 	<context:component-scan base-package="springmvc.controller" />   
+
     <mvc:default-servlet-handler/>
+
 	<mvc:annotation-driven />
-	
-	<!-- <mvc:resources location="/resources/image/" mapping="/resources/image/**"/>
+
+	<mvc:resources location="/resources/image/" mapping="/resources/image/**"/>
 	<mvc:resources location="/resources/js/" mapping="/resources/js/**"/>
-	<mvc:resources location="/resources/fonts/" mapping="/resources/fonts/**"/> -->
-      
+	<mvc:resources location="/resources/fonts/" mapping="/resources/fonts/**"/>
+	
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
