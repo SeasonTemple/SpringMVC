@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>SpirngMvc-Login</title>
-<script src="/lib/sweetalert.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/lib/sweetalert.css"/>
+<script src="resources/js/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/js/sweetalert.css"/>
 <style type="text/css">
 #test{
 	top: -270px;
@@ -100,7 +100,7 @@ input[type=reset]:hover { /* 鼠标移入按钮范围时改变颜色 */
 <body bgcolor="#615650">
 <div id="test">
 	<div id="Layer1" style="position: absolute; width: 100%; height: 100%; z-index: -1">
-		<img id="myimage" src="image/timg.jpeg" height="100%" width="100%" />
+		<img id="myimage" src="resources/image/timg.jpeg" height="100%" width="100%" />
 	</div>
 	<form id="staff_info" action="${pageContext.request.contextPath}/log" method="post">
 		<fieldset style="text-align: center">
@@ -118,7 +118,7 @@ input[type=reset]:hover { /* 鼠标移入按钮范围时改变颜色 */
 					<th>Birth:</th>
 					<th><input type="text" placeholder="......your_birth" required="required"></th>
 				</tr>
-				<tr>
+					<tr>
 					<th colspan="2" style="text-align: center;">
 						<input type="submit" value="submit">&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="reset" value="reset">
@@ -138,6 +138,8 @@ input[type=reset]:hover { /* 鼠标移入按钮范围时改变颜色 */
 			  confirmButtonText: "Cool" 
 			});
 	}
-
+	function refreshCode(){
+		document.getElementById("code").src = "validateCode?" + Math.random();
+    }
 </script>
 </html>

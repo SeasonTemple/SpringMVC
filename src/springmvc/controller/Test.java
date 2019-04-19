@@ -9,6 +9,6 @@ public class Test {
 	@RequestMapping("/log")
 	public String log() {
 		System.out.println("Success!");
-		return "Success";
+		return "NewFile";
 	}
 }

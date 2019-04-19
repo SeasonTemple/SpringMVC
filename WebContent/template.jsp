@@ -354,7 +354,7 @@
 		$("#myModal").modal('hide');
 	});
 	function refreshCode(){
-		document.getElementById("code").src = "validateCode?" + Math.random();
+		document.getElementById("code").src = ${pageContext.request.contextPath}+"/validateCode?" + Math.random();
     }
 </script>
 </html>

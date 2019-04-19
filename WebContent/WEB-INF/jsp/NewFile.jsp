@@ -5,9 +5,6 @@
   <head>
     <base href="">
     <title>登录页面</title>
-	<link href="css/before/daohang.css" rel="stylesheet" type="text/css" />
-	<link href="css/before/common.css" rel="stylesheet" type="text/css" />
-	<link href="css/before/style.css" rel="stylesheet" type="text/css" />
 	<style type="text/css">
 	table{
 		text-align: center;
@@ -20,7 +17,7 @@
 	<script type="text/javascript">
 
 	function refreshCode(){
-		document.getElementById("code").src = "validateCode" + Math.random();
+		document.getElementById("code").src = "validateCode?" + Math.random();
     }
 	</script>
   </head>
