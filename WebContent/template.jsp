@@ -130,7 +130,7 @@
 					&nbsp;欢迎使用<small>Xxx管理系统测试版</small>
 				</h1>
 				<p>
-					&nbsp;&nbsp;&nbsp;&nbsp;本系统是基于Spring+SpringMVC+Mybatis+Redis构建的一个用于管理Xxx信息的系统网站，由于尚处测试阶段，功能还不够完善，十分抱歉。
+					&nbsp;&nbsp;&nbsp;&nbsp;本系统是基于SSM框架构建的一个用于管理Xxx信息的系统网站，由于尚处测试阶段，功能还不够完善，十分抱歉。
 				</p>
 				<p>
 					 <a class="btn btn-primary btn-large" href="https://github.com/SeasonTemple/SpringMVC">了解更多...</a>
