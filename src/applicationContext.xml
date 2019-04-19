@@ -47,5 +47,5 @@
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 	</bean>
 
-	<context:component-scan base-package="springmvc.service" />
+	<context:component-scan base-package="springmvc.*" />
 </beans>
