@@ -141,19 +141,24 @@
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-2 column">
-			<form:form role="form" action="user/login" method="post" modelAttribute="user">
+			<form:form role="form" action="${pageContext.request.contextPath}/index/login" method="post" modelAttribute="user">
 				<div class="form-group">
 					 <label for="example" style="font-size: 18px;">用户名</label><input type="text" class="form-control" id="uname" value="${user.name}" />
 				</div>
 				<div class="form-group">
 					 <label for="example" style="font-size: 18px;">密码</label><input type="password" class="form-control" id="pwd" />
 				</div>
-				<div class="input-group">
-					 <label for="example" style="font-size: 18px;">验证码</label>
-					 <img id="code" src="validateCode"/>
-					 <input type="text" class="form-control" name="code" />
-					 <a href="javascript:refreshCode();"><font color="blue">看不清，换一个！</font></a>
-				</div>
+				<div class="form-group">
+					<label for="example" style="font-size: 18px;">验证码</label>
+					<div class="form-horizontal">
+							<input type="text" name="code" style="width:80%;"/> 
+							<img id="code" src="validateCode" onclick="refreshCode();" />
+							<!-- 						<div class="col-md-8"> -->
+<!-- 							<input type="text" name="code" class="form-control"/> -->
+<!-- 						</div> -->
+<!-- 						<img id="code" src="validateCode" class="col-md-4 form-control-static" onclick="refreshCode();"/> -->
+					</div>
+				</div>&nbsp;
 				<div class="form-group" style="text-align: center">
 					<input type="button" class="btn btn-default" value="注册" data-toggle="modal" data-target="#myModal" title="这是注册按钮" data-placement="bottom" id="register">&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="submit" class="btn btn-primary" value="登录" data-toggle="tooltip" title="这是登录按钮" data-placement="bottom" id="login">
@@ -353,8 +358,8 @@
 	$("#close").click(function() {
 		$("#myModal").modal('hide');
 	});
-	function refreshCode(){
-		document.getElementById("code").src = ${pageContext.request.contextPath}+"/validateCode?" + Math.random();
-    }
+	$("#code").click(function() {
+		document.getElementById("code").src = "validateCode?" + Math.random();
+    });
 </script>
 </html>

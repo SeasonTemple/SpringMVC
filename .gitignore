@@ -13,7 +13,6 @@ build
 
 # Java:
 *.class
-CostTest.java
 
 # Else:
 alias.txt
