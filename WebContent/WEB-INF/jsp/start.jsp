@@ -4,59 +4,15 @@
 <html>
   <head>
     <base href="">
-    <title>登录页面</title>
-	<style type="text/css">
-	table{
-		text-align: center;
-	}
-	.textSize{
-		width: 200px;
-		height: 20px;
-	}
-	</style>
-	<script type="text/javascript">
-
-	function refreshCode(){
-		document.getElementById("code").src = "validateCode?" + Math.random();
-    }
-	</script>
+    <title>主页面</title>
   </head>
   <body>
   	<center>
-  	<form:form action="" method="post" modelAttribute="user"  name = "loginform">
-	<table>
-		<tr>
-			<td colspan="2"><img src="images/admin/login.gif"></td>
-		</tr>
-		<tr>
-			<td>E-Mail：</td>
-			<td><input type="text" name="bemail" value="${buser.bemail }"  class="textSize"/></td>
-		</tr>
-		<tr>
-			<td>密码：</td>
-			<td><input type="password" name="bpwd" class="textSize"/></td>
-		</tr>		
-		<tr>
-			<td>验证码：</td>
-			<td><input type="text" name="code" class="textSize"/></td>
-		</tr>		
-		<tr>
-			<td>
-				<img id="code" src="validateCode"/>
-			</td>
-			<td class="ared">
-				<a href="javascript:refreshCode();"><font color="blue">看不清，换一个！</font></a>
-			</td>
-		</tr>		
-		<tr>
-			<td colspan="2">
-				<input type="image" src="#" onclick="gogo()">
-				<input type="image" src="#" onclick="cancel()">
-			</td>
-		</tr>
-	</table>
-	</form:form>
-	${msg }
+  		<b>${loguser.username}</b>
+  		<b>${loguser.password}</b>
+  		<b>${loguser.mail}</b>
+  		<b>${loguser.profile}</b>
+  		<b>${loguser.sex}</b>
 	</center>
   </body>
 </html>

@@ -141,7 +141,7 @@
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-2 column">
-			<form:form role="form" action="${pageContext.request.contextPath}/start" method="post" modelAttribute="user">
+			<form:form role="form" action="${pageContext.request.contextPath}log" method="post" modelAttribute="user">
 				<div class="form-group">
 					 <label for="example" style="font-size: 18px;">用户名</label><input type="text" class="form-control" id="uname" value="${user.name}" />
 				</div>
