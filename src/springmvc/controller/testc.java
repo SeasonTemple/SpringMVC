@@ -8,6 +8,6 @@ public class testc {
 
 	@RequestMapping("/start")
 	public String start() {
-		return "ss";
+		return "start";
 	}
 }

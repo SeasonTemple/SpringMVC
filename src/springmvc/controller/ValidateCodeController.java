@@ -85,7 +85,6 @@ public class ValidateCodeController {
 		g.dispose();
 		try {
 			OutputStream os = response.getOutputStream();
-
 			// Êä³öÍ¼Ïñµ½Ò³Ãæ
 			ImageIO.write(image, "JPEG", os);
 		} catch (IOException e) {

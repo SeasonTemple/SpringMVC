@@ -141,7 +141,7 @@
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-2 column">
-			<form:form role="form" action="${pageContext.request.contextPath}/index/login" method="post" modelAttribute="user">
+			<form:form role="form" action="${pageContext.request.contextPath}/start" method="post" modelAttribute="user">
 				<div class="form-group">
 					 <label for="example" style="font-size: 18px;">用户名</label><input type="text" class="form-control" id="uname" value="${user.name}" />
 				</div>
@@ -152,7 +152,7 @@
 					<label for="example" style="font-size: 18px;">验证码</label>
 					<div class="form-horizontal">
 							<input type="text" name="code" style="width:80%;"/> 
-							<img id="code" src="validateCode" onclick="refreshCode();" />
+							<img id="code" src="validateCode" onclick="refreshCode();"/>
 							<!-- 						<div class="col-md-8"> -->
 <!-- 							<input type="text" name="code" class="form-control"/> -->
 <!-- 						</div> -->

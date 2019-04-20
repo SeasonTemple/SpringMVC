@@ -17,7 +17,7 @@
 	<script type="text/javascript">
 
 	function refreshCode(){
-		document.getElementById("code").src = ${pageContext.request.contextPath}"/validateCode?" + Math.random();
+		document.getElementById("code").src = "validateCode?" + Math.random();
     }
 	</script>
   </head>
