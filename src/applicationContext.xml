@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
-	<context:property-placeholder location="classpath:springmvc/config/mysql.properties" />
+	<context:property-placeholder location="classpath:springmvc/config/mysql.properties"/>
     
     <!-- 配置数据源 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
