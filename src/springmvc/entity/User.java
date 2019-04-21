@@ -3,46 +3,46 @@ package springmvc.entity;
 public class User {
 
 	private int uid;
-	private String username;
-	private String password;
+	private String uname;
+	private String pwd;
 	private String email;
 	private String profile;
 	private String sex;
 	
 	public User() {}
 
-	public User(int id, String username, String password, String email, String profile, String sex) {
+	public User(int uid, String uname, String pwd, String email, String profile, String sex) {
 		super();
-		this.uid = id;
-		this.username = username;
-		this.password = password;
+		this.uid = uid;
+		this.uname = uname;
+		this.pwd = pwd;
 		this.email = email;
 		this.profile = profile;
 		this.sex = sex;
 	}
 
-	public int getId() {
+	public int getUid() {
 		return uid;
 	}
 
-	public void setId(int id) {
-		this.uid = id;
+	public void setUid(int uid) {
+		this.uid = uid;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUname() {
+		return uname;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUname(String uname) {
+		this.uname = uname;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPwd() {
+		return pwd;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 
 	public String getEmail() {
@@ -71,8 +71,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + uid + ", username=" + username + ", password=" + password + ", email=" + email
-				+ ", profile=" + profile + ", sex=" + sex + "]";
+		return "User [uid=" + uid + ", uname=" + uname + ", pwd=" + pwd + ", email=" + email + ", profile=" + profile
+				+ ", sex=" + sex + "]";
 	}
 	
 }

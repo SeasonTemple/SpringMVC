@@ -11,7 +11,7 @@ import springmvc.exception.UserLoginNoException;
 public class BaseBeforeController {
 /*	@ModelAttribute  
     public void isLogin(HttpSession session, HttpServletRequest request) throws UserLoginNoException {      
-       if(session.getAttribute("bruser") == null){  
+       if(session.getAttribute("user") == null){  
             throw new UserLoginNoException("Ã»ÓÐµÇÂ¼");
        }  
     } */

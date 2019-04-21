@@ -7,18 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import springmvc.entity.User;
 import springmvc.service.UserService;
 
 @Controller
-@RequestMapping("/user")
 public class UserController {
 	
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("/log")
+	@RequestMapping(value="log", method= {RequestMethod.POST})
 	public String login(@ModelAttribute User u, Model model, HttpSession session, String code) {
 		return userService.checkUser(u, model, session, code);
 	}

@@ -8,9 +8,9 @@
   </head>
   <body>
   	<center>
-  		<b>${loguser.username}</b>
-  		<b>${loguser.password}</b>
-  		<b>${loguser.mail}</b>
+  		<b>${loguser.uname}</b>
+  		<b>${loguser.pwd}</b>
+  		<b>${loguser.email}</b>
   		<b>${loguser.profile}</b>
   		<b>${loguser.sex}</b>
 	</center>

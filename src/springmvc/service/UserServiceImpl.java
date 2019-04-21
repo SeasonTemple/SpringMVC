@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
 	public String checkUser(User u, Model model, HttpSession session, String code) {
 		if(!code.equalsIgnoreCase(session.getAttribute("code").toString())) {
 			model.addAttribute("codeError", "ÑéÖ¤Âë´íÎó£¡");
+			System.out.println("input:"+session.getAttribute("code")+"\n"+code);
 			return "Login";
 		}
 		User nu = null;

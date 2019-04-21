@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@	taglib prefix="form" uri="http://www.springframework.org/tags/form"	%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -141,22 +142,18 @@
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-2 column">
-			<form:form role="form" action="${pageContext.request.contextPath}log" method="post" modelAttribute="user">
+			<form:form role="form" action="${pageContext.request.contextPath}/log" method="post" modelAttribute="user">
 				<div class="form-group">
-					 <label for="example" style="font-size: 18px;">用户名</label><input type="text" class="form-control" id="uname" value="${user.name}" />
+					 <label for="example" style="font-size: 18px;">用户名</label><input path="uname" type="text" class="form-control" name="uname" />
 				</div>
 				<div class="form-group">
-					 <label for="example" style="font-size: 18px;">密码</label><input type="password" class="form-control" id="pwd" />
+					 <label for="example" style="font-size: 18px;">密码</label><input path="pwd" type="password" class="form-control" name="pwd" />
 				</div>
 				<div class="form-group">
 					<label for="example" style="font-size: 18px;">验证码</label>
 					<div class="form-horizontal">
-							<input type="text" name="code" style="width:40%;"/> 
-							<img id="code" src="validateCode" onclick="refreshCode();"/>
-							<!-- 						<div class="col-md-8"> -->
-<!-- 							<input type="text" name="code" class="form-control"/> -->
-<!-- 						</div> -->
-<!-- 						<img id="code" src="validateCode" class="col-md-4 form-control-static" onclick="refreshCode();"/> -->
+						<input type="text" name="code" style="width:40%;"/> 
+						<img id="code" src="validateCode" onclick="refreshCode();"/>
 					</div>
 				</div>&nbsp;
 				<div class="form-group" style="text-align: center">
@@ -349,6 +346,8 @@
   	$(function() {
 		$("[data-toggle='modal']").tooltip();
 	});
+  	
+  	
 	
 	$("#sublimt").click(function() {
 		swal("信息已经提交", '', 'success');
