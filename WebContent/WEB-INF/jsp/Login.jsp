@@ -11,9 +11,9 @@
  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="resources/js/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/bootstrap.min.css">
 <script src="${pageContext.request.contextPath}/resources/js/es6-promise-auto-min.js"></script>
-<link rel="resources/js/sweetalert2.min.css">
+<link rel="${pageContext.request.contextPath}/resources/js/sweetalert2.min.css">
 <script src="${pageContext.request.contextPath}/resources/js/sweetalert2.all.min.js"></script>
 <style type="text/css">
 	#ulw{
@@ -151,7 +151,7 @@
 				<div class="form-group">
 					<label for="example" style="font-size: 18px;">验证码</label>
 					<div class="form-horizontal">
-							<input type="text" name="code" style="width:80%;"/> 
+							<input type="text" name="code" style="width:40%;"/> 
 							<img id="code" src="validateCode" onclick="refreshCode();"/>
 							<!-- 						<div class="col-md-8"> -->
 <!-- 							<input type="text" name="code" class="form-control"/> -->
