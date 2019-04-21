@@ -15,11 +15,6 @@
 <script src="${pageContext.request.contextPath}/resources/js/es6-promise-auto-min.js"></script>
 <link rel="resources/js/sweetalert2.min.css">
 <script src="${pageContext.request.contextPath}/resources/js/sweetalert2.all.min.js"></script>
-<%
-	String path = request.getContextPath();
-	System.out.println(path);
-	
-%>  
 <style type="text/css">
 	#ulw{
 			left: -30px;
