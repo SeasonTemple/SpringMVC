@@ -14,9 +14,9 @@
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 <script src="${pageContext.request.contextPath}/resources/js/es6-promise-auto-min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/sweetalert2.all.min.js"></script>
-<link rel="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css">
-<link ref="resources/css/animate.css">
+<link rel="${pageContext.request.contextPath}/resources/css/sweetalert.min.css">
+<script src="${pageContext.request.contextPath}/resources/js/sweetalert.min.js"></script>
+<link rel="${pageContext.request.contextPath}/resources/css/animate.css">
 <style type="text/css">
 	#ulw{
 			left: -30px;
@@ -178,20 +178,20 @@
 			            <h2 class="modal-title" style="text-align: center"><span id="h2">注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</span></h2>
 			          </div>
 						<div class="modal-body" style="width: 80%; margin: 0 auto;">
-							<form:form class="bs-example bs-example-form" role="form" >
+							<form:form class="bs-example bs-example-form" role="form" modelAttribute="nuser">
 								<h4>用户名</h4>
-								<input class="form-control" type="text">
+								<input class="form-control" type="text" value="${nuser.uname}">
 								<h4>密码</h4>
-								<input class="form-control" type="password">
-<!-- 								<h4>确认密码</h4>
-								<input class="form-control" type="password"> -->
+								<input class="form-control" type="password" value="${nuser.uname}">
+<!-- 								<h4>确认密码</h4> -->
+<!-- 								<input class="form-control" type="password"> -->
 								<h4>邮箱</h4>
 								<div class="input-group ">
-									<input class="form-control" type="text">
+									<input class="form-control" type="text" value="${nuser.email}">
 									<span class="input-group-addon">@163.com</span>
 								</div>
 								<h4>职业描述</h4>
-								<input class="form-control" type="text">
+								<input class="form-control" type="text" value="${nuser.profile}">
 							</form:form>
 						</div>
 					  <div class="modal-footer" style="align: center;">
@@ -369,17 +369,8 @@
 		$("[data-toggle='modal']").tooltip();
 	});
   
-  	
-	
 	$("#sublimt").click(function() {
-		Swal.fire({
-		  	  title: '信息已经提交',
-		  	  animation: false,
-		  	  customClass: {
-		  	    popup: 'animated tada'
-		  	  }
-		  	})
-// 		swal("信息已经提交", '', 'success');
+		swal("信息已经提交", '', 'success');
 		$("#myModal").modal('hide');
 	});
 	
