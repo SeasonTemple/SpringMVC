@@ -12,10 +12,11 @@
  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 <script src="${pageContext.request.contextPath}/resources/js/es6-promise-auto-min.js"></script>
-<link rel="${pageContext.request.contextPath}/resources/js/sweetalert2.min.css">
 <script src="${pageContext.request.contextPath}/resources/js/sweetalert2.all.min.js"></script>
+<link rel="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css">
+<link ref="resources/css/animate.css">
 <style type="text/css">
 	#ulw{
 			left: -30px;
@@ -57,6 +58,14 @@
 	}a{
 		color:rgba(255, 255, 255, .8);
 	}
+	
+	.github-corner:hover .octo-arm{animation:octocat-wave 560ms
+	ease-in-out}@keyframes
+	octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media
+	(max-width:500px){.github-corner:hover
+	.octo-arm{animation:none}.github-corner
+	.octo-arm{animation:octocat-wave 560ms ease-in-out}}
+	
 </style>
 </head>
 <body id="gradient">
@@ -101,7 +110,7 @@
 					</form>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">登录<strong class="caret"></strong></a>
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">未登录<strong class="caret"></strong></a>
 							<ul class="dropdown-menu" style="min-width:50px;">
 								<li>
 									 <a href="#" style="opacity: 0.9">账户管理</a>
@@ -125,7 +134,7 @@
 					</ul>
 				</div>
 			</nav>
-			<div class="page-header">
+			<div class="page-header" >
 			</div>
 			<div class="jumbotron">
 				<h1>
@@ -152,7 +161,7 @@
 				<div class="form-group">
 					<label for="example" style="font-size: 18px;">验证码</label>
 					<div class="form-horizontal">
-						<input type="text" name="code" style="width:40%;"/> 
+						<input type="text" name="code" style="width:45%;"/> 
 						<img id="code" src="validateCode" onclick="refreshCode();"/>
 					</div>
 				</div>&nbsp;
@@ -163,10 +172,10 @@
 			</form:form>
 			<div class="modal fade" id="myModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				<div class="modal-dialog" >
-			        <div class="modal-content" style="background-color:rgba(255, 255, 255, .3);border-color:rgba(255, 255, 255, .6);">
+			        <div class="modal-content" style="background-color:rgba(255, 255, 255, .4);border-color:rgba(255, 255, 255, .6);">
 			          <div class="modal-header">
-			            <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-			            <h2 class="modal-title" style="text-align: center"><span id="h2">注&nbsp;&nbsp;&nbsp;&nbsp;册</span></h2>
+			            <button data-dismiss="modal" class="close" type="button" ><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			            <h2 class="modal-title" style="text-align: center"><span id="h2">注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</span></h2>
 			          </div>
 						<div class="modal-body" style="width: 80%; margin: 0 auto;">
 							<form:form class="bs-example bs-example-form" role="form" >
@@ -181,11 +190,11 @@
 									<input class="form-control" type="text">
 									<span class="input-group-addon">@163.com</span>
 								</div>
-								<h4>个人描述</h4>
-								<textarea class="form-control input-xxlarge"></textarea>
+								<h4>职业描述</h4>
+								<input class="form-control" type="text">
 							</form:form>
 						</div>
-					  <div class="modal-footer">
+					  <div class="modal-footer" style="align: center;">
 			            <button data-dismiss="modal" class="btn btn-default" type="button" id = "close">关闭</button>
 			            <button class="btn btn-primary" type="button" id = "sublimt">提交</button>
 			          </div>
@@ -197,7 +206,7 @@
 				<h4>
 					<strong>警告!</strong>
 				</h4> 
-					您的账户或密码有误, 请重新输入. <a href="#" class="alert-link">alert link</a>
+					您的账户或密码有误, 请重新输入.
 			</div>
 			<ul id="ulw" >
 				<li>
@@ -333,6 +342,19 @@
 		</div>
 	</div>
 </div>
+	<a href="https://github.com/SeasonTemple/SpringMVC"
+		class="github-corner" tabindex="-1"><svg width="80" height="80"
+			viewBox="0 0 250 250"
+			style="fill: #CCEEEE; color: #000; position: absolute; top: 50px; border: 0; right: 0;">
+	<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+	<path
+		d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+		fill="currentColor" style="transform-origin: 130px 106px;"
+	class="octo-arm"></path>
+			<path
+				d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+				fill="currentColor" class="octo-body"></path></svg>
+	</a>
 </body>
 <script type="text/javascript">
 	window.onload = function() {
@@ -346,11 +368,18 @@
   	$(function() {
 		$("[data-toggle='modal']").tooltip();
 	});
-  	
+  
   	
 	
 	$("#sublimt").click(function() {
-		swal("信息已经提交", '', 'success');
+		Swal.fire({
+		  	  title: '信息已经提交',
+		  	  animation: false,
+		  	  customClass: {
+		  	    popup: 'animated tada'
+		  	  }
+		  	})
+// 		swal("信息已经提交", '', 'success');
 		$("#myModal").modal('hide');
 	});
 	

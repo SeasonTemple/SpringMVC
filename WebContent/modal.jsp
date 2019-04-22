@@ -6,10 +6,11 @@
 <meta charset="UTF-8">
 <title>modal</title>
 <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.min.js"></script>
-<link rel="stylesheet" href="resources/js/bootstrap.min.css">  
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">  
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-<link rel="resources/js/sweetalert2.min.css">
+<link rel="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css">
 <script src="${pageContext.request.contextPath}/resources/js/sweetalert2.all.min.js"></script>
+<link rel="resources/css/animate.css">
 <style type="text/css">
  		.middle {
 			margin: 0 auto;
@@ -113,6 +114,13 @@
 	$("#close").click(function(){
 		$("#myModal").modal('hide');
 	});
+	window.onload=function(){
+		Swal.fire({
+			  title: 'Custom animation with Animate.css',
+			  animation: false,
+			  customClass: 'animated tada'
+			})
+	}
 // 	window.onload=function(){
 // 		swal("所以你是禽兽？", {
 // 			buttons: {
