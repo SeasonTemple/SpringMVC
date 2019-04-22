@@ -14,8 +14,8 @@
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 <script src="${pageContext.request.contextPath}/resources/js/es6-promise-auto-min.js"></script>
-<link rel="${pageContext.request.contextPath}/resources/css/sweetalert.min.css">
-<script src="${pageContext.request.contextPath}/resources/js/sweetalert.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/sweetalert2.js"></script>
+<link rel="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css">
 <link rel="${pageContext.request.contextPath}/resources/css/animate.css">
 <style type="text/css">
 	#ulw{
@@ -343,9 +343,9 @@
 	</div>
 </div>
 	<a href="https://github.com/SeasonTemple/SpringMVC"
-		class="github-corner" tabindex="-1"><svg width="80" height="80"
+		class="github-corner" tabindex="-1"><svg width="90" height="90"
 			viewBox="0 0 250 250"
-			style="fill: #CCEEEE; color: #000; position: absolute; top: 50px; border: 0; right: 0;">
+			style="fill: #CCEEEE; color: #000; position: absolute; top: 55px; border: 0; right: 0;">
 	<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
 	<path
 		d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
@@ -370,7 +370,7 @@
 	});
   
 	$("#sublimt").click(function() {
-		swal("信息已经提交", '', 'success');
+		Swal.fire("信息已经提交", '', 'success');
 		$("#myModal").modal('hide');
 	});
 	
