@@ -377,6 +377,7 @@
 	$("#close").click(function() {
 		$("#myModal").modal('hide');
 	});
+	
 	$("#code").click(function() {
 		document.getElementById("code").src = "validateCode?" + Math.random();
     });

@@ -8,8 +8,8 @@
 <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">  
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-<link rel="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css">
-<script src="${pageContext.request.contextPath}/resources/js/sweetalert2.all.min.js"></script>
+<%-- <link rel="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css"> --%>
+<script src="${pageContext.request.contextPath}/resources/js/sweetalert2.js"></script>
 <link rel="${pageContext.request.contextPath}/resources/css/animate.css">
 <style type="text/css">
  		.middle {
@@ -116,7 +116,6 @@
 		    type: 'warning', // 弹框类型
 		    title: '注销帐号', //标题
 		    text: "注销后将无法恢复，请谨慎操作！", //显示内容            
-
 		    confirmButtonColor: '#3085d6',// 确定按钮的 颜色
 		    confirmButtonText: '确定',// 确定按钮的 文字
 		    showCancelButton: true, // 是否显示取消按钮
@@ -125,18 +124,6 @@
 
 		    focusCancel: true, // 是否聚焦 取消按钮
 		    reverseButtons: true  // 是否 反转 两个按钮的位置 默认是  左边 确定  右边 取消
-		}).then((isConfirm) => {
-		    try {
-		        //判断 是否 点击的 确定按钮
-		        if (isConfirm.value) {
-		            Swal.fire("成功", "点击了确定", "success");
-		        }
-		        else {
-		            Swal.fire("取消", "点击了取消", "error");
-		        }
-		    } catch (e) {
-		        alert(e);
-		    }
 		});
 		$("#myModal").modal('hide');
 	});
