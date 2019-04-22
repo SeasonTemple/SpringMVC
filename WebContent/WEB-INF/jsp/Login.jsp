@@ -370,7 +370,10 @@
 	});
   
 	$("#sublimt").click(function() {
-		Swal.fire("信息已经提交", '', 'success');
+		Swal.fire({
+			title: '信息已经提交',
+			type: 'success',
+		});
 		$("#myModal").modal('hide');
 	});
 	
@@ -381,5 +384,6 @@
 	$("#code").click(function() {
 		document.getElementById("code").src = "validateCode?" + Math.random();
     });
+	
 </script>
 </html>
