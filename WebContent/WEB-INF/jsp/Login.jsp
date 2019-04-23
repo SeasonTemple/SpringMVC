@@ -66,6 +66,13 @@
 	.octo-arm{animation:none}.github-corner
 	.octo-arm{animation:octocat-wave 560ms ease-in-out}}
 	
+	.swalWithBootstrapButtons {
+        width: 250em;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+    }
+	
 </style>
 </head>
 <body id="gradient">
@@ -151,7 +158,7 @@
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-2 column">
-			<form:form role="form" action="${pageContext.request.contextPath}/log" method="post" modelAttribute="user" id="logform">
+			<form:form role="form" action="${pageContext.request.contextPath}/log" method="post" modelAttribute="user" id="logform" onsubmit="return bflog();">
 				<div class="form-group">
 					 <label for="example" style="font-size: 18px;">用户名</label><input path="uname" type="text" class="form-control" name="uname" required="required"/>
 				</div>
@@ -167,7 +174,7 @@
 				</div>&nbsp;
 				<div class="form-group" style="text-align: center">
 					<input type="button" class="btn btn-default" value="注册" data-toggle="modal" data-target="#myModal" title="这是注册按钮" data-placement="bottom" id="register">&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="submit" class="btn btn-primary" value="登录" data-toggle="tooltip" title="这是登录按钮" data-placement="bottom" id="login" onsubmit="">
+					<input type="submit" class="btn btn-primary" value="登录" data-toggle="tooltip" title="这是登录按钮" data-placement="bottom" id="login" >
 				</div>
 			</form:form>
 			<div class="modal fade" id="myModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -196,7 +203,7 @@
 						</div>
 					  <div class="modal-footer" style="align: center;">
 			            <button data-dismiss="modal" class="btn btn-default" type="button" id = "close">关闭</button>
-			            <button class="btn btn-primary" type="button" id = "sublimt">提交</button>
+			            <button class="btn btn-primary" type="button" id="sublimt" onsubmit="return check();">提交</button>
 			          </div>
 			        </div><!-- /.modal-content -->
 			      </div><!-- /.modal-dialog -->
@@ -372,28 +379,65 @@
 		$("[data-toggle='modal']").tooltip();
 	});
   	
-  	$("#login").click(function(){
-  		$('#logform').submit();
-  		Swal.fire({
-  			title: '登录确认',
-  		})
-  	});
-  	
+	function bflog() {
+		const swalWithBootstrapButtons = Swal.mixin({
+			  customClass: {
+			    confirmButton: 'btn btn-success',
+			    cancelButton: 'btn btn-danger'
+			  },
+			  buttonsStyling: false,
+			})
+
+			swalWithBootstrapButtons.fire({
+			  title: 'Are you sure?',
+			  text: "You won't be able to revert this!",
+			  type: 'warning',
+			  showCancelButton: true,
+			  confirmButtonText: 'Yes, delete it!',
+			  cancelButtonText: 'No, cancel!',
+			  reverseButtons: true
+			}).then((result) => {
+			  if (result.value) {
+			    swalWithBootstrapButtons.fire(
+			      'Deleted!',
+			      'Your file has been deleted.',
+			      'success'
+			    )
+			  } else if (
+			    // Read more about handling dismissals
+			    result.dismiss === Swal.DismissReason.cancel
+			  ) {
+			    swalWithBootstrapButtons.fire(
+			      'Cancelled',
+			      'Your imaginary file is safe :)',
+			      'error'
+			    )
+			  }
+			})
+		return false;
+	}
+	
+	$("#login").click(function() {
+		$('#logform').submit();
+		Swal.fire({
+			title : '登录确认',
+		})
+	});
+
 	$("#sublimt").click(function() {
 		Swal.fire({
-			title: '信息已经提交',
-			type: 'success',
+			title : '信息已经提交',
+			type : 'success',
 		});
 		$("#myModal").modal('hide');
 	});
-	
+
 	$("#close").click(function() {
 		$("#myModal").modal('hide');
 	});
-	
+
 	$("#code").click(function() {
 		document.getElementById("code").src = "validateCode?" + Math.random();
-    });
-	
+	});
 </script>
 </html>

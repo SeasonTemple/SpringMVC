@@ -5,7 +5,7 @@
 <html>
   <head>
     <base href="">
-    <title>主页面</title>
+    <title>Xxx管理页面</title>
 	<script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
