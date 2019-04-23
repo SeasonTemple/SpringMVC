@@ -22,4 +22,14 @@ public class UserController {
 	public String login(@ModelAttribute User u, Model model, HttpSession session, String code) {
 		return userService.checkUser(u, model, session, code);
 	}
+	@RequestMapping(value="register", method= {RequestMethod.POST})
+	public String register(@ModelAttribute User u, Model model, HttpSession session, String code) {
+		return userService.register(u, model, session, code);
+	}
+	
+	@RequestMapping(value="exit", method= {RequestMethod.GET})
+	public String exit(HttpSession session) {
+		session.invalidate();
+		return "forward:/toMain";
+	}
 }

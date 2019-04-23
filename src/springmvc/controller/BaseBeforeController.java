@@ -9,10 +9,10 @@ import springmvc.exception.UserLoginNoException;
 
 
 public class BaseBeforeController {
-/*	@ModelAttribute  
-    public void isLogin(HttpSession session, HttpServletRequest request) throws UserLoginNoException {      
-       if(session.getAttribute("user") == null){  
-            throw new UserLoginNoException("没有登录");
-       }  
-    } */
+//	@ModelAttribute  
+//    public void isLogin(HttpSession session, HttpServletRequest request) throws UserLoginNoException {      
+//       if(session.getAttribute("user") == null){  
+//            throw new UserLoginNoException("没有登录");
+//       }  
+//    } 
 }

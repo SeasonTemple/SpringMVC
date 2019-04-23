@@ -110,7 +110,7 @@
 					</form>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">${loguser.uname}<strong class="caret"></strong></a>
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">未登录<strong class="caret"></strong></a>
 							<ul class="dropdown-menu" style="min-width:50px;">
 								<li>
 									 <a href="#" style="opacity: 0.9">账户管理</a>
@@ -183,8 +183,8 @@
 								<input class="form-control" type="text" value="${nuser.uname}">
 								<h4>密码</h4>
 								<input class="form-control" type="password" value="${nuser.uname}">
-<!-- 								<h4>确认密码</h4> -->
-<!-- 								<input class="form-control" type="password"> -->
+								<h4>确认密码</h4>
+								<input class="form-control" type="password">
 								<h4>邮箱</h4>
 								<div class="input-group ">
 									<input class="form-control" type="text" value="${nuser.email}">
@@ -359,8 +359,8 @@
 <script type="text/javascript">
 	window.onload = function() {
 		$('#carousel-700475').carousel('cycle');
-		if('${msg}'=="用户名或密码错误！"&&'${msg}'=="验证码错误！"){
-			$('.alert-danger').removeClass('hide').addClass('in');
+		if('${loguser.uname}'!=''){
+			$('#drop').html("${loguser.uname}");
 		}
 	}
 	

@@ -77,7 +77,7 @@
 									 <a href="#" style="opacity: 0.8">相关设置</a>
 								</li>
 								<li>
-									 <a href="#" style="opacity: 0.7">账户注销</a>
+									 <a href="${pageContext.request.contextPath}/exit" style="opacity: 0.7">账户注销</a>
 								</li>
 								<li class="divider">
 								</li>

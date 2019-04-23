@@ -37,14 +37,26 @@ public class UserServiceImpl implements UserService {
 			return "start";
 		}else {
 			model.addAttribute("msg", "用户名或密码错误！");
-			return "Login";
+			return "redirect:Login";
 		}
 	}
 
 	@Override
 	public String register(User u, Model model, HttpSession session, String code) {
-		// TODO 自动生成的方法存根
-		return null;
+		if(!code.equalsIgnoreCase(session.getAttribute("code").toString())) {
+			model.addAttribute("msg", "验证码错误！");
+			System.out.println("input:"+session.getAttribute("code")+"\n"+code);
+			return "redirect:Login";
+		}
+		int i = userDao.register(u);
+		if(i > 0) {
+			session.setAttribute("msg", "注册成功");
+			return "redirect:Login";
+		}
+		else {
+			return "Login";
+		}
+		
 	}
 
 }
