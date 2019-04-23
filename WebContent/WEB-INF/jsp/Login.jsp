@@ -180,18 +180,18 @@
 						<div class="modal-body" style="width: 80%; margin: 0 auto;">
 							<form:form class="bs-example bs-example-form" role="form" modelAttribute="nuser">
 								<h4>用户名</h4>
-								<input class="form-control" type="text" value="${nuser.uname}">
+								<input class="form-control" type="text" value="${user.uname}">
 								<h4>密码</h4>
-								<input class="form-control" type="password" value="${nuser.uname}">
+								<input class="form-control" type="password" value="${user.uname}">
 								<h4>确认密码</h4>
-								<input class="form-control" type="password">
+								<input class="form-control" type="password" value="${user.uname}">
 								<h4>邮箱</h4>
 								<div class="input-group ">
-									<input class="form-control" type="text" value="${nuser.email}">
+									<input class="form-control" type="text" value="${user.email}">
 									<span class="input-group-addon">@163.com</span>
 						 		</div>
-								<h4>职业描述</h4>
-								<input class="form-control" type="text" value="${nuser.profile}">
+								<h4>职务描述</h4>
+								<input class="form-control" type="text" value="${user.profile}">
 							</form:form>
 						</div>
 					  <div class="modal-footer" style="align: center;">
