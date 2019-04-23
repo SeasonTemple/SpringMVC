@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public String checkUser(User u, Model model, HttpSession session, String code) {
 		if(!code.equalsIgnoreCase(session.getAttribute("code").toString())) {
-			model.addAttribute("codeError", "验证码错误！");
+			model.addAttribute("msg", "验证码错误！");
 			System.out.println("input:"+session.getAttribute("code")+"\n"+code);
 			return "Login";
 		}
@@ -33,6 +33,7 @@ public class UserServiceImpl implements UserService {
 		}
 		if(nu!= null) {
 			session.setAttribute("loguser", nu);
+			session.setAttribute("msg", "登录成功");
 			return "start";
 		}else {
 			model.addAttribute("msg", "用户名或密码错误！");

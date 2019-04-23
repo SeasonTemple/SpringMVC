@@ -110,7 +110,7 @@
 					</form>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">未登录<strong class="caret"></strong></a>
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">${loguser.uname}<strong class="caret"></strong></a>
 							<ul class="dropdown-menu" style="min-width:50px;">
 								<li>
 									 <a href="#" style="opacity: 0.9">账户管理</a>
@@ -151,12 +151,12 @@
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-2 column">
-			<form:form role="form" action="${pageContext.request.contextPath}/log" method="post" modelAttribute="user">
+			<form:form role="form" action="${pageContext.request.contextPath}/log" method="post" modelAttribute="user" id="logform">
 				<div class="form-group">
-					 <label for="example" style="font-size: 18px;">用户名</label><input path="uname" type="text" class="form-control" name="uname" />
+					 <label for="example" style="font-size: 18px;">用户名</label><input path="uname" type="text" class="form-control" name="uname" required="required"/>
 				</div>
 				<div class="form-group">
-					 <label for="example" style="font-size: 18px;">密码</label><input path="pwd" type="password" class="form-control" name="pwd" />
+					 <label for="example" style="font-size: 18px;">密码</label><input path="pwd" type="password" class="form-control" name="pwd" required="required"/>
 				</div>
 				<div class="form-group">
 					<label for="example" style="font-size: 18px;">验证码</label>
@@ -167,7 +167,7 @@
 				</div>&nbsp;
 				<div class="form-group" style="text-align: center">
 					<input type="button" class="btn btn-default" value="注册" data-toggle="modal" data-target="#myModal" title="这是注册按钮" data-placement="bottom" id="register">&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="submit" class="btn btn-primary" value="登录" data-toggle="tooltip" title="这是登录按钮" data-placement="bottom" id="login">
+					<input type="submit" class="btn btn-primary" value="登录" data-toggle="tooltip" title="这是登录按钮" data-placement="bottom" id="login" onsubmit="">
 				</div>
 			</form:form>
 			<div class="modal fade" id="myModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -189,7 +189,7 @@
 								<div class="input-group ">
 									<input class="form-control" type="text" value="${nuser.email}">
 									<span class="input-group-addon">@163.com</span>
-								</div>
+						 		</div>
 								<h4>职业描述</h4>
 								<input class="form-control" type="text" value="${nuser.profile}">
 							</form:form>
@@ -201,12 +201,12 @@
 			        </div><!-- /.modal-content -->
 			      </div><!-- /.modal-dialog -->
 			</div>
-			<div class="alert alert-danger alert-dismissable">
+			<div class="alert alert-danger alert-dismissable hide" id="myalert" style="opacity: 0;">
 			 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 				<h4>
 					<strong>警告!</strong>
 				</h4> 
-					您的账户或密码有误, 请重新输入.
+					${msg }
 			</div>
 			<ul id="ulw" >
 				<li>
@@ -359,6 +359,9 @@
 <script type="text/javascript">
 	window.onload = function() {
 		$('#carousel-700475').carousel('cycle');
+		if('${msg}'=="用户名或密码错误！"&&'${msg}'=="验证码错误！"){
+			$('.alert-danger').removeClass('hide').addClass('in');
+		}
 	}
 	
 	$(function() {
@@ -368,7 +371,14 @@
   	$(function() {
 		$("[data-toggle='modal']").tooltip();
 	});
-  
+  	
+  	$("#login").click(function(){
+  		$('#logform').submit();
+  		Swal.fire({
+  			title: '登录确认',
+  		})
+  	});
+  	
 	$("#sublimt").click(function() {
 		Swal.fire({
 			title: '信息已经提交',
