@@ -403,7 +403,7 @@
 			if(isConfirm){
 		  		$.ajax({
 		  			type: 'post',
-		  			url: '${pageContext.request.contextPath}/log',
+		  			url: '${pageContext.request.contextPath}/bflog',
 		  			data: JSON.stringify({uname: uname,pwd: pwd,code: code}),
 		  			dataType: 'Json',
 		  			contentType:"application/json",
@@ -412,27 +412,27 @@
 		  					Swal.fire({
 		  						title: '登录成功',
 		  						type: 'success',
-		  						timer: 2000,
-		  						showConfirmButton: false
+		  						timer: 1000,
+	  						 	showLoaderOnConfirm: true,
 		  					})
-		  					 location.href = "success";
+	  					 	window.location.href = "success";
 		  				}
 		  				if(data.msg=='code error'){
 		  					Swal.fire({
 		  						title: '登录失败',
 		  						type: 'warning',
-		  						text: '验证码错误！'
+		  						text: '验证码错误！',
 		  					})
 		  				}
 		  				if(data.msg=='code error'){
 		  					Swal.fire({
 		  						title: '登录失败',
 		  						type: 'warning',
-		  						text: '验证码错误！'
+		  						text: '验证码错误！',
 		  					})
 		  				}
 		  			}
-		  			error: functon(){}
+		  			error: function(){}
 		  		})
 			}
 	  	});
