@@ -7,5 +7,5 @@ import springmvc.entity.BfUser;
 
 public interface IndexService {
 	public String toLogin(Model model);
-	public String beforeSubmit(BfUser u, HttpSession session);
+	public BfUser beforeSubmit(BfUser u, HttpSession session);
 }

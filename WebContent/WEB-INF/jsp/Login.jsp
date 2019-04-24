@@ -158,7 +158,7 @@
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-2 column">
-			<form:form role="form" action="${pageContext.request.contextPath}/log" method="post" modelAttribute="user" id="logform" onsubmit="return bflog();">
+			<form:form role="form" action="" method="post" modelAttribute="user" id="logform" onsubmit="return bflog();">
 				<div class="form-group">
 					 <label for="example" style="font-size: 18px;">用户名</label><input path="uname" type="text" class="form-control" name="uname" required="required"/>
 				</div>
@@ -392,22 +392,41 @@
 			confirmButtonText: "确认",
 		  	confirmButtonColor: '#ff0000',
 		  	showLoaderOnConfirm: true,
-		  	preConfirm:() => {
-		  		$.ajax({
-		  			type: 'post',
-		  			url: '${pageContext.request.contextPath}/log',
-		  			data: JSON.stringify({uname: uname,pwd: pwd,code: code}),
-		  			dataType: 'Json',
-		  			success: fucntion(data)	{
-		  				if(data.msg=="验证码错误！"){
-		  					
-		  				}
-		  			}
-		  			
-		  			
-		  		})
-		  	} 
-		})
+		},
+	  	function() {
+	  		$.ajax({
+	  			type: 'post',
+	  			url: '${pageContext.request.contextPath}/log',
+	  			data: JSON.stringify({uname: uname,pwd: pwd,code: code}),
+	  			dataType: 'Json',
+	  			contentType:"application/json",
+	  			success: function(data)	{
+	  				if(data.msg=="success"){
+	  					Swal.fire({
+	  						title: '登录成功',
+	  						type: 'success',
+	  						timer: 2000,
+	  						showConfirmButton: false
+	  					})
+	  				}
+	  				if(data.msg=='code error'){
+	  					Swal.fire({
+	  						title: '登录失败',
+	  						type: 'warning',
+	  						text: '验证码错误！'
+	  					})
+	  				}
+	  				if(data.msg=='code error'){
+	  					Swal.fire({
+	  						title: '登录失败',
+	  						type: 'warning',
+	  						text: '验证码错误！'
+	  					})
+	  				}
+	  			}
+	  			error: functon(){}
+	  		})
+	  	})
 		return true;
 	}
 	

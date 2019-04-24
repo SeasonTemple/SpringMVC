@@ -25,7 +25,7 @@ public class IndexController {
 	
 	@RequestMapping(value="bflog", method={RequestMethod.POST})
 	@ResponseBody
-	public String beforeSubmit(@RequestBody BfUser u, HttpSession session){
+	public BfUser beforeSubmit(@RequestBody BfUser u, HttpSession session){
 		return indexService.beforeSubmit(u, session);
 	}
 }

@@ -29,19 +29,21 @@ public class IndexServiceImpl implements IndexService {
 	}
 
 	@Override
-	public String beforeSubmit(BfUser u, HttpSession session) {
-		if(!u.getCode().equalsIgnoreCase(session.getAttribute("code").toString())) {
-			return JSON.
-		}
+	public BfUser beforeSubmit(BfUser u, HttpSession session) {
 		BfUser bu = null;
+		if(!u.getCode().equalsIgnoreCase(session.getAttribute("code").toString())) {
+			bu.setMsg("code error");
+			return bu;
+		}
 		List<BfUser> bl = userDao.cbfUser(u);
 		if(bl.size() > 0) {
 			bu = bl.get(0);
 		}
 		if(bu!= null) {
+			bu.setMsg("success");
 			return bu;
 		}else {
-			bu.setMsg("用户名或密码错误！");
+			bu.setMsg("error");
 			return bu;
 		}
 	}
