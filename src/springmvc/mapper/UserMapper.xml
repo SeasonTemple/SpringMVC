@@ -7,6 +7,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="checkUser" resultType="user" parameterType="user">
 		select * from user where uname =  #{uname} and pwd = #{pwd}
 	</select>	
+	<select id="cbfUser" resultType="bfuser" parameterType="bfuser">
+		select * from user where uname =  #{uname} and pwd = #{pwd}
+	</select>	
 	<insert id="register" parameterType="user">
 		insert into user(uid,uname,pwd,email,profile,sex) values(null,#{uname},#{pwd},#{email},#{profile},#{sex})
 	</insert>

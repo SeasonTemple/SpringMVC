@@ -383,9 +383,30 @@
 	});
   	
 	function bflog() {
+		var uname = $("input[name='uname']").val();
+		var pwd = $("input[name='pwd']").val();
+		var code = $("input[name='code']").val();
 		Swal.fire({
 			title : '登录确认',
 			type: 'waring',
+			confirmButtonText: "确认",
+		  	confirmButtonColor: '#ff0000',
+		  	showLoaderOnConfirm: true,
+		  	preConfirm:() => {
+		  		$.ajax({
+		  			type: 'post',
+		  			url: '${pageContext.request.contextPath}/log',
+		  			data: JSON.stringify({uname: uname,pwd: pwd,code: code}),
+		  			dataType: 'Json',
+		  			success: fucntion(data)	{
+		  				if(data.msg=="验证码错误！"){
+		  					
+		  				}
+		  			}
+		  			
+		  			
+		  		})
+		  	} 
 		})
 		return true;
 	}
