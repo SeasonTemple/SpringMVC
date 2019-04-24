@@ -2,9 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@	taglib prefix="form" uri="http://www.springframework.org/tags/form"	%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+%>
 <!DOCTYPE html>
 <html>
 <head>
+<base href="<%=basePath%>">
 <meta charset="UTF-8">
 <title>Xxx管理系统</title>
 <!-- <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
@@ -408,6 +414,7 @@
 	  						timer: 2000,
 	  						showConfirmButton: false
 	  					})
+	  					 location.href = "success";
 	  				}
 	  				if(data.msg=='code error'){
 	  					Swal.fire({
@@ -427,7 +434,7 @@
 	  			error: functon(){}
 	  		})
 	  	})
-		return true;
+		return false;
 	}
 	
 	$("#login").click(function() {

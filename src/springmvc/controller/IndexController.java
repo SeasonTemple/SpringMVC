@@ -28,4 +28,10 @@ public class IndexController {
 	public BfUser beforeSubmit(@RequestBody BfUser u, HttpSession session){
 		return indexService.beforeSubmit(u, session);
 	}
+	
+	@RequestMapping(value="success", method= {RequestMethod.POST})
+	public String logSuccess() {
+		return "start";
+	}
+	
 }
