@@ -164,7 +164,7 @@
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-2 column">
-			<form:form role="form" action="" method="post" modelAttribute="user" id="logform" onsubmit="return bflog();">
+			<form:form role="form" action="${pageContext.request.contextPath}/log" method="post" modelAttribute="user" id="logform">
 				<div class="form-group">
 					 <label for="example" style="font-size: 18px;">用户名</label><input path="uname" type="text" class="form-control" name="uname" required="required"/>
 				</div>
@@ -388,7 +388,7 @@
 		$("[data-toggle='modal']").tooltip();
 	});
   	
-	function bflog() {
+  	$("#login").click(function() {
 		var uname = $("input[name='uname']").val();
 		var pwd = $("input[name='pwd']").val();
 		var code = $("input[name='code']").val();
@@ -399,47 +399,48 @@
 		  	confirmButtonColor: '#ff0000',
 		  	showLoaderOnConfirm: true,
 		},
-	  	function() {
-	  		$.ajax({
-	  			type: 'post',
-	  			url: '${pageContext.request.contextPath}/log',
-	  			data: JSON.stringify({uname: uname,pwd: pwd,code: code}),
-	  			dataType: 'Json',
-	  			contentType:"application/json",
-	  			success: function(data)	{
-	  				if(data.msg=="success"){
-	  					Swal.fire({
-	  						title: '登录成功',
-	  						type: 'success',
-	  						timer: 2000,
-	  						showConfirmButton: false
-	  					})
-	  					 location.href = "success";
-	  				}
-	  				if(data.msg=='code error'){
-	  					Swal.fire({
-	  						title: '登录失败',
-	  						type: 'warning',
-	  						text: '验证码错误！'
-	  					})
-	  				}
-	  				if(data.msg=='code error'){
-	  					Swal.fire({
-	  						title: '登录失败',
-	  						type: 'warning',
-	  						text: '验证码错误！'
-	  					})
-	  				}
-	  			}
-	  			error: functon(){}
-	  		})
-	  	})
-		return false;
-	}
-	
-	$("#login").click(function() {
-		$('#logform').submit();
+	  	function(isConfirm) {
+			if(isConfirm){
+		  		$.ajax({
+		  			type: 'post',
+		  			url: '${pageContext.request.contextPath}/log',
+		  			data: JSON.stringify({uname: uname,pwd: pwd,code: code}),
+		  			dataType: 'Json',
+		  			contentType:"application/json",
+		  			success: function(data)	{
+		  				if(data.msg=="success"){
+		  					Swal.fire({
+		  						title: '登录成功',
+		  						type: 'success',
+		  						timer: 2000,
+		  						showConfirmButton: false
+		  					})
+		  					 location.href = "success";
+		  				}
+		  				if(data.msg=='code error'){
+		  					Swal.fire({
+		  						title: '登录失败',
+		  						type: 'warning',
+		  						text: '验证码错误！'
+		  					})
+		  				}
+		  				if(data.msg=='code error'){
+		  					Swal.fire({
+		  						title: '登录失败',
+		  						type: 'warning',
+		  						text: '验证码错误！'
+		  					})
+		  				}
+		  			}
+		  			error: functon(){}
+		  		})
+			}
+	  	});
 	});
+	
+// 	$("#login").click(function() {
+// 		$('#logform').submit();
+// 	});
 
 	$("#sublimt").click(function() {
 		Swal.fire({
