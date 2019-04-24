@@ -66,7 +66,7 @@
 	.octo-arm{animation:none}.github-corner
 	.octo-arm{animation:octocat-wave 560ms ease-in-out}}
 	
-	.swalWithBootstrapButtons {
+	.Swal{
         width: 250em;
         margin: 0 auto;
         left: 0;
@@ -300,31 +300,34 @@
 		<div class="col-md-12 column" style="color: rgba(255, 255, 255, .8)">
 			<dl class="dl-horizontal">
 				<dt>
-					Description lists
+					鲁迅
 				</dt>
 				<dd>
-					A description list is perfect for defining terms.
+					教育植根于爱。
 				</dd>
 				<dt>
-					Euismod
+					席勒
 				</dt>
 				<dd>
-					Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
-				</dd>
-				<dd>
-					Donec id elit non mi porta gravida at eget metus.
+					朋友是宝贵的，但敌人也可能是有用的；朋友会告诉我，我可以做什么，敌人将教育我，我应当怎样做。
 				</dd>
 				<dt>
-					Malesuada porta
+					毛泽东
 				</dt>
 				<dd>
-					Etiam porta sem malesuada magna mollis euismod.
+					我们的教育方针，应该使受教育者在德育、智育、体育几方面都得到发展，成为有社会主义觉悟的，有文化的劳动者。
 				</dd>
 				<dt>
-					Felis euismod semper eget lacinia
+					马卡连柯
 				</dt>
 				<dd>
-					Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+					不应把纪律仅仅看成教育的手段。纪律是教育过程的结果，首先是学生集体表现在一切生活领域——生产、日常生活、学校、文化等领域中努力的结果。 
+				</dd>
+				<dt>
+					苏霍姆林斯基
+				</dt>
+				<dd>
+					追求理想是一个人进行自我教育的最初的动力，而没有自我教育就不能想象会有完美的精神生活。我认为，教会学生自己教育自己，这是一种最高级的技巧和艺术。
 				</dd>
 			</dl>
 		</div>
@@ -380,48 +383,15 @@
 	});
   	
 	function bflog() {
-		const swalWithBootstrapButtons = Swal.mixin({
-			  customClass: {
-			    confirmButton: 'btn btn-success',
-			    cancelButton: 'btn btn-danger'
-			  },
-			  buttonsStyling: false,
-			})
-
-			swalWithBootstrapButtons.fire({
-			  title: 'Are you sure?',
-			  text: "You won't be able to revert this!",
-			  type: 'warning',
-			  showCancelButton: true,
-			  confirmButtonText: 'Yes, delete it!',
-			  cancelButtonText: 'No, cancel!',
-			  reverseButtons: true
-			}).then((result) => {
-			  if (result.value) {
-			    swalWithBootstrapButtons.fire(
-			      'Deleted!',
-			      'Your file has been deleted.',
-			      'success'
-			    )
-			  } else if (
-			    // Read more about handling dismissals
-			    result.dismiss === Swal.DismissReason.cancel
-			  ) {
-			    swalWithBootstrapButtons.fire(
-			      'Cancelled',
-			      'Your imaginary file is safe :)',
-			      'error'
-			    )
-			  }
-			})
-		return false;
+		Swal.fire({
+			title : '登录确认',
+			type: 'waring',
+		})
+		return true;
 	}
 	
 	$("#login").click(function() {
 		$('#logform').submit();
-		Swal.fire({
-			title : '登录确认',
-		})
 	});
 
 	$("#sublimt").click(function() {
