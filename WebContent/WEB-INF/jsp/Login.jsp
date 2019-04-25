@@ -398,8 +398,7 @@
 			confirmButtonText: "确认",
 		  	confirmButtonColor: '#ff0000',
 		  	showLoaderOnConfirm: true,
-		},
-	  	function(isConfirm) {
+		}).then((isConfirm)=>{
 			if(isConfirm){
 		  		$.ajax({
 		  			type: 'post',
