@@ -8,7 +8,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">  
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-<%-- <link rel="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css"> --%>
+<link rel="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css">
 <script src="${pageContext.request.contextPath}/resources/js/sweetalert2.js"></script>
 <link rel="${pageContext.request.contextPath}/resources/css/animate.css">
 <style type="text/css">
@@ -63,14 +63,14 @@
 		<p class="p1">登&nbsp;&nbsp;录</p>
 		<hr>
 		<div class="input-group input-group-lg">
-		<input type="text" class="form-control" placeholder="用户名" aria-describedby="basic-addon1">
+		<input type="text" class="form-control" placeholder="用户名" aria-describedby="basic-addon1" id="uname">
 		</div>
 		<div class="input-group input-group-lg">
-		<input type="password" class="form-control" placeholder="用户名" aria-describedby="basic-addon1">
+		<input type="password" class="form-control" placeholder="用户名" aria-describedby="basic-addon1" id="pwd">
 		</div>
 		<div class="input-group input-group-lg" style="height:50px;">
 		<input id="register" value="注册" type="submit" class="form-control" data-toggle="modal" data-target="#myModal" title="nmsl" data-placement="right">
-		<input value="登录" type="submit" class="form-control" >
+		<input value="登录" type="submit" class="form-control" id="test" >
 		</div>
 	</div>
 <div class="modal fade" id="myModal"  data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -107,8 +107,54 @@
 	$(function () { 
 		$("[data-toggle='modal']").tooltip(); 
 	});
-   $("#sublimt").click(function(){
-      swal("信息已经提交" , '', 'success');
+   $("#test").click(function(){
+		var uname = $("input[name='uname']").val();
+		var pwd = $("input[name='pwd']").val();
+		var code = '1321';
+	   Swal.fire({
+		   title: 'Submit your Github username',
+		   text: 'aaaaa',
+		   showCancelButton: true,
+		   confirmButtonText: 'Look up',
+		   showLoaderOnConfirm: true,
+		   preConfirm: (login) => {
+			   $.ajax({
+		  			type: 'post',
+		  			url: '',
+		  			data: JSON.stringify({uname: uname,pwd: pwd,code: code}),
+		  			dataType: 'Json',
+		  			contentType:"application/json",
+		  			success: function(data)	{
+		  				data.put('msg', 'eeee');
+		  				if(data.msg=="success"){
+		  					Swal.fire('登录成功','','success')
+		  				}
+		  				else{
+		  					Swal.fire({
+		  						title: '登录失败',
+		  						type: 'warning',
+		  						text: '${data.msg}',
+		  					})
+		  				}
+		  			},
+		  			error: function(){}
+		  		})
+		   },
+		   allowOutsideClick: () => !Swal.isLoading()
+		 }).then((result) => {
+			 if (result.value) {
+		     Swal.fire({
+		       title: '成功',
+		       type: 'success',
+		       text: '${data.msg}'
+		     }).then((result) => {
+				 if (result.value) {
+		    		 allowOutsideClick: () => !Swal.isLoading()
+		    		 location.href="";
+				 }
+		     })
+		   }
+		 })
       $("#myModal").modal('hide');
    });
 	$("#close").click(function(){
@@ -124,8 +170,9 @@
 
 		    focusCancel: true, // 是否聚焦 取消按钮
 		    reverseButtons: true  // 是否 反转 两个按钮的位置 默认是  左边 确定  右边 取消
+		},function() {
+			$("#myModal").modal('hide');
 		});
-		$("#myModal").modal('hide');
 	});
 	window.onload=function(){
 		Swal.fire({
@@ -133,6 +180,70 @@
 			  animation: false,
 			  customClass: 'animated tada'
 			});
+		let timerInterval
+		Swal.fire({
+		  title: 'Auto close alert!',
+		  width: 500,
+		  html:
+		    'I will close in <strong></strong> seconds.<br/><br/>' +
+		    '<button id="increase" class="btn btn-warning">' +
+		      'I need 5 more seconds!' +
+		    '</button><br/>' +
+		    '<button id="stop" class="btn btn-danger">' +
+		      'Please stop the timer!!' +
+		    '</button><br/>' +
+		    '<button id="resume" class="btn btn-success" disabled>' +
+		      'Phew... you can restart now!' +
+		    '</button><br/>' +
+		    '<button id="toggle" class="btn btn-primary">' +
+		      'Toggle' +
+		    '</button>',
+		  timer: 10000,
+		  onBeforeOpen: () => {
+		    const content = Swal.getContent()
+		    const $ = content.querySelector.bind(content)
+
+		    const stop = $('#stop')
+		    const resume = $('#resume')
+		    const toggle = $('#toggle')
+		    const increase = $('#increase')
+
+		    Swal.showLoading()
+
+		    function toggleButtons () {
+		      stop.disabled = !Swal.isTimerRunning()
+		      resume.disabled = Swal.isTimerRunning()
+		    }
+
+		    stop.addEventListener('click', () => {
+		      Swal.stopTimer()
+		      toggleButtons()
+		    })
+
+		    resume.addEventListener('click', () => {
+		      Swal.resumeTimer()
+		      toggleButtons()
+		    })
+
+		    toggle.addEventListener('click', () => {
+		      Swal.toggleTimer()
+		      toggleButtons()
+		    })
+
+		    increase.addEventListener('click', () => {
+		      Swal.increaseTimer(5000)
+		    })
+
+		    timerInterval = setInterval(() => {
+		      Swal.getContent().querySelector('strong')
+		        .textContent = (Swal.getTimerLeft() / 1000)
+		          .toFixed(0)
+		    }, 100)
+		  },
+		  onClose: () => {
+		    clearInterval(timerInterval)
+		  }
+		})
 	}
 // 	window.onload=function(){
 // 		swal("所以你是禽兽？", {

@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>SpirngMvc-Login</title>
-<script src="resources/js/sweetalert.min.js"></script>
-<link rel="stylesheet" type="text/css" href="resources/css/sweetalert.css"/>
+<script src="${pageContext.request.contextPath}/resources/js/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/sweetalert.css"/>
 <style type="text/css">
 #test{
 	top: -270px;
@@ -121,7 +121,7 @@ input[type=reset]:hover { /* 鼠标移入按钮范围时改变颜色 */
 	<div id="Layer1" style="position: absolute; width: 100%; height: 100%; z-index: -1">
 		<img id="myimage" src="resources/image/timg.jpeg" height="100%" width="100%" />
 	</div>
-	<form id="staff_info" action="${pageContext.request.contextPath}/index/login" method="post">
+	<form id="staff_info" action="" method="post" >
 		<fieldset style="text-align: center">
 			<legend style="text-align: center">Personalia</legend>
 			<table>
@@ -139,7 +139,7 @@ input[type=reset]:hover { /* 鼠标移入按钮范围时改变颜色 */
 				</tr>
 					<tr>
 					<th colspan="2" style="text-align: center;">
-						<input type="submit" value="submit">&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="submit" value="submit" id="1">&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="reset" value="reset">
 					</th>
 				</tr>
@@ -149,7 +149,7 @@ input[type=reset]:hover { /* 鼠标移入按钮范围时改变颜色 */
 </div>
 </body>
 <script type="text/javascript">
-	function check() {
+	$("#1").click(function() {
 		swal({ 
 			  title: "Error!", 
 			  text: "Here's my error message!",

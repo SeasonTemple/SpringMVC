@@ -398,8 +398,10 @@
 			confirmButtonText: "确认",
 		  	confirmButtonColor: '#ff0000',
 		  	showLoaderOnConfirm: true,
-		}).then((isConfirm)=>{
-			if(isConfirm){
+		  	width: 250,
+		  	timer:2000
+		},function(isConfirm) {
+			if(!isConfirm){};
 		  		$.ajax({
 		  			type: 'post',
 		  			url: '${pageContext.request.contextPath}/bflog',
@@ -408,13 +410,9 @@
 		  			contentType:"application/json",
 		  			success: function(data)	{
 		  				if(data.msg=="success"){
-		  					Swal.fire({
-		  						title: '登录成功',
-		  						type: 'success',
-		  						timer: 1000,
-	  						 	showLoaderOnConfirm: true,
-		  					})
-	  					 	window.location.href = "success";
+		  					Swal.fire('登录成功','','success')
+		  					allowOutsideClick: () => !Swal.isLoading()
+  							window.location.href = "${pageContext.request.contextPath}/success";
 		  				}
 		  				if(data.msg=='code error'){
 		  					Swal.fire({
@@ -430,11 +428,11 @@
 		  						text: '验证码错误！',
 		  					})
 		  				}
-		  			}
-		  			error: function(){}
-		  		})
-			}
-	  	});
+		  			},
+	  				error: function(){}
+		  		});
+	  		}
+		);
 	});
 	
 // 	$("#login").click(function() {
