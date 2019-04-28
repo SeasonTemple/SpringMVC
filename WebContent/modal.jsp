@@ -107,6 +107,23 @@
 	$(function () { 
 		$("[data-toggle='modal']").tooltip(); 
 	});
+	$('#sublimt').click(function(){
+		const Toast = Swal.mixin({
+			  toast: true,
+			  position: 'top-end',
+			  showConfirmButton: false,
+			  timer: 3000,
+			  onBeforeOpen:()=>{
+				  Swal.showLoading()
+				  allowOutsideClick:() => !Swal.isLoading()
+			  }
+			});
+			Toast.fire({
+			  type: 'success',
+			  title: 'Signed in successfully'
+			})
+	});
+	
    $("#test").click(function(){
 		var uname = $("input[name='uname']").val();
 		var pwd = $("input[name='pwd']").val();
@@ -117,10 +134,13 @@
 		   showCancelButton: true,
 		   confirmButtonText: 'Look up',
 		   showLoaderOnConfirm: true,
-		   preConfirm: (login) => {
+		   timer: 10000,
+		   showLoaderOnConfirm: true,
+		   preConfirm: (isConfirm) => {
+			   Swal.showLoading()
 			   $.ajax({
 		  			type: 'post',
-		  			url: '',
+		  			url: 'http://www.baidu.com?${Json}',
 		  			data: JSON.stringify({uname: uname,pwd: pwd,code: code}),
 		  			dataType: 'Json',
 		  			contentType:"application/json",
@@ -140,17 +160,19 @@
 		  			error: function(){}
 		  		})
 		   },
-		   allowOutsideClick: () => !Swal.isLoading()
+		   allowOutsideClick:() => !Swal.isLoading()
 		 }).then((result) => {
 			 if (result.value) {
 		     Swal.fire({
 		       title: '成功',
 		       type: 'success',
-		       text: '${data.msg}'
+		       text: '${data.msg}',
+		       timer: 2000
 		     }).then((result) => {
+		       Swal.showLoading()
 				 if (result.value) {
 		    		 allowOutsideClick: () => !Swal.isLoading()
-		    		 location.href="";
+// 		    		 location.href="";
 				 }
 		     })
 		   }
@@ -176,75 +198,76 @@
 	});
 	window.onload=function(){
 		Swal.fire({
-			  title: 'Custom animation with Animate.css',
-			  animation: false,
-			  customClass: 'animated tada'
+			title : '登录确认',
+			type: 'waring',
+			confirmButtonText: "确认",
+		  	confirmButtonColor: '#ff0000',
+		  	showLoaderOnConfirm: true,
+		  	width: 250,
+		  	timer: 2000,
+		   	preConfirm: (isConfirm) => {
+		  		$.ajax({
+		  			type: 'post',
+		  			url: '${pageContext.request.contextPath}/bflog',
+		  			data: JSON.stringify({uname: uname,pwd: pwd,code: code}),
+		  			dataType: 'Json',
+		  			contentType:"application/json",
+		  		}).then(response => {
+			        if (!response.ok) {
+			          throw new Error(response.statusText)
+			        }
+			        return response.json()
+			      }).catch(error => {
+			        Swal.showValidationMessage(
+			          `Request failed: ${data.msg}`
+			        )
+			      })
+	 		},
+  		 	allowOutsideClick: () => !Swal.isLoading()
+		}).then((result) => {
+			  if (result.value) {
+			    Swal.fire({
+			      title: `${result.value.login}'s avatar`,
+			      imageUrl: result.value.avatar_url
+			    })
+			  }
 			});
-		let timerInterval
-		Swal.fire({
-		  title: 'Auto close alert!',
-		  width: 500,
-		  html:
-		    'I will close in <strong></strong> seconds.<br/><br/>' +
-		    '<button id="increase" class="btn btn-warning">' +
-		      'I need 5 more seconds!' +
-		    '</button><br/>' +
-		    '<button id="stop" class="btn btn-danger">' +
-		      'Please stop the timer!!' +
-		    '</button><br/>' +
-		    '<button id="resume" class="btn btn-success" disabled>' +
-		      'Phew... you can restart now!' +
-		    '</button><br/>' +
-		    '<button id="toggle" class="btn btn-primary">' +
-		      'Toggle' +
-		    '</button>',
-		  timer: 10000,
-		  onBeforeOpen: () => {
-		    const content = Swal.getContent()
-		    const $ = content.querySelector.bind(content)
-
-		    const stop = $('#stop')
-		    const resume = $('#resume')
-		    const toggle = $('#toggle')
-		    const increase = $('#increase')
-
-		    Swal.showLoading()
-
-		    function toggleButtons () {
-		      stop.disabled = !Swal.isTimerRunning()
-		      resume.disabled = Swal.isTimerRunning()
-		    }
-
-		    stop.addEventListener('click', () => {
-		      Swal.stopTimer()
-		      toggleButtons()
-		    })
-
-		    resume.addEventListener('click', () => {
-		      Swal.resumeTimer()
-		      toggleButtons()
-		    })
-
-		    toggle.addEventListener('click', () => {
-		      Swal.toggleTimer()
-		      toggleButtons()
-		    })
-
-		    increase.addEventListener('click', () => {
-		      Swal.increaseTimer(5000)
-		    })
-
-		    timerInterval = setInterval(() => {
-		      Swal.getContent().querySelector('strong')
-		        .textContent = (Swal.getTimerLeft() / 1000)
-		          .toFixed(0)
-		    }, 100)
-		  },
-		  onClose: () => {
-		    clearInterval(timerInterval)
-		  }
-		})
 	}
+
+//	Swal.fire({
+//	  title: 'Submit your Github username',
+//	  input: 'text',
+//	  inputAttributes: {
+//	    autocapitalize: 'off'
+//	  },
+//	  showCancelButton: true,
+//	  confirmButtonText: 'Look up',
+//	  showLoaderOnConfirm: true,
+//	  preConfirm: (login) => {
+//	    return fetch(`//api.github.com/users/${login}`)
+//	      .then(response => {
+//	        if (!response.ok) {
+//	          throw new Error(response.statusText)
+//	        }
+//	        return response.json()
+//	      })
+//	      .catch(error => {
+//	        Swal.showValidationMessage(
+//	          `Request failed: ${error}`
+//	        )
+//	      })
+//	  },
+//	  allowOutsideClick: () => !Swal.isLoading()
+//	}).then((result) => {
+//	  if (result.value) {
+//	    Swal.fire({
+//	      title: `${result.value.login}'s avatar`,
+//	      imageUrl: result.value.avatar_url
+//	    })
+//	  }
+//	});
+	
+// 		
 // 	window.onload=function(){
 // 		swal("所以你是禽兽？", {
 // 			buttons: {

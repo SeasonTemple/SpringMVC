@@ -164,7 +164,7 @@
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-2 column">
-			<form:form role="form" action="${pageContext.request.contextPath}/log" method="post" modelAttribute="user" id="logform">
+			<form:form role="form"  modelAttribute="user" id="logform">
 				<div class="form-group">
 					 <label for="example" style="font-size: 18px;">用户名</label><input path="uname" type="text" class="form-control" name="uname" required="required"/>
 				</div>
@@ -180,7 +180,7 @@
 				</div>&nbsp;
 				<div class="form-group" style="text-align: center">
 					<input type="button" class="btn btn-default" value="注册" data-toggle="modal" data-target="#myModal" title="这是注册按钮" data-placement="bottom" id="register">&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="submit" class="btn btn-primary" value="登录" data-toggle="tooltip" title="这是登录按钮" data-placement="bottom" id="login" >
+					<input type="button" class="btn btn-primary" value="登录" data-toggle="tooltip" title="这是登录按钮" data-placement="bottom" id="login" >
 				</div>
 			</form:form>
 			<div class="modal fade" id="myModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -394,45 +394,54 @@
 		var code = $("input[name='code']").val();
 		Swal.fire({
 			title : '登录确认',
-			type: 'waring',
+			type: 'warning',
 			confirmButtonText: "确认",
-		  	confirmButtonColor: '#ff0000',
+		  	confirmButtonColor: '#0000ee',
 		  	showLoaderOnConfirm: true,
-		  	width: 250,
-		  	timer:2000
-		},function(isConfirm) {
-			if(!isConfirm){};
-		  		$.ajax({
-		  			type: 'post',
+		  	timer: 2000,
+		  	onBeforeOpen:()=>{
+				 Swal.showLoading()
+			},
+			allowOutsideClick: () => !Swal.isLoading()
+		}).then(function(isConfirm) {
+			if(isConfirm){
+				$.ajax({
+					type: 'post',
 		  			url: '${pageContext.request.contextPath}/bflog',
 		  			data: JSON.stringify({uname: uname,pwd: pwd,code: code}),
 		  			dataType: 'Json',
-		  			contentType:"application/json",
-		  			success: function(data)	{
-		  				if(data.msg=="success"){
-		  					Swal.fire('登录成功','','success')
-		  					allowOutsideClick: () => !Swal.isLoading()
-  							window.location.href = "${pageContext.request.contextPath}/success";
-		  				}
-		  				if(data.msg=='code error'){
-		  					Swal.fire({
-		  						title: '登录失败',
-		  						type: 'warning',
-		  						text: '验证码错误！',
-		  					})
-		  				}
-		  				if(data.msg=='code error'){
-		  					Swal.fire({
-		  						title: '登录失败',
-		  						type: 'warning',
-		  						text: '验证码错误！',
-		  					})
-		  				}
-		  			},
-	  				error: function(){}
-		  		});
-	  		}
-		);
+		  			contentType:"application/json"
+				}).done(function(data){
+	  				if(data.msg=="success"){
+	  					Swal.fire({
+	  						title : '登录确认',
+	  						type: 'success',
+	  						text: 'msg',
+	  					}).then(function(isConfirm){
+							window.location.href = "${pageContext.request.contextPath}/success";
+  						})
+	  				}
+	  				else if(data.msg=="error"){
+	  					Swal.fire({
+	  						title: '登录失败',
+	  						type: 'error',
+	  						text: '用户名或密码错误！',
+	  					})
+	  				}
+	  				else if(data.msg=="code error"){
+	  					Swal.fire({
+	  						title: '登录失败',
+	  						type: 'error',
+	  						text: '验证码错误！',
+	  					}).then(function(isConfirm){
+	  						$("input[name='code']").val("");
+  						})
+	  				}
+				}).error(function(){
+ 					Swal.fire('错误', '服务器失联', 'error')
+ 				});
+			}
+  		});
 	});
 	
 // 	$("#login").click(function() {

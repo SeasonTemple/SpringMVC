@@ -1,8 +1,12 @@
 package springmvc.entity;
 
 public class BfUser {
+	private int uid;
 	private String uname;
 	private String pwd;
+	private String email;
+	private String profile;
+	private String sex;
 	private String code;
 	private String msg;
 	
@@ -15,7 +19,27 @@ public class BfUser {
 		this.msg = msg;
 	}
 
+	
 
+	public BfUser(int uid, String uname, String pwd, String email, String profile, String sex, String code,
+			String msg) {
+		this.uid = uid;
+		this.uname = uname;
+		this.pwd = pwd;
+		this.email = email;
+		this.profile = profile;
+		this.sex = sex;
+		this.code = code;
+		this.msg = msg;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
 
 	public String getUname() {
 		return uname;
@@ -31,6 +55,30 @@ public class BfUser {
 
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
 	public String getCode() {
@@ -51,7 +99,7 @@ public class BfUser {
 
 	@Override
 	public String toString() {
-		return "BfUser [uname=" + uname + ", pwd=" + pwd + ", code=" + code + ", msg=" + msg + "]";
+		return "BfUser [uid=" + uid + ", uname=" + uname + ", pwd=" + pwd + ", email=" + email + ", profile=" + profile
+				+ ", sex=" + sex + ", code=" + code + ", msg=" + msg + "]";
 	}
-	
 }

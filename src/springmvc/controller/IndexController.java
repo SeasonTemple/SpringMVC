@@ -18,18 +18,19 @@ public class IndexController {
 	
 	@Autowired
 	private IndexService indexService;
-	@RequestMapping(value="toMain", method= {RequestMethod.GET})
-	public String toMain(Model model) {
+	@RequestMapping(value="toLog", method= {RequestMethod.GET})
+	public String toLogin(Model model) {
 		return indexService.toLogin(model);
 	}
 	
 	@RequestMapping(value="bflog", method={RequestMethod.POST})
 	@ResponseBody
 	public BfUser beforeSubmit(@RequestBody BfUser u, HttpSession session){
+		System.out.println("[beforeSubmit]");
 		return indexService.beforeSubmit(u, session);
 	}
 	
-	@RequestMapping(value="success", method= {RequestMethod.POST})
+	@RequestMapping(value="success", method= {RequestMethod.GET})
 	public String logSuccess() {
 		return "start";
 	}

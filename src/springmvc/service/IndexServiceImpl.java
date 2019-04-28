@@ -30,9 +30,11 @@ public class IndexServiceImpl implements IndexService {
 
 	@Override
 	public BfUser beforeSubmit(BfUser u, HttpSession session) {
-		BfUser bu = null;
+		BfUser bu = new BfUser();
+		System.out.println("[indexServiceImpl]");
 		if(!u.getCode().equalsIgnoreCase(session.getAttribute("code").toString())) {
 			bu.setMsg("code error");
+			System.out.println(session.getAttribute("code").toString());
 			return bu;
 		}
 		List<BfUser> bl = userDao.cbfUser(u);
@@ -41,9 +43,11 @@ public class IndexServiceImpl implements IndexService {
 		}
 		if(bu!= null) {
 			bu.setMsg("success");
+			session.setAttribute("loguser", bu);
 			return bu;
 		}else {
 			bu.setMsg("error");
+			System.out.println(bu);
 			return bu;
 		}
 	}
