@@ -1,7 +1,11 @@
 package springmvc.entity;
 
+import com.sun.istack.internal.NotNull;
+
 public class User {
+	
 	private int uid;
+	
 	private String uname;
 	private String pwd;
 	private String email;
