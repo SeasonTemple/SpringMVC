@@ -1,5 +1,6 @@
 package springmvc.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -20,24 +21,22 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 
 	@Override
-	public String checkUser(User u, Model model, HttpSession session, String code) {
-		if(!code.equalsIgnoreCase(session.getAttribute("code").toString())) {
-			model.addAttribute("msg", "验证码错误！");
-			System.out.println("input:"+session.getAttribute("code")+"\n"+code);
-			return "Login";
+	public User login(User u, HttpSession session) {
+		User bu = new User();
+		System.out.println("[indexServiceImpl]");
+		if(!u.getCode().equalsIgnoreCase(session.getAttribute("code").toString())) {
+			bu.setMsg("验证码错误!");
+			System.out.println(session.getAttribute("code").toString());
+			return bu;
 		}
-		User nu = null;
-		List<User> ul = userDao.checkUser(u);
-		if(ul.size() > 0) {
-			nu = ul.get(0);
-		}
-		if(nu!= null) {
-			session.setAttribute("loguser", nu);
-			session.setAttribute("msg", "登录成功");
-			return "start";
+		bu = userDao.checkUser(u);
+		if(bu.getUname()!= null) {
+			bu.setMsg("success");
+			session.setAttribute("loguser", bu);
+			return bu;
 		}else {
-			model.addAttribute("msg", "用户名或密码错误！");
-			return "redirect:Login";
+			bu.setMsg("用户名或密码错误!");
+			return bu;
 		}
 	}
 

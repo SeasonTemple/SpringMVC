@@ -20,10 +20,13 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value="log", method= {RequestMethod.POST})
-	public String login(@ModelAttribute User u, Model model, HttpSession session, String code) {
-		return userService.checkUser(u, model, session, code);
+	@RequestMapping(value="login", method= {RequestMethod.POST})
+	@ResponseBody
+	public User login(@RequestBody User u, HttpSession session){
+		System.out.println("[logValidate]");
+		return userService.login(u, session);
 	}
+	
 	@RequestMapping(value="register", method= {RequestMethod.POST})
 	public String register(@ModelAttribute User u, Model model, HttpSession session, String code) {
 		return userService.register(u, model, session, code);

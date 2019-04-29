@@ -8,6 +8,6 @@ import springmvc.entity.User;
 
 public interface UserService {
 	
-	public String checkUser(User u, Model model, HttpSession session, String code);
+	public User login(User u, HttpSession session);
 	public String register(User u, Model model, HttpSession session, String code);
 }

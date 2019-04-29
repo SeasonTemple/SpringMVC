@@ -1,24 +1,36 @@
 package springmvc.entity;
 
 public class User {
-
 	private int uid;
 	private String uname;
 	private String pwd;
 	private String email;
 	private String profile;
 	private String sex;
+	private String code;
+	private String msg;
 	
 	public User() {}
+	
+	public User(String uname, String pwd, String code, String msg) {
+		this.uname = uname;
+		this.pwd = pwd;
+		this.code = code;
+		this.msg = msg;
+	}
 
-	public User(int uid, String uname, String pwd, String email, String profile, String sex) {
-		super();
+	
+
+	public User(int uid, String uname, String pwd, String email, String profile, String sex, String code,
+			String msg) {
 		this.uid = uid;
 		this.uname = uname;
 		this.pwd = pwd;
 		this.email = email;
 		this.profile = profile;
 		this.sex = sex;
+		this.code = code;
+		this.msg = msg;
 	}
 
 	public int getUid() {
@@ -69,10 +81,25 @@ public class User {
 		this.sex = sex;
 	}
 
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
 	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", uname=" + uname + ", pwd=" + pwd + ", email=" + email + ", profile=" + profile
-				+ ", sex=" + sex + "]";
+				+ ", sex=" + sex + ", code=" + code + ", msg=" + msg + "]";
 	}
-	
 }

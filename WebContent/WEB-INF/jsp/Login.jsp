@@ -166,10 +166,10 @@
 		<div class="col-md-2 column">
 			<form:form role="form"  modelAttribute="user" id="logform">
 				<div class="form-group">
-					 <label for="example" style="font-size: 18px;">用户名</label><input path="uname" type="text" class="form-control" name="uname" required="required"/>
+					 <label for="example" style="font-size: 18px;">用户名</label><input type="text" class="form-control" name="uname" required="required"/>
 				</div>
 				<div class="form-group">
-					 <label for="example" style="font-size: 18px;">密码</label><input path="pwd" type="password" class="form-control" name="pwd" required="required"/>
+					 <label for="example" style="font-size: 18px;">密码</label><input type="password" class="form-control" name="pwd" required="required"/>
 				</div>
 				<div class="form-group">
 					<label for="example" style="font-size: 18px;">验证码</label>
@@ -394,9 +394,8 @@
 		var code = $("input[name='code']").val();
 		Swal.fire({
 			title : '登录确认',
-			type: 'warning',
+			type: 'question',
 			confirmButtonText: "确认",
-		  	confirmButtonColor: '#0000ee',
 		  	showLoaderOnConfirm: true,
 		  	timer: 2000,
 		  	onBeforeOpen:()=>{
@@ -407,7 +406,7 @@
 			if(isConfirm){
 				$.ajax({
 					type: 'post',
-		  			url: '${pageContext.request.contextPath}/bflog',
+		  			url: '${pageContext.request.contextPath}/login',
 		  			data: JSON.stringify({uname: uname,pwd: pwd,code: code}),
 		  			dataType: 'Json',
 		  			contentType:"application/json"
@@ -416,25 +415,29 @@
 	  					Swal.fire({
 	  						title : '登录确认',
 	  						type: 'success',
-	  						text: 'msg',
+	  						text: data.msg,
 	  					}).then(function(isConfirm){
 							window.location.href = "${pageContext.request.contextPath}/success";
   						})
 	  				}
-	  				else if(data.msg=="error"){
+	  				else if(data.msg=="验证码错误!"){
 	  					Swal.fire({
 	  						title: '登录失败',
 	  						type: 'error',
-	  						text: '用户名或密码错误！',
-	  					})
-	  				}
-	  				else if(data.msg=="code error"){
-	  					Swal.fire({
-	  						title: '登录失败',
-	  						type: 'error',
-	  						text: '验证码错误！',
+	  						text: data.msg,
 	  					}).then(function(isConfirm){
-	  						$("input[name='code']").val("");
+	  						$(":input[name='code']").val("");
+  						})
+	  				}
+	  				else {
+	  					Swal.fire({
+	  						title: '登录失败',
+	  						type: 'error',
+	  						text: data.msg,
+	  					}).then(function(isConfirm){
+	  						$(":input[name='uname']").val("");
+	  						$(":input[name='pwd']").val("");
+	  						$(":input[name='code']").val("");
   						})
 	  				}
 				}).error(function(){

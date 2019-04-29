@@ -1,18 +1,10 @@
 package springmvc.service;
 
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-
-import com.fasterxml.jackson.annotation.JsonAlias;
-
 import springmvc.dao.UserDao;
-import springmvc.entity.BfUser;
 import springmvc.entity.User;
 
 @Service("indexService")
@@ -28,12 +20,12 @@ public class IndexServiceImpl implements IndexService {
 		return "Login";
 	}
 
-	@Override
-	public BfUser beforeSubmit(BfUser u, HttpSession session) {
+/*	@Override
+	public BfUser logValidate(BfUser u, HttpSession session) {
 		BfUser bu = new BfUser();
 		System.out.println("[indexServiceImpl]");
 		if(!u.getCode().equalsIgnoreCase(session.getAttribute("code").toString())) {
-			bu.setMsg("code error");
+			bu.setMsg("验证码错误!");
 			System.out.println(session.getAttribute("code").toString());
 			return bu;
 		}
@@ -41,15 +33,14 @@ public class IndexServiceImpl implements IndexService {
 		if(bl.size() > 0) {
 			bu = bl.get(0);
 		}
-		if(bu!= null) {
+		if(bu.getUname()!= null) {
 			bu.setMsg("success");
 			session.setAttribute("loguser", bu);
 			return bu;
 		}else {
-			bu.setMsg("error");
-			System.out.println(bu);
+			bu.setMsg("用户名或密码错误!");
 			return bu;
 		}
-	}
+	}*/
 	
 }

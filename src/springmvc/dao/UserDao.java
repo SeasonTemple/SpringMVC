@@ -1,18 +1,18 @@
 package springmvc.dao;
 
-import java.util.List;
-
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
-import springmvc.entity.BfUser;
 import springmvc.entity.User;
 
 @Repository("userDao")
 @Mapper
 public interface UserDao {
 	
-	public List<User> checkUser(User u);
-	public List<BfUser> cbfUser(BfUser u);
+	@Select("select * from user where uname=#{uname} and pwd=#{pwd}")
+	public User checkUser(User u);
+	@Insert("insert into user(uid,uname,pwd,email,profile) values(null,#{uname},#{pwd},#{email},#{profile})")
 	public int register(User u);
 }

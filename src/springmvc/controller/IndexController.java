@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import springmvc.entity.BfUser;
 import springmvc.service.IndexService;
 
 @Controller
@@ -23,12 +22,12 @@ public class IndexController {
 		return indexService.toLogin(model);
 	}
 	
-	@RequestMapping(value="bflog", method={RequestMethod.POST})
+/*	@RequestMapping(value="login", method={RequestMethod.POST})
 	@ResponseBody
 	public BfUser beforeSubmit(@RequestBody BfUser u, HttpSession session){
 		System.out.println("[beforeSubmit]");
-		return indexService.beforeSubmit(u, session);
-	}
+		return indexService.logValidate(u, session);
+	}*/
 	
 	@RequestMapping(value="success", method= {RequestMethod.GET})
 	public String logSuccess() {
