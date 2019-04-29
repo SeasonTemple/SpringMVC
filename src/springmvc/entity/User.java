@@ -1,11 +1,11 @@
 package springmvc.entity;
 
-import com.sun.istack.internal.NotNull;
+import javax.validation.constraints.NotBlank;
 
 public class User {
 	
 	private int uid;
-	
+	@NotBlank()
 	private String uname;
 	private String pwd;
 	private String email;
