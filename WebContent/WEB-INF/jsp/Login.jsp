@@ -207,9 +207,11 @@
 								<input class="form-control" type="text" value="${user.profile}">
 							</form:form>
 						</div>
-					  <div class="modal-footer" style="align: center;">
-			            <button data-dismiss="modal" class="btn btn-default" type="button" id = "close">关闭</button>
-			            <button class="btn btn-primary" type="button" id="sublimt" onsubmit="return check();">提交</button>
+					  <div class="modal-footer">
+					  	<center>
+			            	<button data-dismiss="modal" class="btn btn-default btn-lg" type="button" id="close">关闭</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			            	<button class="btn btn-primary btn-lg" type="button" id="sublimt" onsubmit="return check();">提交</button>
+			          	</center>
 			          </div>
 			        </div><!-- /.modal-content -->
 			      </div><!-- /.modal-dialog -->
@@ -385,6 +387,7 @@
 	});
 	
   	$(function() {
+  		$("#register").attr("title",'哈哈哈哈');
 		$("[data-toggle='modal']").tooltip();
 	});
   	
@@ -441,7 +444,7 @@
   						})
 	  				}
 				}).error(function(){
- 					Swal.fire('错误', '服务器失联', 'error')
+ 					Swal.fire('糟糕', '与服务器失联!', 'error')
  				});
 			}
   		});
