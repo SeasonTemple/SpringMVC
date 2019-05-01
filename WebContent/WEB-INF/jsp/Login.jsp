@@ -400,7 +400,7 @@
 			type: 'question',
 			confirmButtonText: "确认",
 		  	showLoaderOnConfirm: true,
-		  	timer: 2000,
+		  	timer: 1500,
 		  	onBeforeOpen:()=>{
 				 Swal.showLoading()
 			},

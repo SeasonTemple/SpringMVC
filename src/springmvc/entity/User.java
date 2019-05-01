@@ -1,14 +1,25 @@
 package springmvc.entity;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 public class User {
 	
 	private int uid;
-	@NotBlank()
+	
+	@Size
+	@NotBlank
 	private String uname;
+	
+	@Size
+	@NotBlank
 	private String pwd;
+	
+	@NotBlank
 	private String email;
+	
+	@Size
+	@NotBlank
 	private String profile;
 	private String sex;
 	private String code;
@@ -22,8 +33,6 @@ public class User {
 		this.code = code;
 		this.msg = msg;
 	}
-
-	
 
 	public User(int uid, String uname, String pwd, String email, String profile, String sex, String code,
 			String msg) {
