@@ -8,19 +8,12 @@ public class User {
 	
 	private int uid;
 	
-	@Size(min = 4, max = 20, message = "用户名长度应在4-20个字符之内!")
-	@NotBlank(message="用户名不能为空!")
 	private String uname;
 	
-	@Size(min = 4, max = 20, message = "密码长度应在4-20个字符之内!")
-	@NotBlank(message = "密码不能为空!")
 	private String pwd;
 	
-	@NotBlank(message = "邮箱不能为空!")
 	private String email;
 	
-	@Min(value = 2, message = "职称名应不小于2个字符!")
-	@NotBlank(message = "职称名不能为空!")
 	private String profile;
 	private String sex;
 	private String code;

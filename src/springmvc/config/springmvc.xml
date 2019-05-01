@@ -19,13 +19,15 @@
 
 	<context:component-scan base-package="springmvc.controller" />   
 
-	<mvc:annotation-driven validator="validator"/>
+	<mvc:annotation-driven/>
+
+<!-- 	<mvc:annotation-driven validator="validator"/>
 
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property>
+        <property name="providerClass" value="org.hibernate.validator.*"></property>
 	</bean>
 
-<!-- 	<bean id="validationMessageSource"
+	<bean id="validationMessageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basenames" value="classpath:validatemessage" />
 		<property name="fileEncodings" value="utf8"></property>
