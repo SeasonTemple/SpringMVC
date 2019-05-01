@@ -193,24 +193,24 @@
 						<div class="modal-body" style="width: 80%; margin: 0 auto;">
 							<form:form class="bs-example bs-example-form" role="form" modelAttribute="nuser">
 								<h4>用户名</h4>
-								<input class="form-control" type="text" value="${user.uname}">
+								<input class="form-control" type="text" value="${user.uname}" name="runame" />
 								<h4>密码</h4>
-								<input class="form-control" type="password" value="${user.uname}">
+								<input class="form-control" type="password" value="${user.pwd}" name="rpwd" />
 								<h4>确认密码</h4>
-								<input class="form-control" type="password" value="${user.uname}">
+								<input class="form-control" type="password" value="" name="rpwdc" />
 								<h4>邮箱</h4>
 								<div class="input-group ">
-									<input class="form-control" type="text" value="${user.email}">
+									<input class="form-control" type="text" value="" name="remail" />
 									<span class="input-group-addon">@163.com</span>
 						 		</div>
 								<h4>职务描述</h4>
-								<input class="form-control" type="text" value="${user.profile}">
+								<input class="form-control" type="text" value="${user.profile}" name="rprofile" />
 							</form:form>
 						</div>
 					  <div class="modal-footer">
 					  	<center>
 			            	<button data-dismiss="modal" class="btn btn-default btn-lg" type="button" id="close">关闭</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			            	<button class="btn btn-primary btn-lg" type="button" id="sublimt" onsubmit="return check();">提交</button>
+			            	<button class="btn btn-primary btn-lg" type="button" id="sublimt" >提交</button>
 			          	</center>
 			          </div>
 			        </div><!-- /.modal-content -->
@@ -387,7 +387,7 @@
 	});
 	
   	$(function() {
-  		$("#register").attr("title",'哈哈哈哈');
+  		$("#register").attr("title",'<i class="ok"></i>哈哈哈哈');
 		$("[data-toggle='modal']").tooltip();
 	});
   	
@@ -450,15 +450,15 @@
   		});
 	});
 	
-// 	$("#login").click(function() {
-// 		$('#logform').submit();
-// 	});
-
 	$("#sublimt").click(function() {
-		Swal.fire({
-			title : '信息已经提交',
-			type : 'success',
-		});
+		var uname = $("input[name='runame']").val();
+		var pwd = $("input[name='rpwd']").val();
+		var pwdc = $("input[name='rpwdc']").val();
+		var email = $("input[name='remail']").val();
+		var profile = $("input[name='rprofile']").val();
+		if(pwd == pwdc){
+						
+		}
 		$("#myModal").modal('hide');
 	});
 

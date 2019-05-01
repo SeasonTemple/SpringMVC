@@ -21,6 +21,17 @@
 
 	<mvc:annotation-driven />
 
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property>
+	</bean>
+
+<!-- 	<bean id="validationMessageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames" value="classpath:validatemessage" />
+		<property name="fileEncodings" value="utf8"></property>
+		<property name="cacheSeconds" value="120"></property>
+	</bean> -->
+
     <mvc:default-servlet-handler/>
 
 	<mvc:resources location="/resources/image/" mapping="/resources/image/**"/>
