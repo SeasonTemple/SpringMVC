@@ -49,20 +49,20 @@
 			font-weight: bold;
 	}
 	#gradient{
-    background: #000000;
-    background: -moz-linear-gradient(top,  #CCEEFF 40%, #000000 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(20%,#CCEEFF));
-    background: -webkit-linear-gradient(top,  #CCEEFF 40%,#000000 100%);
-    background: -o-linear-gradient(top,  #CCEEFF 40%,#000000 100%);
-    background: -ms-linear-gradient(top,  #CCEEFF 40%,#000000 100%);
-    background: linear-gradient(to bottom,  #CCEEFF 40%,#000000 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCEEFF', endColorstr='#000000',GradientType=0 );
+		    background: #000000;
+		    background: -moz-linear-gradient(top,  #CCEEFF 40%, #000000 100%);
+		    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(20%,#CCEEFF));
+		    background: -webkit-linear-gradient(top,  #CCEEFF 40%,#000000 100%);
+		    background: -o-linear-gradient(top,  #CCEEFF 40%,#000000 100%);
+		    background: -ms-linear-gradient(top,  #CCEEFF 40%,#000000 100%);
+		    background: linear-gradient(to bottom,  #CCEEFF 40%,#000000 100%);
+		    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CCEEFF', endColorstr='#000000',GradientType=0 );
 	}
 	:root .gradient{filter:none;}
 	#ulr{
-		background: rgba(255, 255, 255, .4);
+			background: rgba(255, 255, 255, .4);
 	}a{
-		color:rgba(255, 255, 255, .8);
+			color:rgba(255, 255, 255, .8);
 	}
 	
 	.github-corner:hover .octo-arm{animation:octocat-wave 560ms
@@ -73,11 +73,26 @@
 	.octo-arm{animation:octocat-wave 560ms ease-in-out}}
 	
 	.Swal{
-        width: 250em;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
+	        width: 250em;
+	        margin: 0 auto;
+	        left: 0;
+	        right: 0;
     }
+	
+	.tooltip-inner{
+    		background-color: rgba(255, 255, 255, .5);
+    		width: 100px;
+    		text-align: 0 auto;
+			border:1px solid #dedede
+	}
+	
+	.tooltip-arrow{
+   			border-bottom-color: #00cc00 !important;
+	}
+	
+ 	.tooltip{
+  			opacity: 0.85 !important;
+	}
 	
 </style>
 </head>
@@ -179,7 +194,7 @@
 					</div>
 				</div>&nbsp;
 				<div class="form-group" style="text-align: center">
-					<input type="button" class="btn btn-default" value="注册" data-toggle="modal" data-target="#myModal" title="这是注册按钮" data-placement="bottom" id="register">&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="button" class="btn btn-default" value="注册" data-toggle="modal"  title="这是注册按钮" data-placement="bottom" id="register">&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="button" class="btn btn-primary" value="登录" data-toggle="tooltip" title="这是登录按钮" data-placement="bottom" id="login" >
 				</div>
 			</form:form>
@@ -193,18 +208,18 @@
 						<div class="modal-body" style="width: 80%; margin: 0 auto;">
 							<form:form class="bs-example bs-example-form" role="form" modelAttribute="user">
 								<h4>用户名</h4>
-								<input class="form-control" type="text" value="${user.uname}" name="runame" data-toggle="username" title="" />
+								<input class="form-control" type="text" value="${user.uname}" name="runame" data-toggle="username" data-placement="top" />
 								<h4>密码</h4>
-								<input class="form-control" type="password" value="${user.pwd}" name="rpwd" data-toggle="password" title="" />
+								<input class="form-control" type="password" value="${user.pwd}" name="rpwd" data-toggle="password" data-placement="top" data-html="true" />
 								<h4>确认密码</h4>
-								<input class="form-control" type="password" value="" name="rpwdc" data-toggle="passwordc" title=""/>
+								<input class="form-control" type="password" value="" name="rpwdc" data-toggle="passwordc" data-placement="top" data-html="true" />
 								<h4>邮箱</h4>
 								<div class="input-group ">
-									<input class="form-control" type="text" value="" name="remail" data-toggle="email" title="" />
+									<input class="form-control" type="text" value="" name="remail" data-toggle="email" data-placement="top" />
 									<span class="input-group-addon">@163.com</span>
 						 		</div>
-								<h4>职务描述</h4>
-								<input class="form-control" type="text" value="${user.profile}" name="rprofile" data-toggle="profile" title="" />
+								<h4>职务名称</h4>
+								<input class="form-control" type="text" value="${user.profile}" name="rprofile" data-toggle="profile" data-placement="top" />
 							</form:form>
 						</div>
 					  <div class="modal-footer">
@@ -387,7 +402,6 @@
 	});
 	
   	$(function() {
-  		$("#register").attr("title",'<i class="ok"></i>哈哈哈哈');
 		$("[data-toggle='modal']").tooltip();
 	});
   	
@@ -450,14 +464,39 @@
   		});
 	});
   	
+  	 $('#register').click(function() {
+  		 $("#myModal").modal('show');
+		 $('#myModal').on('shown.bs.modal',function(e){
+			 $("input[name='runame']").focus();
+	    });
+  	 });
+  	
   	$("input[name='rpwdc']").blur(function(){
   		var pwd = $("input[name='rpwd']").val();
 		var pwdc = $("input[name='rpwdc']").val();
-		if(pwd!= pwdc){
-			$("#rpwdc").attr("title",'<i class="err"></i>两次输入的密码不一致!');
-			$("[data-toggle='passwordc']").tooltip();
+		$("input[name='rpwdc']").attr("title",'');
+		if(pwd == pwdc){
+			$("input[name='rpwdc']").attr("title",'<span style="color:green;font-size:18px">正&nbsp;&nbsp;确!</span>');
+			$("[data-toggle='passwordc']").tooltip('show');
+			var id = setTimeout(
+		            function () {
+		            	$("input[name='rpwdc']").attr("title",'');
+						$("[data-toggle='passwordc']").tooltip('hide');
+		            }, 2000
+		        );
+		}
+		else{
+			$("input[name='rpwdc']").attr("title",'<span style="color:red;font-size:15px">密码不一致!</span>');
+			$("[data-toggle='passwordc']").tooltip('show');
+	    	var id = setTimeout(
+	            function () {
+	            	$("input[name='rpwdc']").attr("title",'');
+					$("[data-toggle='passwordc']").tooltip('hide');
+	            }, 1000
+	        );
 		}
   	});
+  	
 	
 	$("#sublimt").click(function() {
 		var uname = $("input[name='runame']").val();
@@ -470,6 +509,11 @@
 	});
 
 	$("#close").click(function() {
+		$("input[name='runame']").val("");
+		$("input[name='rpwd']").val("");
+		$("input[name='rpwdc']").val("");
+		$("input[name='remail']").val("");
+		$("input[name='rprofile']").val("");
 		$("#myModal").modal('hide');
 	});
 
