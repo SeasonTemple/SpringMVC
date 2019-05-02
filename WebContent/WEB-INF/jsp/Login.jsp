@@ -81,13 +81,14 @@
 	
 	.tooltip-inner{
     		background-color: rgba(255, 255, 255, .8);
-    		width: 100px;
+    		width: 150px;
     		text-align: 0 auto;
-			border:1px solid #dedede
+			border:1px solid #dedede;
+			max-width: 400px !important;
 	}
 	
 	.tooltip-arrow{
-   			border-bottom-color: #00cc00 !important;
+   			border-bottom-color: rgba(255, 255, 255, .8) !important;
 	}
 	
  	.tooltip{
@@ -208,18 +209,18 @@
 						<div class="modal-body" style="width: 80%; margin: 0 auto;">
 							<form:form class="bs-example bs-example-form" role="form" modelAttribute="user">
 								<h4>用户名</h4>
-								<input class="form-control" type="text" value="${user.uname}" name="runame" data-toggle="username" data-placement="top" />
+								<input class="form-control" type="text" value="${user.uname}" name="runame" data-toggle="username" data-placement="top" data-html="true" />
 								<h4>密码</h4>
 								<input class="form-control" type="password" value="${user.pwd}" name="rpwd" data-toggle="password" data-placement="top" data-html="true" />
 								<h4>确认密码</h4>
 								<input class="form-control" type="password" value="" name="rpwdc" data-toggle="passwordc" data-placement="top" data-html="true" />
 								<h4>邮箱</h4>
 								<div class="input-group ">
-									<input class="form-control" type="text" value="" name="remail" data-toggle="email" data-placement="top" />
+									<input class="form-control" type="text" value="" name="remail" data-toggle="email" data-placement="top" data-html="true" />
 									<span class="input-group-addon">@163.com</span>
 						 		</div>
-								<h4>职务名称</h4>
-								<input class="form-control" type="text" value="${user.profile}" name="rprofile" data-toggle="profile" data-placement="top" />
+								<h4>职称</h4>
+								<input class="form-control" type="text" value="${user.profile}" name="rprofile" data-toggle="profile" data-placement="top"  data-html="true" />
 							</form:form>
 						</div>
 					  <div class="modal-footer">
@@ -464,18 +465,47 @@
   		});
 	});
   	
-  	 $('#register').click(function() {
+ 	$('#register').click(function() {
   		 $("#myModal").modal('show');
 		 $('#myModal').on('shown.bs.modal',function(e){
 			 $("input[name='runame']").focus();
 	    });
-  	 });
+	});
+  	 
+ 	$("input[name='runame']").blur(function(){
+ 		var uname = $("input[name='runame']").val();
+ 		var re = /^\S(?![a-zA-Z]+$)(?!\d+$){4,20}/g;
+ 		if(!re.test(uname)){
+ 			$("input[name='runame']").attr("title",'<span style="color:red;font-size:15px;">用户名格式错误!</span>');
+			$("[data-toggle='username']").tooltip('show');
+			var id = setTimeout(
+		            function () {
+						$("[data-toggle='username']").tooltip('destroy');
+		            }, 1000
+		        );
+ 		}
+ 	});
   	
+ 	$("input[name='rpwd']").blur(function(){
+ 		var pwd = $("input[name='rpwd']").val();
+		var pwdc = $("input[name='rpwdc']").val();
+ 		if(pwd == ""||pwd == null){
+			$("input[name='rpwd']").attr("title",'<span style="color:green;font-size:18px">密码不能为空</span>');
+			$("[data-toggle='password']").tooltip('show');
+			var id = setTimeout(
+		            function () {
+						$("[data-toggle='password']").tooltip('destroy');
+		            }, 1000
+		        );
+		}
+ 	});
+ 	
   	$("input[name='rpwdc']").blur(function(){
   		var pwd = $("input[name='rpwd']").val();
 		var pwdc = $("input[name='rpwdc']").val();
-		if(pwd == pwdc){
-			$("input[name='rpwdc']").attr("title",'<span style="color:green;font-size:18px">正&nbsp;&nbsp;确!</span>');
+		var re = /^S(?![a-zA-Z]+$)(?!\\d+$){6,20}$/g;
+		if(pwdc == ""||pwdc == null){
+			$("input[name='rpwdc']").attr("title",'<span style="color:green;font-size:18px">密码不能为空</span>');
 			$("[data-toggle='passwordc']").tooltip('show');
 			var id = setTimeout(
 		            function () {
@@ -483,8 +513,8 @@
 		            }, 1000
 		        );
 		}
-		else{
-			$("input[name='rpwdc']").attr("title",'<span style="color:red;font-size:15px">密码不一致!</span>');
+		else if((pwd!= pwdc)||(!re.test(pwd))){
+			$("input[name='rpwdc']").attr("title",'<span style="color:red;font-size:15px">两次密码不一致!</span>');
 			$("[data-toggle='passwordc']").tooltip('show');
 	    	var id = setTimeout(
 	            function () {
@@ -492,6 +522,34 @@
 	            }, 1000
 	        );
 		}
+  	});
+  	
+  	$("input[name='remail']").blur(function(){
+  		var email = $("input[name='remail']").val()+"@163.com";
+  		var re = /^[\\w]+@[\\w]+.com/g;
+  		if(!re.test(email)){
+  			$("input[name='remail']").attr("title",'<span style="color:red;font-size:15px">邮箱地址格式错误!</span>');
+			$("[data-toggle='email']").tooltip('show');
+			var id = setTimeout(
+		            function () {
+						$("[data-toggle='email']").tooltip('destroy');
+		            }, 1000
+		        );
+  		}
+  	});
+  		
+  	$("input[name='rprofile']").blur(function(){
+  		var profile = $("input[name='rprofile']").val();
+  		var re = /[\\u4E00-\\u9FA5]{2,}/g
+  		if(!re.test(profile)){
+  			$("input[name='rprofile']").attr("title",'<span style="color:red;font-size:15px">职称格式错误!</span>');
+			$("[data-toggle='profile']").tooltip('show');
+			var id = setTimeout(
+		            function () {
+						$("[data-toggle='profile']").tooltip('destroy');
+		            }, 1000
+		        );
+  		}
   	});
   	
 	$("#sublimt").click(function() {

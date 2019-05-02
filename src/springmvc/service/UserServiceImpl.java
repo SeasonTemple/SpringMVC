@@ -44,6 +44,9 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User register(User u, BindingResult bindingResult, Model model) {
 		User bu = new User();
+		if(bindingResult.hasErrors()) {
+			
+		}
 		int i = userDao.register(u);
 		if(i > 0) {
 			return bu;
