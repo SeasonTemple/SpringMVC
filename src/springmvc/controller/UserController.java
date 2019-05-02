@@ -1,10 +1,12 @@
 package springmvc.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,8 +30,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="register", method= {RequestMethod.POST})
-	public String register(@ModelAttribute User u, Model model, HttpSession session, String code) {
-		return userService.register(u, model, session, code);
+	@ResponseBody
+	public User register(@Valid @RequestBody User u, BindingResult bindingResult, Model model) {
+		return userService.register(u, bindingResult,model);
 	}
 	
 	@RequestMapping(value="exit", method= {RequestMethod.GET})

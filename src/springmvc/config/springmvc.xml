@@ -21,8 +21,6 @@
 
 	<mvc:annotation-driven />
 	
-	<mvc:annotation-driven conversion-service="conversionService" validator="validator"/>
-
     <mvc:default-servlet-handler/>
 
 	<mvc:resources location="/resources/image/" mapping="/resources/image/**"/>

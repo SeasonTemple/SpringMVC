@@ -1,26 +1,17 @@
 package springmvc.entity;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.Pattern;
 
 public class User {
 	
 	private int uid;
-	
-	@Size(min = 4, max = 20, message = "用户名不在4-20字符之内!")
-	@NotBlank(message = "用户名不能为空!")
+	@Pattern(regexp = "^(?![a-zA-Z]+$)(?!\\d+$){4,20}", message = "用户名格式错误！应由英文字母开头,字母+数字组成，且应在4-20个字符之内")
 	private String uname;
-	
-	@Size(min = 4, max = 20, message = "密码应在4-20字符之内!")
-	@NotBlank(message = "密码不能为空!")
+	@Pattern(regexp = "^(?![a-zA-Z]+$)(?!\\d+$){6,20}$", message = "密码格式错误！应由英文字母开头,字母+数字组成，且应在6-20个字符之内")
 	private String pwd;
-	
-	@NotBlank(message = "邮箱地址不能为空!")
+	@Pattern(regexp = "^[\\w]+@[\\w]+.com", message = "邮箱格式错误!")
 	private String email;
-	
-	@Min(value = 2 , message = "职称名应不小于2个字符!")
-	@NotBlank(message = "职称名不能为空!")
+	@Pattern(regexp = "[\\u4E00-\\u9FA5]{2,}", message = "职称名格式错误!必须为不小于两个的中文字符!")
 	private String profile;
 	private String sex;
 	private String code;

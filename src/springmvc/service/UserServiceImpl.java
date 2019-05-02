@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
 import springmvc.dao.UserDao;
 import springmvc.entity.User;
@@ -41,19 +42,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String register(User u, Model model, HttpSession session, String code) {
-		if(!code.equalsIgnoreCase(session.getAttribute("code").toString())) {
-			model.addAttribute("msg", "验证码错误！");
-			System.out.println("input:"+session.getAttribute("code")+"\n"+code);
-			return "redirect:Login";
-		}
+	public User register(User u, BindingResult bindingResult, Model model) {
+		User bu = new User();
 		int i = userDao.register(u);
 		if(i > 0) {
-			session.setAttribute("msg", "注册成功");
-			return "redirect:Login";
+			return bu;
 		}
 		else {
-			return "Login";
+			return bu;
 		}
 		
 	}

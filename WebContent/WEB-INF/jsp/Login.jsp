@@ -191,20 +191,20 @@
 			            <h2 class="modal-title" style="text-align: center"><span id="h2">注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</span></h2>
 			          </div>
 						<div class="modal-body" style="width: 80%; margin: 0 auto;">
-							<form:form class="bs-example bs-example-form" role="form" modelAttribute="nuser">
+							<form:form class="bs-example bs-example-form" role="form" modelAttribute="user">
 								<h4>用户名</h4>
-								<input class="form-control" type="text" value="${user.uname}" name="runame" />
+								<input class="form-control" type="text" value="${user.uname}" name="runame" data-toggle="username" title="" />
 								<h4>密码</h4>
-								<input class="form-control" type="password" value="${user.pwd}" name="rpwd" />
+								<input class="form-control" type="password" value="${user.pwd}" name="rpwd" data-toggle="password" title="" />
 								<h4>确认密码</h4>
-								<input class="form-control" type="password" value="" name="rpwdc" />
+								<input class="form-control" type="password" value="" name="rpwdc" data-toggle="passwordc" title=""/>
 								<h4>邮箱</h4>
 								<div class="input-group ">
-									<input class="form-control" type="text" value="" name="remail" />
+									<input class="form-control" type="text" value="" name="remail" data-toggle="email" title="" />
 									<span class="input-group-addon">@163.com</span>
 						 		</div>
 								<h4>职务描述</h4>
-								<input class="form-control" type="text" value="${user.profile}" name="rprofile" />
+								<input class="form-control" type="text" value="${user.profile}" name="rprofile" data-toggle="profile" title="" />
 							</form:form>
 						</div>
 					  <div class="modal-footer">
@@ -449,6 +449,15 @@
 			}
   		});
 	});
+  	
+  	$("input[name='rpwdc']").blur(function(){
+  		var pwd = $("input[name='rpwd']").val();
+		var pwdc = $("input[name='rpwdc']").val();
+		if(pwd!= pwdc){
+			$("#rpwdc").attr("title",'<i class="err"></i>两次输入的密码不一致!');
+			$("[data-toggle='passwordc']").tooltip();
+		}
+  	});
 	
 	$("#sublimt").click(function() {
 		var uname = $("input[name='runame']").val();
@@ -456,9 +465,7 @@
 		var pwdc = $("input[name='rpwdc']").val();
 		var email = $("input[name='remail']").val();
 		var profile = $("input[name='rprofile']").val();
-		if(pwd == pwdc){
-						
-		}
+
 		$("#myModal").modal('hide');
 	});
 
