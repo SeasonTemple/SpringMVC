@@ -80,7 +80,7 @@
     }
 	
 	.tooltip-inner{
-    		background-color: rgba(255, 255, 255, .5);
+    		background-color: rgba(255, 255, 255, .8);
     		width: 100px;
     		text-align: 0 auto;
 			border:1px solid #dedede
@@ -474,15 +474,13 @@
   	$("input[name='rpwdc']").blur(function(){
   		var pwd = $("input[name='rpwd']").val();
 		var pwdc = $("input[name='rpwdc']").val();
-		$("input[name='rpwdc']").attr("title",'');
 		if(pwd == pwdc){
 			$("input[name='rpwdc']").attr("title",'<span style="color:green;font-size:18px">正&nbsp;&nbsp;确!</span>');
 			$("[data-toggle='passwordc']").tooltip('show');
 			var id = setTimeout(
 		            function () {
-		            	$("input[name='rpwdc']").attr("title",'');
-						$("[data-toggle='passwordc']").tooltip('hide');
-		            }, 2000
+						$("[data-toggle='passwordc']").tooltip('destroy');
+		            }, 1000
 		        );
 		}
 		else{
@@ -490,14 +488,12 @@
 			$("[data-toggle='passwordc']").tooltip('show');
 	    	var id = setTimeout(
 	            function () {
-	            	$("input[name='rpwdc']").attr("title",'');
-					$("[data-toggle='passwordc']").tooltip('hide');
+					$("[data-toggle='passwordc']").tooltip('destroy');
 	            }, 1000
 	        );
 		}
   	});
   	
-	
 	$("#sublimt").click(function() {
 		var uname = $("input[name='runame']").val();
 		var pwd = $("input[name='rpwd']").val();
