@@ -20,6 +20,8 @@
 	<context:component-scan base-package="springmvc.controller" />   
 
 	<mvc:annotation-driven />
+	
+	<mvc:annotation-driven conversion-service="conversionService" validator="validator"/>
 
     <mvc:default-servlet-handler/>
 
@@ -31,5 +33,9 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
        	<property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
+    </bean>
+    
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+    	<property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property>
     </bean>
 </beans>
