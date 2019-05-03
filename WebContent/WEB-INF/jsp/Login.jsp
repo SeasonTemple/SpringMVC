@@ -81,7 +81,7 @@
 	
 	.tooltip-inner{
     		background-color: rgba(255, 255, 255, .8);
-    		width: 150px;
+    		width: 200px;
     		text-align: 0 auto;
 			border:1px solid #dedede;
 			max-width: 400px !important;
@@ -495,7 +495,7 @@
  		var re = /^(?![a-zA-Z]+$)(?!\d+$)\S{4,20}/g;
  		if(!re.test(uname)){
  			changeIcon(icon_uname, "error");
- 			setTooltip("runame", "username", "用户名格式错误!应由英文字母开头,字母+数字组成，4-20个字符之内");
+ 			setTooltip("runame", "username", "用户名不合法!应由英文字母+数字组成,4-20个字符之内");
  		}
  		else{
  			changeIcon(icon_uname, "ok");
@@ -507,7 +507,7 @@
 		var re = /^(?![a-zA-Z]+$)(?!\d+$)\S{6,20}$/g;
  		if(!re.test(pwd)){
  			changeIcon(icon_pwd, "error");
- 			setTooltip("rpwd", "password", "密码格式错误!应由英文字母开头,字母+数字组成，6-20个字符之内");
+ 			setTooltip("rpwd", "password", "密码不合法!应由英文字母+数字组成,6-20个字符之内");
  		}else{
  			changeIcon(icon_pwd, "ok");
  		}
@@ -528,22 +528,21 @@
   	
   	$("input[name='remail']").blur(function(){
   		var email = $("input[name='remail']").val()+"@163.com";
-  		var re = /^[\\w]+@[\\w]+.com/g;
+  		var re = /^[\w]+@[\w]+.com/g;
   		if(!re.test(email)){
  			changeIcon(icon_email, "error");
- 			setTooltip("remail", "email", "邮箱地址格式错误!");
+ 			setTooltip("remail", "email", "邮箱地址不合法!");
  		}else{
  			changeIcon(icon_email, "ok");
  		}
-		        
   	});
   		
   	$("input[name='rprofile']").keyup(function(){
   		var profile = $("input[name='rprofile']").val();
-  		var re = /[\\u4E00-\\u9FA5]{2,}/g
+  		var re = /[\u4E00-\u9FA5]{2,}/g
   		if(!re.test(profile)){
   			changeIcon(icon_profile, "error");
- 			setTooltip("rprofile", "profile", "职称格式错误!");
+ 			setTooltip("rprofile", "profile", "职称不合法!");
  		}else{
  			changeIcon(icon_profile, "ok");
  		}
@@ -564,6 +563,11 @@
 		$("input[name='rpwdc']").val("");
 		$("input[name='remail']").val("");
 		$("input[name='rprofile']").val("");
+		$("#icon_uname").attr("class", "");
+		$("#icon_pwd").attr("class", "");
+		$("#icon_pwdc").attr("class", "");
+		$("#icon_email").attr("class", "");
+		$("#icon_profile").attr("class", "");
 		$("#myModal").modal('hide');
 	});
 
