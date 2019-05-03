@@ -553,7 +553,50 @@
 		var pwd = $("input[name='rpwd']").val();
 		var email = $("input[name='remail']").val()+"@163.com";
 		var profile = $("input[name='rprofile']").val();
-		
+		Swal.fire({
+			title : '注册中...',
+			type: 'question',
+		  	timer: 1500,
+		  	onBeforeOpen:() =>{
+				 Swal.showLoading()
+			},
+			allowOutsideClick: () => !Swal.isLoading()
+		}).then(function() {
+			$.ajax({
+				type: 'post',
+	  			url: '${pageContext.request.contextPath}/register',
+	  			data: JSON.stringify({uname: uname,pwd: pwd,email: email,profile: profile}),
+	  			dataType: 'Json',
+	  			contentType:"application/json"
+			}).done(function(data){
+				if(data.msg=="注册成功!"){
+  					Swal.fire({
+  						title : data.msg,
+  						type: 'success',
+  					}).then(function(isConfirm){
+						window.location.href = "${pageContext.request.contextPath}/success";
+					})
+  				}
+  				if(data.msg=="验证未通过!"){
+  					Swal.fire({
+  						title: '注册失败',
+  						type: 'error',
+  						text: data.msg,
+  					})
+  				}
+  				if(data.msg=="该用户名存在,注册失败!"){
+  					Swal.fire({
+  						title: '注册失败',
+  						type: 'error',
+  						text: data.msg,
+  					}).then(function(isConfirm){
+  						$(":input[name='runame']").val("");
+					})
+  				}
+			}).error(function(){
+				Swal.fire('糟糕', '与服务器失联!', 'error')
+			});
+  		});
 		$("#myModal").modal('hide');
 	});
 

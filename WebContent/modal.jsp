@@ -132,8 +132,6 @@
 		   title: 'Submit your Github username',
 		   text: 'aaaaa',
 		   showCancelButton: true,
-		   confirmButtonText: 'Look up',
-		   showLoaderOnConfirm: true,
 		   timer: 10000,
 		   showLoaderOnConfirm: true,
 		   preConfirm: (isConfirm) => {
@@ -197,18 +195,22 @@
 		});
 	});
 	window.onload=function(){
+		var uname="";
+		var pwd="";
+		var code="";
 		Swal.fire({
 			title : '登录确认',
 			type: 'waring',
-			confirmButtonText: "确认",
-		  	confirmButtonColor: '#ff0000',
-		  	showLoaderOnConfirm: true,
+			/* confirmButtonText: "确认",
+		  	confirmButtonColor: '#ff0000', 
+		  	showLoaderOnConfirm: false,*/
 		  	width: 250,
-		  	timer: 2000,
-		   	preConfirm: (isConfirm) => {
+		  	timer: 5000,
+		  	onBeforeOpen: () => {
+		   		Swal.showLoading()
 		  		$.ajax({
 		  			type: 'post',
-		  			url: '${pageContext.request.contextPath}/bflog',
+		  			url: '#',
 		  			data: JSON.stringify({uname: uname,pwd: pwd,code: code}),
 		  			dataType: 'Json',
 		  			contentType:"application/json",
@@ -217,21 +219,22 @@
 			          throw new Error(response.statusText)
 			        }
 			        return response.json()
-			      }).catch(error => {
-			        Swal.showValidationMessage(
-			          `Request failed: ${data.msg}`
-			        )
 			      })
 	 		},
   		 	allowOutsideClick: () => !Swal.isLoading()
 		}).then((result) => {
 			  if (result.value) {
-			    Swal.fire({
-			      title: `${result.value.login}'s avatar`,
-			      imageUrl: result.value.avatar_url
-			    })
+					Swal.fire({
+					  title: '',
+					  imageUrl: result.value.avatar_url
+					})
 			  }
 			});
+/* 		Swal.fire({
+			title: '你好',
+			type: 'success'
+		})
+		 */
 	}
 
 //	Swal.fire({

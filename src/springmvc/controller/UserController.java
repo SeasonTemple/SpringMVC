@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,8 +32,8 @@ public class UserController {
 	
 	@RequestMapping(value="register", method= {RequestMethod.POST})
 	@ResponseBody
-	public User register(@Valid @RequestBody User u, BindingResult bindingResult, Model model) {
-		return userService.register(u, bindingResult,model);
+	public User register(@Valid @RequestBody User u, BindingResult result, HttpSession session) {
+		return userService.register(u, result, session);
 	}
 	
 	@RequestMapping(value="exit", method= {RequestMethod.GET})

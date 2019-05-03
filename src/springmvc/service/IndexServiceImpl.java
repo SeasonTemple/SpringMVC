@@ -11,9 +11,6 @@ import springmvc.entity.User;
 @Transactional
 public class IndexServiceImpl implements IndexService {
 	
-	@Autowired
-	private UserDao userDao;
-	
 	@Override
 	public String toLogin(Model model) {
 		model.addAttribute("user", new User());
