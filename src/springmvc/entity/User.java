@@ -5,13 +5,13 @@ import javax.validation.constraints.Pattern;
 public class User {
 	
 	private int uid;
-	@Pattern(regexp = "^(?![a-zA-Z]+$)(?!\\d+$)\\S{4,20}", message = "用户名格式错误!应由英文字母+数字组成,且应在4-20个字符之内")
+	@Pattern(regexp = "^(?!\\d+$)[a-zA-Z0-9\\u4E00-\\u9FA5]\\S{2,10}$", message = "用户名不合法!请重试")
 	private String uname;
-	@Pattern(regexp = "^(?![a-zA-Z]+$)(?!\\d+$)\\S{6,20}$", message = "密码格式错误!应由英文字母+数字组成,且应在6-20个字符之内")
+	@Pattern(regexp = "^(?!\\d+$)[a-zA-Z0-9]\\S{5,12}$", message = "密码不合法!请重试")
 	private String pwd;
-	@Pattern(regexp = "^[\\w]+@[\\w]+.com", message = "邮箱格式错误!")
+	@Pattern(regexp = "^[\\w]+@[\\w]+.com", message = "邮箱格式错误!请重试")
 	private String email;
-	@Pattern(regexp = "[\\u4E00-\\u9FA5]{2,}", message = "职称名格式错误!必须为不小于两个的中文字符!")
+	@Pattern(regexp = "[\\u4E00-\\u9FA5]{2,}", message = "职称名格式错误!请重试")
 	private String profile;
 	private String sex;
 	private String code;

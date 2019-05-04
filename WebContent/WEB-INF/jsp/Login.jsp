@@ -191,11 +191,11 @@
 					<label for="example" style="font-size: 18px;">验证码</label>
 					<div class="form-horizontal">
 						<input type="text" name="code" style="width:45%;"/> 
-						<img id="code" src="validateCode" onclick="refreshCode();"/>
+						<img id="code" src="validateCode" onclick="getCode();"/>
 					</div>
 				</div>&nbsp;
 				<div class="form-group" style="text-align: center">
-					<input type="button" class="btn btn-default" value="注册" data-toggle="modal"  title="这是注册按钮" data-placement="bottom" id="register">&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="button" class="btn btn-default" value="注册" data-toggle="modal"  title="这是注册按钮" data-placement="bottom" id="register" >&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="button" class="btn btn-primary" value="登录" data-toggle="tooltip" title="这是登录按钮" data-placement="bottom" id="login" >
 				</div>
 			</form:form>
@@ -226,7 +226,7 @@
 					  <div class="modal-footer">
 					  	<center>
 			            	<button data-dismiss="modal" class="btn btn-default btn-lg" type="button" id="close">关闭</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			            	<button class="btn btn-primary btn-lg" type="button" id="sublimt" >提交</button>
+			            	<button class="btn btn-primary btn-lg" id="submit" >提交</button>
 			          	</center>
 			          </div>
 			        </div><!-- /.modal-content -->
@@ -392,6 +392,7 @@
 </body>
 <script type="text/javascript">
 	window.onload = function() {
+		sessionStorage.removeItem("errorList");
 		$('#carousel-700475').carousel('cycle');
 		if('${loguser.uname}'!=''){
 			$('#drop').html("${loguser.uname}");
@@ -411,9 +412,8 @@
 		var pwd = $("input[name='pwd']").val();
 		var code = $("input[name='code']").val();
 		Swal.fire({
-			title : '登录确认',
-			type: 'question',
-			confirmButtonText: "确认",
+			title : '<h3>登录中</h3>',
+			type: 'info',
 		  	showLoaderOnConfirm: true,
 		  	timer: 1500,
 		  	onBeforeOpen:()=>{
@@ -431,35 +431,43 @@
 				}).done(function(data){
 	  				if(data.msg=="success"){
 	  					Swal.fire({
-	  						title : '登录确认',
+	  						title : '<h3>登录成功</h3>',
 	  						type: 'success',
-	  						text: data.msg,
-	  					}).then(function(isConfirm){
+	  						showConfirmButton: false,
+	  						timer: 1500,
+	  					}).then(function(){
 							window.location.href = "${pageContext.request.contextPath}/success";
   						})
 	  				}
 	  				else if(data.msg=="验证码错误!"){
 	  					Swal.fire({
-	  						title: '登录失败',
+	  						title: '<h4>登录失败:'+data.msg+'</h4>',
 	  						type: 'error',
-	  						text: data.msg,
-	  					}).then(function(isConfirm){
+	  						showConfirmButton: false,
+	  						timer: 1500,
+	  					}).then(function(){
 	  						$(":input[name='code']").val("");
+	  						getCode();
   						})
 	  				}
 	  				else {
 	  					Swal.fire({
-	  						title: '登录失败',
+	  						title: '<h4>登录失败:'+data.msg+'</h4>',
 	  						type: 'error',
-	  						text: data.msg,
-	  					}).then(function(isConfirm){
+	  						showConfirmButton: false,
+	  						timer: 1500,
+	  					}).then(function(){
 	  						$(":input[name='uname']").val("");
 	  						$(":input[name='pwd']").val("");
 	  						$(":input[name='code']").val("");
+	  						getCode();
   						})
 	  				}
 				}).error(function(){
- 					Swal.fire('糟糕', '与服务器失联!', 'error')
+ 					Swal.fire('<h3>糟糕</h3>', '与服务器失联!', 'error')
+ 					.then(function(){
+  						getCode();
+					})
  				});
 			}
   		});
@@ -490,39 +498,54 @@
   			);
  	}
  	
+ 	function getLength(str){
+	 	return str.replace(/[^\x00-xff]/g, "xx").length;
+ 	}
+ 	
  	$("input[name='runame']").blur(function(){
  		var uname = $("input[name='runame']").val();
- 		var re = /^(?![a-zA-Z]+$)(?!\d+$)\S{4,20}/g;
- 		if(!re.test(uname)){
+	  	var re = /^(?!\d+$)[a-zA-Z0-9\u4E00-\u9FA5]\S+$/g;
+ 		if(getLength(uname)<4||10<getLength(uname)||!re.test(uname)){
  			changeIcon(icon_uname, "error");
- 			setTooltip("runame", "username", "用户名不合法!应由英文字母+数字组成,4-20个字符之内");
+ 			setTooltip("runame", "username", "用户名不合法!应由英文字母,数字或汉字组成(不能为纯数字或字母,4-10个字符之内)");
+ 			$("#submit").addClass("disabled");
  		}
  		else{
  			changeIcon(icon_uname, "ok");
+ 			$("#submit").removeClass("disabled");
  		}
  	});
   	
  	$("input[name='rpwd']").blur(function(){
  		var pwd = $("input[name='rpwd']").val();
-		var re = /^(?![a-zA-Z]+$)(?!\d+$)\S{6,20}$/g;
+		var re = /^(?!\d+$)[a-zA-Z0-9]\S{5,12}$/g;
  		if(!re.test(pwd)){
  			changeIcon(icon_pwd, "error");
- 			setTooltip("rpwd", "password", "密码不合法!应由英文字母+数字组成,6-20个字符之内");
+ 			setTooltip("rpwd", "password", "密码不合法!应由英文字母或数字组成(不能为纯数字,6-12个字符之内)");
+ 			$("#submit").addClass("disabled");
  		}else{
  			changeIcon(icon_pwd, "ok");
+ 			$("#submit").removeClass("disabled");
  		}
  	});
  	
   	$("input[name='rpwdc']").blur(function(){
   		var pwd = $("input[name='rpwd']").val();
 		var pwdc = $("input[name='rpwdc']").val();
-		var re = /^(?![a-zA-Z]+$)(?!\d+$)\S{6,20}$/g;
-		if(pwd!= pwdc||!re.test(pwdc)){
+		var re = /^(?!\d+$)[a-zA-Z0-9]\S{5,12}$/g;
+		if(pwd!= pwdc){
 			changeIcon(icon_pwdc, "error");
  			setTooltip("rpwdc", "passwordc", "两次密码不一致!");
+ 			$("#submit").addClass("disabled");
  		}
+		if(!re.test(pwdc)){
+			changeIcon(icon_pwdc, "error");
+ 			setTooltip("rpwdc", "passwordc", "密码不合法!");
+ 			$("#submit").addClass("disabled");
+		}
 		else{
  			changeIcon(icon_pwdc, "ok");
+ 			$("#submit").removeClass("disabled");
  		}
   	});
   	
@@ -532,8 +555,10 @@
   		if(!re.test(email)){
  			changeIcon(icon_email, "error");
  			setTooltip("remail", "email", "邮箱地址不合法!");
+ 			$("#submit").addClass("disabled");
  		}else{
  			changeIcon(icon_email, "ok");
+ 			$("#submit").removeClass("disabled");
  		}
   	});
   		
@@ -543,19 +568,22 @@
   		if(!re.test(profile)){
   			changeIcon(icon_profile, "error");
  			setTooltip("rprofile", "profile", "职称不合法!");
+ 			$("#submit").addClass("disabled");
  		}else{
  			changeIcon(icon_profile, "ok");
+ 			$("#submit").removeClass("disabled");
  		}
   	});
   	
-	$("#sublimt").click(function() {
+	$("#submit").click(function() {
 		var uname = $("input[name='runame']").val();
 		var pwd = $("input[name='rpwd']").val();
 		var email = $("input[name='remail']").val()+"@163.com";
 		var profile = $("input[name='rprofile']").val();
 		Swal.fire({
-			title : '注册中...',
-			type: 'question',
+			title : '<h2>注册中</h2>',
+			type: 'info',
+			width: 500,
 		  	timer: 1500,
 		  	onBeforeOpen:() =>{
 				 Swal.showLoading()
@@ -573,23 +601,40 @@
   					Swal.fire({
   						title : data.msg,
   						type: 'success',
-  					}).then(function(isConfirm){
+  						width: 500,
+  						showConfirmButton: false,
+  						timer: 1500,
+  					}).then(function(){
 						window.location.href = "${pageContext.request.contextPath}/success";
 					})
   				}
   				if(data.msg=="验证未通过!"){
   					Swal.fire({
-  						title: '注册失败',
+  						title: '<h2>注册失败!</h2>',
   						type: 'error',
-  						text: data.msg,
+  						width: 500,
+  						showConfirmButton: false,
+  						timer: 3000,
+  						footer: 
+  							 '<center><table style="color:red;font-size:13px;">'+
+  							 '<tr><td>${errorMap.uname}</td></tr>'+
+  							 '<tr><td>${errorMap.pwd}</td></tr>'+
+  							 '<tr><td>${errorMap.email}</td></tr>'+
+  							 '<tr><td>${errorMap.profile}</td></tr>'+
+  							 '</table></center>'
+  					}).then(function(){
+					 	sessionStorage.removeItem("errorList");
+  						$("#myModal").modal('show');
   					})
   				}
   				if(data.msg=="该用户名存在,注册失败!"){
   					Swal.fire({
-  						title: '注册失败',
+  						title: '注册失败: '+data.msg,
   						type: 'error',
-  						text: data.msg,
-  					}).then(function(isConfirm){
+  						width: 500,
+  						showConfirmButton: false,
+  						timer: 1500,
+  					}).then(function(){
   						$(":input[name='runame']").val("");
 					})
   				}
@@ -614,8 +659,10 @@
 		$("#myModal").modal('hide');
 	});
 
-	$("#code").click(function() {
-		document.getElementById("code").src = "validateCode?" + Math.random();
-	});
+	function getCode(){
+		$("#code").click(function() {
+			document.getElementById("code").src = "validateCode?" + Math.random();
+		});
+	}
 </script>
 </html>

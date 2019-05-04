@@ -1,10 +1,8 @@
 package springmvc.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import springmvc.dao.UserDao;
 import springmvc.entity.User;
 
 @Service("indexService")

@@ -1,11 +1,14 @@
 package springmvc.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -54,13 +57,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User register(User u, BindingResult result, HttpSession session) {
 		User bu = new User();
+		Map<String, String> emap = new HashMap<>();
 		if(result.hasErrors()) {
 			result.getAllErrors().forEach(error->{
 				if(error instanceof FieldError) {
 					FieldError fe = (FieldError) error;
+					emap.put(fe.getField(), fe.getDefaultMessage());
 					System.out.println(fe.getField() + " " + fe.getDefaultMessage());
 				}
 			});
+			session.setAttribute("errorMap", emap);
 			bu.setMsg("验证未通过!");
 			return bu;
 		}
