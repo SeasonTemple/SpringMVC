@@ -39,6 +39,6 @@ public class UserController {
 	@RequestMapping(value="exit", method= {RequestMethod.GET})
 	public String exit(HttpSession session) {
 		session.invalidate();
-		return "forward:/toLog";
+		return "redirect:/toLog";
 	}
 }

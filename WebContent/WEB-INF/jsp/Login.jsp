@@ -17,13 +17,13 @@
 <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/loginJs.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 <script src="${pageContext.request.contextPath}/resources/js/es6-promise-auto-min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/sweetalert2.js"></script>
 <link rel="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css">
 <link rel="${pageContext.request.contextPath}/resources/css/animate.css">
+<script src="${pageContext.request.contextPath}/resources/js/loginJs.js"></script>
 <style type="text/css">
 	#ulw{
 			left: -30px;
@@ -411,5 +411,156 @@
 				fill="currentColor" class="octo-body"></path></svg>
 	</a>
 </body>
-
+<script type="text/javascript">
+	window.onload = function() {
+		sessionStorage.removeItem("errorList");
+		$('#carousel-700475').carousel('cycle');
+		if('${loguser.uname}'!=''){
+			$('#drop').html("${loguser.uname}");
+		}
+	}
+	
+	$(function() {
+		$("#submit").click(function() {
+			var uname = $("input[name='runame']").val();
+			var pwd = $("input[name='rpwd']").val();
+			var email = $("input[name='remail']").val();
+			var profile = $("input[name='rprofile']").val();
+			Swal.fire({
+				title : '<h2>注册中</h2>',
+				type: 'info',
+				width: 500,
+			  	timer: 1500,
+			  	onBeforeOpen:() =>{
+					 Swal.showLoading()
+				},
+				allowOutsideClick:() => !Swal.isLoading()
+			}).then(function() {
+				$.ajax({
+					type: 'post',
+		  			url: '${pageContext.request.contextPath}/register',
+		  			data: JSON.stringify({uname: uname,pwd: pwd,email: email,profile: profile}),
+		  			dataType: 'Json',
+		  			contentType:"application/json"
+				}).done(function(data){
+					if(data.msg=="注册成功!"){
+	  					Swal.fire({
+	  						title : data.msg,
+	  						type: 'success',
+	  						width: 500,
+	  						showConfirmButton: false,
+	  						timer: 1500,
+	  					}).then(function(){
+							window.location.href = "${pageContext.request.contextPath}/success";
+						})
+	  				}
+	  				if(data.msg=="验证未通过!"){
+	  					Swal.fire({
+	  						title: '<h2>注册失败!</h2>',
+	  						type: 'error',
+	  						width: 500,
+	  						showConfirmButton: false,
+	  						timer: 3000,
+	  						footer: 
+	  							 '<center><table style="color:red;font-size:13px;">'+
+	  							 '<tr><td>${errorMap.uname}</td></tr>'+
+	  							 '<tr><td>${errorMap.pwd}</td></tr>'+
+	  							 '<tr><td>${errorMap.email}</td></tr>'+
+	  							 '<tr><td>${errorMap.profile}</td></tr>'+
+	  							 '</table></center>'
+	  					}).then(function(){
+						 	sessionStorage.removeItem("errorList");
+	  						$("#myModal").modal('show');
+	  					})
+	  				}
+	  				if(data.msg=="该用户名存在,注册失败!"){
+	  					Swal.fire({
+	  						title: '注册失败: '+data.msg,
+	  						type: 'error',
+	  						width: 500,
+	  						showConfirmButton: false,
+	  						timer: 1500,
+	  					}).then(function(){
+	  						$(":input[name='runame']").val("");
+						})
+	  				}
+				}).error(function(){
+					Swal.fire('糟糕', '与服务器失联!', 'error')
+				});
+	  		});
+			$("#myModal").modal('hide');
+		});
+ 	});
+	
+  	$(function() {
+	  	$("#login").click(function() {
+			var uname = $("input[name='uname']").val();
+			var pwd = $("input[name='pwd']").val();
+			var code = $("input[name='code']").val();
+			Swal.fire({
+				title : '<h3>登录中</h3>',
+				type: 'info',
+				height: 300,
+			  	showLoaderOnConfirm: true,
+			  	timer: 1500,
+			  	onBeforeOpen:()=>{
+					 Swal.showLoading()
+				},
+				allowOutsideClick: () => !Swal.isLoading()
+			}).then(function(isConfirm) {
+				if(isConfirm){
+					$.ajax({
+						type: 'post',
+			  			url: " ${pageContext.request.contextPath}/login",
+			  			data: JSON.stringify({uname: uname,pwd: pwd,code: code}),
+			  			dataType: 'Json',
+			  			contentType:"application/json"
+					}).done(function(data){
+		  				if(data.msg=="success"){
+		  					Swal.fire({
+		  						title : '<h3>登录成功</h3>',
+		  						type: 'success',
+		  						height: 300,
+		  						showConfirmButton: false,
+		  						timer: 1500,
+		  					}).then(function(){
+								window.location.href = "${pageContext.request.contextPath}/success";
+	  						})
+		  				}
+		  				else if(data.msg=="验证码错误!"){
+		  					Swal.fire({
+		  						title: '<h4>登录失败:'+data.msg+'</h4>',
+		  						type: 'error',
+		  						showConfirmButton: false,
+		  						height: 400,
+		  						timer: 1500,
+		  					}).then(function(){
+		  						$(":input[name='code']").val("");
+		  						getCode();
+	  						})
+		  				}
+		  				else {
+		  					Swal.fire({
+		  						title: '<h4>登录失败:'+data.msg+'</h4>',
+		  						type: 'error',
+		  						showConfirmButton: false,
+		  						timer: 1500,
+		  					}).then(function(){
+		  						$(":input[name='uname']").val("");
+		  						$(":input[name='pwd']").val("");
+		  						$(":input[name='code']").val("");
+		  						getCode();
+	  						})
+		  				}
+					}).error(function(){
+	 					Swal.fire('<h3>糟糕</h3>', '与服务器失联!', 'error')
+	 					.then(function(){
+	  						getCode();
+						})
+	 				});
+				}
+	  		});
+		})
+  	});
+</script>
 </html>
