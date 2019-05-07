@@ -17,13 +17,13 @@
 <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/loginJs.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 <script src="${pageContext.request.contextPath}/resources/js/es6-promise-auto-min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/sweetalert2.js"></script>
 <link rel="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css">
 <link rel="${pageContext.request.contextPath}/resources/css/animate.css">
-<link rel="${pageContext.request.contextPath}/resources/js/loginJs.js">
 <style type="text/css">
 	#ulw{
 			left: -30px;

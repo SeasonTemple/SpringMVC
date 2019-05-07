@@ -1,4 +1,4 @@
-window.onload = function() {
+	window.onload = function() {
 		sessionStorage.removeItem("errorList");
 		$('#carousel-700475').carousel('cycle');
 		if('${loguser.uname}'!=''){
@@ -78,7 +78,7 @@ window.onload = function() {
  				});
 			}
   		});
-	});
+	}),
   	
  	$('#register').click(function() {
   		 $("#myModal").modal('show');
