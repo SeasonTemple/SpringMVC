@@ -208,19 +208,39 @@
 			          </div>
 						<div class="modal-body" style="width: 80%; margin: 0 auto;">
 							<form:form class="bs-example bs-example-form" role="form" modelAttribute="user">
-								<h4>用户名&nbsp;&nbsp;<span id="icon_uname"></span></h4>
-								<input class="form-control" type="text" value="${user.uname}" name="runame" data-toggle="username" data-placement="top" data-html="true" />
-								<h4>密码&nbsp;&nbsp;<span id="icon_pwd"></h4>
-								<input class="form-control" type="password" value="${user.pwd}" name="rpwd" data-toggle="password" data-placement="top" data-html="true" />
-								<h4>确认密码&nbsp;&nbsp;<span id="icon_pwdc"></h4>
-								<input class="form-control" type="password" value="" name="rpwdc" data-toggle="passwordc" data-placement="top" data-html="true" />
-								<h4>邮箱&nbsp;&nbsp;<span id="icon_email"></h4>
-								<div class="input-group ">
-									<input class="form-control" type="text" value="" name="remail" data-toggle="email" data-placement="top" data-html="true" />
-									<span class="input-group-addon">@163.com</span>
-						 		</div>
-								<h4>职称&nbsp;&nbsp;<span id="icon_profile"></h4>
-								<input class="form-control" type="text" value="${user.profile}" name="rprofile" data-toggle="profile" data-placement="top"  data-html="true" />
+								<label style="font-size:18px;">用户名</label><span id="helpBlock1" class="help-block" style="font-size: 12px;color:rgba(255, 0, 0, .9);"></span>
+								<div class="form-group" id="icon_uname">
+									<input type="text" class="form-control" value="${user.uname}" name="runame" data-toggle="username" data-placement="top" data-html="true" />
+									<span id="span1"></span>
+									
+								</div>
+								<label style="font-size:18px;">密码</label>
+								<div class="form-group" id="icon_pwd">
+									<input class="form-control" type="password" value="${user.pwd}" name="rpwd" data-toggle="password" data-placement="top" data-html="true" />
+									<span id="span2"></span>
+									<span id="helpBlock2" class="help-block" style="color:rgba(255, 0, 0, .9);"></span>
+								</div>
+								<label style="font-size:18px;">确认密码</label>
+								<div class="form-group" id="icon_pwdc">
+									<input class="form-control" type="password" value="" name="rpwdc" data-toggle="passwordc" data-placement="top" data-html="true" />
+									<span id="span3"></span>
+									<span id="helpBlock3" class="help-block" style="color:rgba(255, 0, 0, .9);"></span>
+								</div>
+								<label style="font-size:18px;">邮箱</label>
+								<div class="form-group" id="icon_email">
+									<div class="input-group ">
+										<span class="input-group-addon">@</span>
+										<input class="form-control" type="text" value="${user.email}" name="remail" data-toggle="email" data-placement="top" data-html="true" />
+							 		</div>
+							 		<span id="span4"></span>
+									<span id="helpBlock4" class="help-block" style="color:rgba(255, 0, 0, .9);"></span>
+								</div>
+						 		<label style="font-size:18px;">职称</label>
+								<div class="form-group" id="icon_profile">
+									<input class="form-control" type="text" value="${user.profile}" name="rprofile" data-toggle="profile" data-placement="top"  data-html="true" />
+									<span id="span5"></span>
+									<span id="helpBlock5" class="help-block" style="color:rgba(255, 0, 0, .9);"></span>
+								</div>
 							</form:form>
 						</div>
 					  <div class="modal-footer">
@@ -480,23 +500,29 @@
 	    });
 	});
   	
- 	function changeIcon(id,msg){
- 		if(msg == "error"){
-	 		$(id).attr({"class":"glyphicon glyphicon-remove", "style":"color:rgba(255, 50, 50, .7)"});
+ 	function changeInfo(did,sid,hid,tag,msg){
+ 		if(tag == "error"){
+	 		/* $(id).attr({"class":"glyphicon glyphicon-remove", "style":"color:rgba(255, 50, 50, .7)"}); */
+	 		$(did).attr("class","form-group has-error has-feedback");
+	 		$(sid).attr("class","glyphicon glyphicon-remove form-control-feedback");
+	 		$(hid).html(msg);
  		}
- 		if(msg == "ok"){
- 			$(id).attr({"class":"glyphicon glyphicon-ok", "style":"color:rgba(50, 255, 50, .7)"});
+ 		if(tag == "ok"){
+ 			/* $(id).attr({"class":"glyphicon glyphicon-ok", "style":"color:rgba(50, 255, 50, .7)"}); */
+ 			$(did).attr("class","form-group has-success has-feedback");
+	 		$(sid).attr("class","glyphicon glyphicon-ok form-control-feedback");
+	 		$(hid).html("");
  		}
  	}
  	
- 	function setTooltip(name,tag,msg){
+ 	/* function setTooltip(name,tag,msg){
  		$("input[name='"+name+"']").attr("title", "<span style='color:red;font-size:14px;'>"+msg+"</span>");
 		$("[data-toggle='"+tag+"']").tooltip('show');
  		var id = setTimeout(function(){
 					$("[data-toggle='"+tag+"']").tooltip('destroy');
        	 	 	}, 1500
   			);
- 	}
+ 	} */
  	
  	function getLength(str){
 	 	return str.replace(/[^\x00-xff]/g, "xx").length;
@@ -506,12 +532,12 @@
  		var uname = $("input[name='runame']").val();
 	  	var re = /^(?!\d+$)[a-zA-Z0-9\u4E00-\u9FA5]\S+$/g;
  		if(getLength(uname)<4||10<getLength(uname)||!re.test(uname)){
- 			changeIcon(icon_uname, "error");
- 			setTooltip("runame", "username", "用户名不合法!应由英文字母,数字或汉字组成(不能为纯数字或字母,4-10个字符之内)");
+ 			/* setTooltip("runame", "username", "用户名不合法!应由英文字母,数字或汉字组成(不能为纯数字或字母,4-10个字符之内)"); */
+ 			changeInfo(icon_uname, span1, helpBlock1,"error", "用户名不合法!应由英文字母,数字组成或汉字(4-10个字符以内)");
  			$("#submit").addClass("disabled");
  		}
  		else{
- 			changeIcon(icon_uname, "ok");
+ 			changeInfo(icon_uname,span1,helpBlock1,"ok",null);
  			$("#submit").removeClass("disabled");
  		}
  	});
@@ -520,11 +546,12 @@
  		var pwd = $("input[name='rpwd']").val();
 		var re = /^(?!\d+$)[a-zA-Z0-9]\S{5,12}$/g;
  		if(!re.test(pwd)){
- 			changeIcon(icon_pwd, "error");
- 			setTooltip("rpwd", "password", "密码不合法!应由英文字母或数字组成(不能为纯数字,6-12个字符之内)");
+ 			/* setTooltip("rpwd", "password", "密码不合法!应由英文字母或数字组成(不能为纯数字,6-12个字符之内)"); */
+ 			changeInfo(icon_pwd, span2, helpBlock2,"error", "密码不合法!应由英文字母或数字组成(6-12个字符以内)");
  			$("#submit").addClass("disabled");
- 		}else{
- 			changeIcon(icon_pwd, "ok");
+ 		}
+ 		else{
+ 			changeInfo(icon_pwd, span2, helpBlock2,"ok",null);
  			$("#submit").removeClass("disabled");
  		}
  	});
@@ -534,30 +561,31 @@
 		var pwdc = $("input[name='rpwdc']").val();
 		var re = /^(?!\d+$)[a-zA-Z0-9]\S{5,12}$/g;
 		if(pwd!= pwdc){
-			changeIcon(icon_pwdc, "error");
- 			setTooltip("rpwdc", "passwordc", "两次密码不一致!");
+ 			/* setTooltip("rpwdc", "passwordc", "两次密码不一致!"); */
+			changeInfo(icon_pwdc, span3, helpBlock3,"error", "两次密码不一致!");
  			$("#submit").addClass("disabled");
  		}
-		if(!re.test(pwdc)){
-			changeIcon(icon_pwdc, "error");
- 			setTooltip("rpwdc", "passwordc", "密码不合法!");
- 			$("#submit").addClass("disabled");
-		}
+// 		if(!re.test(pwdc)){
+//  			/* setTooltip("rpwdc", "passwordc", "密码不合法!"); */
+// 			changeInfo(icon_pwdc, span3, helpBlock3,"error", "密码不合法!");
+//  			$("#submit").addClass("disabled");
+// 		}
 		else{
- 			changeIcon(icon_pwdc, "ok");
+			changeInfo(icon_pwdc, span3, helpBlock3,"ok",null);
  			$("#submit").removeClass("disabled");
  		}
   	});
   	
   	$("input[name='remail']").blur(function(){
-  		var email = $("input[name='remail']").val()+"@163.com";
+  		var email = $("input[name='remail']").val();
   		var re = /^[\w]+@[\w]+.com/g;
   		if(!re.test(email)){
- 			changeIcon(icon_email, "error");
- 			setTooltip("remail", "email", "邮箱地址不合法!");
+ 			/* setTooltip("remail", "email", "邮箱地址不合法!"); */
+ 			changeInfo(icon_email, span4, helpBlock4,"error", "邮箱地址不合法!");
  			$("#submit").addClass("disabled");
- 		}else{
- 			changeIcon(icon_email, "ok");
+ 		}
+ 		else{
+ 			changeInfo(icon_email, span4, helpBlock4,"ok",null);
  			$("#submit").removeClass("disabled");
  		}
   	});
@@ -566,11 +594,12 @@
   		var profile = $("input[name='rprofile']").val();
   		var re = /[\u4E00-\u9FA5]{2,}/g
   		if(!re.test(profile)){
-  			changeIcon(icon_profile, "error");
- 			setTooltip("rprofile", "profile", "职称不合法!");
+ 			/* setTooltip("rprofile", "profile", "职称不合法!"); */
+  			changeInfo(icon_profile, span5, helpBlock5,"error", "职称名不合法!");
  			$("#submit").addClass("disabled");
- 		}else{
- 			changeIcon(icon_profile, "ok");
+ 		}
+ 		else{
+ 			changeInfo(icon_profile,span5,helpBlock5,"ok",null);
  			$("#submit").removeClass("disabled");
  		}
   	});
@@ -578,7 +607,7 @@
 	$("#submit").click(function() {
 		var uname = $("input[name='runame']").val();
 		var pwd = $("input[name='rpwd']").val();
-		var email = $("input[name='remail']").val()+"@163.com";
+		var email = $("input[name='remail']").val();
 		var profile = $("input[name='rprofile']").val();
 		Swal.fire({
 			title : '<h2>注册中</h2>',
@@ -588,7 +617,7 @@
 		  	onBeforeOpen:() =>{
 				 Swal.showLoading()
 			},
-			allowOutsideClick: () => !Swal.isLoading()
+			allowOutsideClick:() => !Swal.isLoading()
 		}).then(function() {
 			$.ajax({
 				type: 'post',
@@ -646,18 +675,32 @@
 	});
 
 	$("#close").click(function() {
+		clearInput();
+		clearSpan();
+		$("#myModal").modal('hide');
+	});
+	
+	function clearInput(){
 		$("input[name='runame']").val("");
 		$("input[name='rpwd']").val("");
 		$("input[name='rpwdc']").val("");
 		$("input[name='remail']").val("");
 		$("input[name='rprofile']").val("");
-		$("#icon_uname").attr("class", "");
-		$("#icon_pwd").attr("class", "");
-		$("#icon_pwdc").attr("class", "");
-		$("#icon_email").attr("class", "");
-		$("#icon_profile").attr("class", "");
-		$("#myModal").modal('hide');
-	});
+		$("#icon_uname").attr("class","form-group");
+		$("#icon_pwd").attr("class","form-group");
+		$("#icon_pwdc").attr("class","form-group");
+		$("#icon_email").attr("class","form-group");
+		$("#icon_profile").attr("class","form-group");
+	}
+	
+	function clearSpan(){
+		var i = 5;
+		var k = 0;
+		for(k;k<=i;k++){
+	 		$("#span"+k).attr("class","");
+			$("#helpBlock"+k).val("");
+		}
+	}
 
 	function getCode(){
 		$("#code").click(function() {
