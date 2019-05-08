@@ -209,11 +209,11 @@
 			          </div>
 						<div class="modal-body" style="width: 80%; margin: 0 auto;">
 							<form:form class="bs-example bs-example-form" role="form" modelAttribute="user">
-								<label style="font-size:18px;">用户名</label><span id="helpBlock1" class="help-block" style="font-size: 12px;color:rgba(255, 0, 0, .9);"></span>
+								<label style="font-size:18px;">用户名</label>
 								<div class="form-group" id="icon_uname">
 									<input type="text" class="form-control" value="${user.uname}" name="runame" data-toggle="username" data-placement="top" data-html="true" />
 									<span id="span1"></span>
-									
+									<span id="helpBlock1" class="help-block" style="font-size: 12px;color:rgba(255, 0, 0, .9);"></span>
 								</div>
 								<label style="font-size:18px;">密码</label>
 								<div class="form-group" id="icon_pwd">
