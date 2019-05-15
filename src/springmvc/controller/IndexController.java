@@ -18,10 +18,18 @@ public class IndexController {
 	}
 	
 	@RequestMapping(value="logSuccess", method= {RequestMethod.GET})
-	public String logSuccess() {
-		return "Index";
+	public String logSuccess(Model model) {
+		return indexService.toIndex(model);
 	}
 	
+	@RequestMapping(value="home", method={RequestMethod.GET})
+	public String getHome(Model model) {
+		return indexService.home(model);
+	}
 	
+	@RequestMapping(value="student", method={RequestMethod.GET})
+	public String getStudent(Model model) {
+		return indexService.student(model);
+	}
 	
 }
