@@ -8,18 +8,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
     <title>Base_Page</title>
-    
-    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
-    <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="assets/js//jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="assets/js/custom.js"></script>
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+	<script src="${pageContext.request.contextPath}/resources/js/es6-promise-auto-min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/sweetalert2.js"></script>
+	<link rel="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css">
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
     <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     
-    <link rel="stylesheet" type="text/css" href="css/demo.css">
-    <link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css" />
-    <link rel="stylesheet" href="assets/css/custom.css">
-    <title>MFW</title>
+    <link type="text/css" href="${pageContext.request.contextPath}/resources/css/demo.css">
+    <link href="${pageContext.request.contextPath}/resources/css/jquery.mCustomScrollbar.min.css" />
+    <link href="${pageContext.request.contextPath}/resources/css/custom.css">
     <style>
         html {
             height: 100%;
@@ -238,14 +239,14 @@
                 <div class="tab-pane fade in active" id="Main">
                     <div class="container-fluid" style="padding: 1px;margin: auto;">
                         <div class="row">
-                            <iframe src="home.html"></iframe>
+                            <iframe src="home.jsp"></iframe>
                         </div>                
                     </div>
                 </div>
                 <div class="tab-pane fade" id="Stu">
                     <div class="container-fluid" tabindex="-1" style="padding: 1px;margin: auto;">
                         <div class="row">
-                            <iframe src="student.html"></iframe>
+                            <iframe src="student.jsp"></iframe>
                         </div>                
                     </div>
                 </div>
