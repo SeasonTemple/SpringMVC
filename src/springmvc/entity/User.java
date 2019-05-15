@@ -14,6 +14,7 @@ public class User {
 	@Pattern(regexp = "[\\u4E00-\\u9FA5]{2,}", message = "职称名格式错误!请重试")
 	private String profile;
 	private String sex;
+	private int flag;
 	private String code;
 	private String msg;
 	
@@ -26,14 +27,14 @@ public class User {
 		this.msg = msg;
 	}
 
-	public User(int uid, String uname, String pwd, String email, String profile, String sex, String code,
-			String msg) {
+	public User(int uid, String uname, String pwd, String email, String profile, String sex, int flag, String code, String msg) {
 		this.uid = uid;
 		this.uname = uname;
 		this.pwd = pwd;
 		this.email = email;
 		this.profile = profile;
 		this.sex = sex;
+		this.flag = flag;
 		this.code = code;
 		this.msg = msg;
 	}
@@ -86,6 +87,14 @@ public class User {
 		this.sex = sex;
 	}
 
+	public int getFlag() {
+		return flag;
+	}
+
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
+
 	public String getCode() {
 		return code;
 	}
@@ -105,6 +114,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", uname=" + uname + ", pwd=" + pwd + ", email=" + email + ", profile=" + profile
-				+ ", sex=" + sex + ", code=" + code + ", msg=" + msg + "]";
+				+ ", sex=" + sex + ", flag=" + flag + ", code=" + code + ", msg=" + msg + "]";
 	}
+
 }

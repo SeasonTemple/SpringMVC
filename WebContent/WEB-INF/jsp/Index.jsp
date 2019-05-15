@@ -88,11 +88,12 @@
                 $(this).attr('style', 'color:rgba(85, 85, 85, 9)');
             });
         });
-        window.onload=function(){
-            $(function() {
-                    $("[data-toggle='slidebarl']").tooltip();
-            });
-        };
+        window.onload = function() {
+    		sessionStorage.removeItem("errorList");
+    		if('${loguser.uname}'!=''){
+    			$('#drop').html("${loguser.uname}");
+    		}
+    	}
 
         $(function(){
             $('#sidebar').mouseleave(function(){
