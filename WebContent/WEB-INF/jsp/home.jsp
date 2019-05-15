@@ -119,7 +119,7 @@
 <div class="container-fluid">
     <div class="col-md-12">
         <blockquote id="welcome">
-          <p>欢迎用户：${loguser.name}！现在是2019-5-10 17:50:22</span>
+          <p>欢迎用户：${loguser.uname}！现在是2019-5-10 17:50:22</span>
         </blockquote>
     </div>
     <div class="col-md-12" >
@@ -149,7 +149,7 @@
                     <tbody>
                         <tr>
                             <th>
-                                	当前版本
+                               	当前版本
                             </th>
                             <td>
                                 <a href="https://github.com/SeasonTemple/SpringMVC" target="_blank">v_1.065433691.beta</a>
@@ -157,7 +157,7 @@
                         </tr>
                         <tr>
                             <th>
-                                	服务器地址
+                               	服务器地址
                             </th>
                             <td>
                                 <a href="#">#</a>
@@ -165,7 +165,7 @@
                         </tr>
                         <tr>
                             <th>
-                                	操作系统
+                               	操作系统
                             </th>
                             <td>
                                 <a href="https://www.microsoft.com" target="_blank">Windows 10</a>
@@ -173,7 +173,7 @@
                         </tr>
                         <tr>
                             <th>
-                                	运行环境
+                               	运行环境
                             </th>
                             <td>
                                 <a href="http://tomcat.apache.org" target="_blank">Apache-Tomcat-9.0.13(Win64)</a>
@@ -197,7 +197,7 @@
                         </tr>
                         <tr>
                             <th>
-                                	参考文献
+                               	参考文献
                             </th>
                             <td>
                                 Spring/SpringMvc/Mybatis/Bootstrap v3/jQuery/各大博文论坛
@@ -205,7 +205,7 @@
                         </tr>
                         <tr>
                             <th>
-                                	技术使用
+                               	技术使用
                             </th>
                             <td>
                                 SSM/Bootstrap v3/Font Awesome/Glyphicons Halflings//jQuery/mCustomScrollbar
@@ -213,7 +213,7 @@
                         </tr>
                         <tr>
                             <th>
-                                	发布时间
+                               	发布时间
                             </th>
                             <td>
                                 2019-?-?
@@ -230,7 +230,7 @@
                     <tbody>
                         <tr>
                             <th>
-                                	版权所有
+                               	版权所有
                             </th>
                             <td>
                                 <cite>SeasonTemple</cite>&emsp;<a href="https://github.com/SeasonTemple/SpringMVC" target="_blank">项目地址</a>
@@ -238,7 +238,7 @@
                         </tr>
                         <tr>
                             <th>
-                                	开发者
+                               	开发者
                             </th>
                             <td>
                                 <cite>SeasonTemple</cite>&emsp;<a href="http://seasontemple.top" target="_blank">博客</a>
