@@ -17,19 +17,16 @@ public class IndexServiceImpl implements IndexService {
 
 	@Override
 	public String toIndex(Model model) {
-		// TODO 自动生成的方法存根
 		return "Index";
 	}
 
 	@Override
 	public String home(Model model) {
-		// TODO 自动生成的方法存根
 		return "home";
 	}
 
 	@Override
 	public String student(Model model) {
-		// TODO 自动生成的方法存根
 		return "student";
 	}
 

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML>
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -16,9 +16,9 @@
 	<link rel="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css">
     <script src="${pageContext.request.contextPath}/resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
-    <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet">
     
-    <link type="text/css" href="${pageContext.request.contextPath}/resources/css/demo.css">
+    <link href="${pageContext.request.contextPath}/resources/css/demo.css">
     <link href="${pageContext.request.contextPath}/resources/css/jquery.mCustomScrollbar.min.css" />
     <link href="${pageContext.request.contextPath}/resources/css/custom.css">
     <style>
@@ -225,32 +225,6 @@
                         </div>
                     </div>
                 </nav>
-            </div>
-            <div class="container-float" style="margin: 0 auto;">
-                <ul id="myTab" class="nav nav-tabs" style="background-color:rgb(233,233,233);">
-                    <li class="active">
-                        <a href="#Main" data-toggle="tab" id="tab1">
-                            <span class="glyphicon glyphicon-home"></span> 主页
-                        </a>
-                    </li>
-                    <li><a href="#Stu" data-toggle="tab" id="tab2">学生列表 <span class="fa fa-close" id="t2close" ></span></a></li>
-                </ul>
-            </div>
-            <div id="myTabContent" class="tab-content">
-                <div class="tab-pane fade in active" id="Main">
-                    <div class="container-fluid" style="padding: 1px;margin: auto;">
-                        <div class="row">
-                            <iframe src="${pageContext.request.contextPath}/home"></iframe>
-                        </div>                
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="Stu">
-                    <div class="container-fluid" tabindex="-1" style="padding: 1px;margin: auto;">
-                        <div class="row">
-                            <iframe src="${pageContext.request.contextPath}/student"></iframe>
-                        </div>                
-                    </div>
-                </div>
             </div>
         </div>
     </div>
