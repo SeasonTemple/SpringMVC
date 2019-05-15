@@ -5,7 +5,7 @@ import javax.validation.constraints.Pattern;
 public class User {
 	
 	private int uid;
-	@Pattern(regexp = "^(?!\\d+$)[a-zA-Z0-9\\u4E00-\\u9FA5]\\S{2,10}$", message = "用户名不合法!请重试")
+	@Pattern(regexp = "^(?!\\d+$)[a-zA-Z0-9\\u4E00-\\u9FA5]\\S{1,10}$", message = "用户名不合法!请重试")
 	private String uname;
 	@Pattern(regexp = "^(?!\\d+$)[a-zA-Z0-9]\\S{5,12}$", message = "密码不合法!请重试")
 	private String pwd;

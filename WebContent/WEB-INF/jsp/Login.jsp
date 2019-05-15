@@ -482,6 +482,7 @@
 	  						timer: 1500,
 	  					}).then(function(){
 	  						$(":input[name='runame']").val("");
+	  						$("#myModal").modal('show');
 						})
 	  				}
 				}).error(function(){
