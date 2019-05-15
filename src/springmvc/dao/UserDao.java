@@ -13,6 +13,8 @@ public interface UserDao {
 	
 	@Select("select * from user where uname=#{uname} and pwd=#{pwd}")
 	public User checkUser(User u);
+
 	@Insert("insert into user(uid,uname,pwd,email,profile) values(null,#{uname},#{pwd},#{email},#{profile})")
 	public int register(User u);
+	
 }
