@@ -1,4 +1,4 @@
- jQuery(function($) {
+$(function() {
         
         $(".sidebar-dropdown > a").mouseenter(function(){
 	        $(".sidebar-submenu").slideUp(250);

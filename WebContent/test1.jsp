@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML>
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -10,15 +10,11 @@
     <title>Base_Page</title>
     <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-	<script src="${pageContext.request.contextPath}/resources/js/es6-promise-auto-min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/sweetalert2.js"></script>
-	<link rel="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css">
     <script src="${pageContext.request.contextPath}/resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
-    <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    
-    <link type="text/css" href="${pageContext.request.contextPath}/resources/css/demo.css">
+	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+    <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/demo.css">
     <link href="${pageContext.request.contextPath}/resources/css/jquery.mCustomScrollbar.min.css" />
     <link href="${pageContext.request.contextPath}/resources/css/custom.css">
     <style>
@@ -181,77 +177,6 @@
                     <a href="#"><i class="fa fa-power-off"></i></a>
                 </div>
             </nav>
-        </div>
-        <div class="row clearfix">
-            <div class="col-md-12" style="margin-bottom: -20px;">
-                <nav class="navbar navbar-default">
-                    <div class="navbar-fixed-top navbar-inverse">
-                        <div class="navbar-header">
-                            <a class="navbar-brand">
-                                <div class="btn btn-default-lg" id="toggle-sidebar" data-placement="sbar" data-toggle="slidebar" title="侧边栏菜单"><em class="glyphicon glyphicon-th-large" style="color: rgba(155, 155, 155, 3)" id="navmenu"></em>
-                            </div>
-                            </a>
-                        </div>
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li class="dropdown">
-                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">菜单</a>
-                                </li>
-                            </ul>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="dropdown">
-                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop">未登录<strong class="caret"></strong></a>
-                                    <ul class="dropdown-menu" style="min-width:50px;">
-                                        <li>
-                                             <a href="#" style="opacity: 0.9">账户管理</a>
-                                        </li>
-                                        <li>
-                                             <a href="#" style="opacity: 0.8">相关设置</a>
-                                        </li>
-                                        <li>
-                                             <a href="#" style="opacity: 0.7">账户注销</a>
-                                        </li>
-                                        <li class="divider">
-                                        </li>
-                                        <li>
-                                             <a href="https://github.com/SeasonTemple" target="_blank" style="opacity: 0.5">关注我们</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#"></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-            <div class="container-float" style="margin: 0 auto;">
-                <ul id="myTab" class="nav nav-tabs" style="background-color:rgb(233,233,233);">
-                    <li class="active">
-                        <a href="#Main" data-toggle="tab" id="tab1">
-                            <span class="glyphicon glyphicon-home"></span> 主页
-                        </a>
-                    </li>
-                    <li><a href="#Stu" data-toggle="tab" id="tab2">学生列表 <span class="fa fa-close" id="t2close" ></span></a></li>
-                </ul>
-            </div>
-            <div id="myTabContent" class="tab-content">
-                <div class="tab-pane fade in active" id="Main">
-                    <div class="container-fluid" style="padding: 1px;margin: auto;">
-                        <div class="row">
-                            <iframe src="${pageContext.request.contextPath}/home"></iframe>
-                        </div>                
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="Stu">
-                    <div class="container-fluid" tabindex="-1" style="padding: 1px;margin: auto;">
-                        <div class="row">
-                            <iframe src="${pageContext.request.contextPath}/student"></iframe>
-                        </div>                
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
