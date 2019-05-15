@@ -554,7 +554,7 @@
 	  						})
 		  				}
 					}).error(function(){
-	 					Swal.fire('<h3>糟糕</h3>', '与服务器失联!', 'error')
+	 					Swal.fire('<h3>登录失败:</h3>', data.msg, 'error')
 	 					.then(function(){
 	  						getCode();
 						})
