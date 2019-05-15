@@ -536,8 +536,8 @@
 		  						height: 400,
 		  						timer: 1500,
 		  					}).then(function(){
-		  						getCode();
 		  						$(":input[name='code']").val("");
+		  						getCode();
 	  						})
 		  				}
 		  				else {
@@ -565,9 +565,11 @@
   	});
   	
   	function getCode(){
-		$("#code").click(function() {
-			document.getElementById("code").src = "validateCode?" + Math.random();
-		});
-	}
+  		document.getElementById("code").src = "validateCode?" + Math.random();
+  	}
+  	
+	$("#code").click(function() {
+		document.getElementById("code").src = "validateCode?" + Math.random();
+	});
 </script>
 </html>

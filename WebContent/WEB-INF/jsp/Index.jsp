@@ -93,6 +93,11 @@
     		if('${loguser.uname}'!=''){
     			$('#drop').html("${loguser.uname}<strong class='caret'></strong>");
     		}
+    		if(${loguser.flag}!=0){
+	        	$('#user_status').html("管理员");
+	        }else{
+	        	$('#user_status').html("用户");
+	        }
     	}
 
         $(function(){
@@ -101,14 +106,14 @@
             });
         });
 		
-        function authority(){
+/*         function authority(){
 	        if(${loguser.flag}!=0){
 	        	$(this).html("管理员");
 	        }else{
 	        	$(this).html("一般用户");
 	        }
         	
-        }
+        } */
         function openStudentTable(){
             $('#tab2').tab('show');
         }
@@ -128,7 +133,7 @@
                         </div>
                         <div class="user-info">
                             <span class="user-name">${loguser.uname}</strong></span>
-                            <span class="user-role" id="user_status"><a href="authority()"></a></span>
+                            <span class="user-role" id="user_status"></span>
                             <div class="user-status">                       
                                 <span class="label label-success">Online</span>
                             </div>
@@ -233,6 +238,32 @@
                         </div>
                     </div>
                 </nav>
+            </div>
+            <div class="container-float" style="margin: 0 auto;">
+                <ul id="myTab" class="nav nav-tabs" style="background-color:rgb(233,233,233);">
+                    <li class="active">
+                        <a href="#Main" data-toggle="tab" id="tab1">
+                            <span class="glyphicon glyphicon-home"></span> 主页
+                        </a>
+                    </li>
+                    <li><a href="#Stu" data-toggle="tab" id="tab2">学生列表 <span class="fa fa-close" id="t2close" ></span></a></li>
+                </ul>
+            </div>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="Main">
+                    <div class="container-fluid" style="padding: 1px;margin: auto;">
+                        <div class="row">
+                            <iframe src="home.html"></iframe>
+                        </div>                
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="Stu">
+                    <div class="container-fluid" tabindex="-1" style="padding: 1px;margin: auto;">
+                        <div class="row">
+                            <iframe src="student.html"></iframe>
+                        </div>                
+                    </div>
+                </div>
             </div>
         </div>
     </div>
