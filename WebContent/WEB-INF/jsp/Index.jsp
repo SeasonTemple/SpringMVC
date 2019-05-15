@@ -253,14 +253,14 @@
                 <div class="tab-pane fade in active" id="Main">
                     <div class="container-fluid" style="padding: 1px;margin: auto;">
                         <div class="row">
-                            <iframe src="home.html"></iframe>
+                            <iframe src="${pageContext.request.contextPath}/home"></iframe>
                         </div>                
                     </div>
                 </div>
                 <div class="tab-pane fade" id="Stu">
                     <div class="container-fluid" tabindex="-1" style="padding: 1px;margin: auto;">
                         <div class="row">
-                            <iframe src="student.html"></iframe>
+                            <iframe src="${pageContext.request.contextPath}/student"></iframe>
                         </div>                
                     </div>
                 </div>
