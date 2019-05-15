@@ -503,7 +503,7 @@
 				type: 'info',
 				height: 300,
 			  	showLoaderOnConfirm: true,
-			  	timer: 1500,
+			  	timer: 1000,
 			  	onBeforeOpen:()=>{
 					 Swal.showLoading()
 				},
@@ -536,8 +536,8 @@
 		  						height: 400,
 		  						timer: 1500,
 		  					}).then(function(){
-		  						$(":input[name='code']").val("");
 		  						getCode();
+		  						$(":input[name='code']").val("");
 	  						})
 		  				}
 		  				else {
@@ -563,5 +563,11 @@
 	  		});
 		})
   	});
+  	
+  	function getCode(){
+		$("#code").click(function() {
+			document.getElementById("code").src = "validateCode?" + Math.random();
+		});
+	}
 </script>
 </html>

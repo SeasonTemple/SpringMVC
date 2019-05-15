@@ -147,9 +147,3 @@
 			$("#helpBlock"+k).html("");
 		}
 	}
-
-	function getCode(){
-		$("#code").click(function() {
-			document.getElementById("code").src = "validateCode?" + Math.random();
-		});
-	}

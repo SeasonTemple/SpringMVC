@@ -91,7 +91,7 @@
         window.onload = function() {
     		sessionStorage.removeItem("errorList");
     		if('${loguser.uname}'!=''){
-    			$('#drop').html("${loguser.uname}");
+    			$('#drop').html("${loguser.uname}<strong class='caret'></strong>");
     		}
     	}
 
@@ -100,7 +100,15 @@
                 $(".page-wrapper").removeClass("toggled");
             });
         });
-
+		
+        function authority(){
+	        if(${loguser.flag}!=0){
+	        	$(this).html("管理员");
+	        }else{
+	        	$(this).html("一般用户");
+	        }
+        	
+        }
         function openStudentTable(){
             $('#tab2').tab('show');
         }
@@ -120,7 +128,7 @@
                         </div>
                         <div class="user-info">
                             <span class="user-name">${loguser.uname}</strong></span>
-                            <span class="user-role">${loguser.flag}</span>
+                            <span class="user-role" id="user_status"><a href="authority()"></a></span>
                             <div class="user-status">                       
                                 <span class="label label-success">Online</span>
                             </div>
@@ -209,7 +217,7 @@
                                              <a href="#" style="opacity: 0.8">相关设置</a>
                                         </li>
                                         <li>
-                                             <a href="#" style="opacity: 0.7">账户注销</a>
+                                             <a href="${pageContext.request.contextPath}/exit" style="opacity: 0.7">账户注销</a>
                                         </li>
                                         <li class="divider">
                                         </li>
