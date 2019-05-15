@@ -119,8 +119,8 @@
                             <img class="img-responsive img-rounded" src="assets/img/user.jpg" alt="">
                         </div>
                         <div class="user-info">
-                            <span class="user-name">${loguser.name}</strong></span>
-                            <span class="user-role">${loguser.authority}</span>
+                            <span class="user-name">${loguser.uname}</strong></span>
+                            <span class="user-role">${loguser.flag}</span>
                             <div class="user-status">                       
                                 <span class="label label-success">Online</span>
                             </div>
