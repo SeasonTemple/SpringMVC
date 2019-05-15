@@ -8,19 +8,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
     <title>Home_iframe</title>
-    <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-	<script src="${pageContext.request.contextPath}/resources/js/es6-promise-auto-min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/sweetalert2.js"></script>
-	<link rel="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css">
-    <script src="${pageContext.request.contextPath}/resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
-    <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    
-    <link type="text/css" href="${pageContext.request.contextPath}/resources/css/demo.css">
-    <link href="${pageContext.request.contextPath}/resources/css/jquery.mCustomScrollbar.min.css" />
-    <link href="${pageContext.request.contextPath}/resources/css/custom.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.min.js"></script>    
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/es6-promise-auto-min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/sweetalert2.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/demo.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/custom.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css">
 	<style type="text/css">
         fieldset{
             padding:.10em .625em .10em;
