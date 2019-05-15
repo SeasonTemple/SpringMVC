@@ -21,6 +21,8 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery.mCustomScrollbar.min.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/custom.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/build.css">
+	
 	<style type="text/css">
         fieldset{
             padding:.10em .625em .10em;
@@ -98,7 +100,7 @@
             <thead style="background: rgb(244, 244, 244)">
                 <tr>
                     <th>
-                         <div class="checkbox checkbox-success" style="margin: 0 auto;text-align: center;">
+                         <div class="checkbox checkbox-success" style="margin: 0 auto;text-align: center;vertical-align: middle">
                             <input id="checkbox0" class="styled" type="checkbox">
                             <label for="checkbox0"></label>
                         </div>
