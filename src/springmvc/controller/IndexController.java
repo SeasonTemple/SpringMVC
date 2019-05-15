@@ -17,9 +17,9 @@ public class IndexController {
 		return indexService.toLogin(model);
 	}
 	
-	@RequestMapping(value="success", method= {RequestMethod.GET})
+	@RequestMapping(value="logSuccess", method= {RequestMethod.GET})
 	public String logSuccess() {
-		return "start";
+		return "Index";
 	}
 	
 }

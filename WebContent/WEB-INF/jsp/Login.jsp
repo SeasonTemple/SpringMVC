@@ -525,7 +525,7 @@
 		  						showConfirmButton: false,
 		  						timer: 1500,
 		  					}).then(function(){
-								window.location.href = "${pageContext.request.contextPath}/success";
+								window.location.href = "${pageContext.request.contextPath}/logSuccess";
 	  						})
 		  				}
 		  				else if(data.msg=="验证码错误!"){
