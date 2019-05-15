@@ -15,27 +15,18 @@ public class IndexServiceImpl implements IndexService {
 		return "Login";
 	}
 
-/*	@Override
-	public BfUser logValidate(BfUser u, HttpSession session) {
-		BfUser bu = new BfUser();
-		System.out.println("[indexServiceImpl]");
-		if(!u.getCode().equalsIgnoreCase(session.getAttribute("code").toString())) {
-			bu.setMsg("验证码错误!");
-			System.out.println(session.getAttribute("code").toString());
-			return bu;
-		}
-		List<BfUser> bl = userDao.cbfUser(u);
-		if(bl.size() > 0) {
-			bu = bl.get(0);
-		}
-		if(bu.getUname()!= null) {
-			bu.setMsg("success");
-			session.setAttribute("loguser", bu);
-			return bu;
-		}else {
-			bu.setMsg("用户名或密码错误!");
-			return bu;
-		}
-	}*/
+	@Override
+	public String home(Model model) {
+		// TODO 自动生成的方法存根
+		return "home";
+	}
+
+	@Override
+	public String student(Model model) {
+		// TODO 自动生成的方法存根
+		return "student";
+	}
+
+
 	
 }

@@ -6,5 +6,6 @@ import org.springframework.ui.Model;
 
 public interface IndexService {
 	public String toLogin(Model model);
-//	public BfUser logValidate(BfUser u, HttpSession session);
+	public String home(Model model);
+	public String student(Model model);
 }
