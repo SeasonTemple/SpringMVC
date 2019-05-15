@@ -100,7 +100,7 @@
             <thead style="background: rgb(244, 244, 244)">
                 <tr>
                     <th>
-                         <div class="checkbox checkbox-success" style="margin: 0 auto;text-align: center;vertical-align: middle">
+                         <div class="checkbox checkbox-success" style="margin-bottom: 8px;text-align: center;vertical-align: middle">
                             <input id="checkbox0" class="styled" type="checkbox">
                             <label for="checkbox0"></label>
                         </div>
@@ -128,7 +128,7 @@
             <tbody>
                 <tr>
                     <td>
-                        <div class="checkbox checkbox-success" style="margin: 0 auto;text-align: center;">
+                        <div class="checkbox checkbox-success" style="margin-top: 10px;text-align: center;vertical-align: middle;">
                             <input id="checkbox1" class="styled" type="checkbox">
                             <label for="checkbox1"></label>
                         </div>
@@ -158,7 +158,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="checkbox checkbox-success" style="margin: 0 auto;text-align: center;">
+                        <div class="checkbox checkbox-success" style="margin-top: 10px;text-align: center;vertical-align: middle">
                             <input id="checkbox2" class="styled" type="checkbox">
                             <label for="checkbox2"></label>
                         </div>
@@ -188,7 +188,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="checkbox checkbox-success" style="margin: 0 auto;text-align: center;">
+                        <div class="checkbox checkbox-success" style="margin-top: 10px;text-align: center;vertical-align: middle">
                             <input id="checkbox3" class="styled" type="checkbox">
                             <label for="checkbox3"></label>
                         </div>
@@ -218,7 +218,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="checkbox checkbox-success" style="margin: 0 auto;text-align: center;">
+                        <div class="checkbox checkbox-success" style="margin-top: 10px;text-align: center;vertical-align: middle">
                             <input id="checkbox4" class="styled" type="checkbox">
                             <label for="checkbox4"></label>
                         </div>
