@@ -55,6 +55,15 @@
             width: 0 auto;
         }
 
+		a:hover{
+            text-decoration:none;
+            color: green;
+        }
+
+        a{
+            color: gray;
+        }
+		
     </style>
 </head>
 <body>

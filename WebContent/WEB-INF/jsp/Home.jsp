@@ -104,7 +104,7 @@
         }
 
         #thanks{
-            background-color: rgb(250, 250, 250);
+            background-color: rgb(240, 240, 240);
             border-color: black;
         }
 
