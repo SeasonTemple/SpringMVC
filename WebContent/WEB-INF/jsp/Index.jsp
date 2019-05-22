@@ -77,19 +77,18 @@
     </style>
 </head>
     <script type="text/javascript">
-        window.onload = function() {
-    		sessionStorage.removeItem("errorList");
-    		$("[data-toggle='slidebarl']").tooltip();
-    		if('${loguser.uname}'!=''){
-    			$('#drop').html("${loguser.uname}<strong class='caret'></strong>");
-    		}
-    		
-    		if(${loguser.flag} !=0){
-	        	$('#user_status').html("管理员");
-	        }else{
-	        	$('#user_status').html("用户");
+	    window.onload = function() {
+	        sessionStorage.removeItem("errorList");
+	        $("[data-toggle='slidebarl']").tooltip();
+	        if('${loguser.uname}'!=''){
+	            $('#drop').html("${loguser.uname}<strong class='caret'></strong>");
 	        }
-    	}
+	        if(${loguser.flag}!=0){
+	            $('#user_status').html("管理员");
+	        }else{
+	            $('#user_status').html("用户");
+	        }
+	    }
 		
         function colorChange(id){
                 var c = $(id).css('color');
