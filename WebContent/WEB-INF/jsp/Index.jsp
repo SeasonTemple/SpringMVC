@@ -83,7 +83,8 @@
     		if('${loguser.uname}'!=''){
     			$('#drop').html("${loguser.uname}<strong class='caret'></strong>");
     		}
-    		if(${loguser.flag}!=0){
+    		
+    		if(${loguser.flag} !=0){
 	        	$('#user_status').html("管理员");
 	        }else{
 	        	$('#user_status').html("用户");
@@ -140,7 +141,7 @@
                 $('#myTabContent').append(  '<div class="tab-pane fade" id="'+tabName+'">'+
                                                 '<div class="container-fluid" tabindex="-1" style="padding: 1px;margin: auto;">'+
                                                     '<div class="row">'+
-                                                        '<iframe src="'+${pageContext.request.contextPath}+'/'+tabName+'"></iframe>'+
+                                                        '<iframe src="${pageContext.request.contextPath}/'+tabName+'"></iframe>'+
                                                     '</div>'+
                                                 '</div>'+
                                             '</div>'
