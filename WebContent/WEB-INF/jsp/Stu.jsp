@@ -72,7 +72,7 @@
         <div class="col-md-12">
             <ul class="breadcrumb" style="background-color:rgb(244,244,244);margin-right: -15px;">
               <li><a href="#">主页</a></li>
-              <li>学生管理</li>
+              <li><a href="#">学生管理</a></li>
               <li>学生列表</li>
             </ul>
         </div>
