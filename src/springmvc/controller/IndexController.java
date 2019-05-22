@@ -22,12 +22,12 @@ public class IndexController {
 		return indexService.toIndex(model);
 	}
 	
-	@RequestMapping(value="home", method={RequestMethod.GET})
+	@RequestMapping(value="Home", method={RequestMethod.GET})
 	public String getHome(Model model) {
 		return indexService.home(model);
 	}
 	
-	@RequestMapping(value="student", method={RequestMethod.GET})
+	@RequestMapping(value="Stu", method={RequestMethod.GET})
 	public String getStudent(Model model) {
 		return indexService.student(model);
 	}

@@ -22,12 +22,12 @@ public class IndexServiceImpl implements IndexService {
 
 	@Override
 	public String home(Model model) {
-		return "home";
+		return "Home";
 	}
 
 	@Override
 	public String student(Model model) {
-		return "student";
+		return "Stu";
 	}
 
 }

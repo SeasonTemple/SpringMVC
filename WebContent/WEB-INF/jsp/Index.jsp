@@ -77,19 +77,9 @@
     </style>
 </head>
     <script type="text/javascript">
-        $(function(){
-            $('#t2close').mouseover(function(){
-                var c = $(this).css('color');
-                if(c == 'rgb(85, 85, 85)'){
-                    $(this).attr('style', 'color:rgba(255, 0, 0, 3)');
-                }
-            }),
-            $('#t2close').mouseleave(function(){
-                $(this).attr('style', 'color:rgba(85, 85, 85, 9)');
-            });
-        });
         window.onload = function() {
     		sessionStorage.removeItem("errorList");
+    		$("[data-toggle='slidebarl']").tooltip();
     		if('${loguser.uname}'!=''){
     			$('#drop').html("${loguser.uname}<strong class='caret'></strong>");
     		}
@@ -99,24 +89,66 @@
 	        	$('#user_status').html("用户");
 	        }
     	}
+		
+        function colorChange(id){
+                var c = $(id).css('color');
+                if(c == 'rgb(85, 85, 85)'){
+                    $(id).attr('style', 'color:rgba(255, 0, 0, 3)');
+                }
+        };
+
+        function leave(id){
+            $(id).attr('style', 'color:rgba(85, 85, 85, 9)');
+        }
+
+        function openTab(id){
+            $('#'+id).tab('show');
+        }
+
+        function closeTab(tabId){
+            var li_id = $(tabId).parent().attr('id');
+            var id = li_id.replace("li_tab","");
+            if($('#'+li_id).attr('class') == "active"){
+                $("li.active").prev().find("a").click();
+                var pre = $("#li_tabStu").prev().find("a").attr('id').replace('tab','');
+            }
+            $('#'+id).remove();
+            $('#'+li_id).remove();
+            $('#myTab a[href="#'+pre+'"]').tab('show');
+           
+        }
 
         $(function(){
             $('#sidebar').mouseleave(function(){
                 $(".page-wrapper").removeClass("toggled");
             });
         });
-		
-/*         function authority(){
-	        if(${loguser.flag}!=0){
-	        	$(this).html("管理员");
-	        }else{
-	        	$(this).html("一般用户");
-	        }
-        	
-        } */
-        function openStudentTable(){
-            $('#tab2').tab('show');
+
+        function addTabs(tabName,tagName){
+            var count = $('#myTab li').length+1;
+            var tabCloseId = 'tab'+ count;
+            var id = 'tab'+tabName;
+            if($('#'+id).length>0){
+                openTab(id);
+            }else{
+                $('#myTab').append( '<li id="li_'+id+'">'+
+                                        '<a href="#'+tabName+'" data-toggle="'+id+'" id="'+id+'">'+
+                                            ''+tagName+' <span class="fa fa-close" id="'+tabCloseId+'close" onmouseover="colorChange('+tabCloseId+'close);" onmouseleave="leave('+tabCloseId+'close)" onclick="closeTab('+id+')"></span>'+
+                                        '</a>'+
+                                    '</li>'
+                                    );
+                $('#myTabContent').append(  '<div class="tab-pane fade" id="'+tabName+'">'+
+                                                '<div class="container-fluid" tabindex="-1" style="padding: 1px;margin: auto;">'+
+                                                    '<div class="row">'+
+                                                        '<iframe src="'+${pageContext.request.contextPath}+'/'+tabName+'"></iframe>'+
+                                                    '</div>'+
+                                                '</div>'+
+                                            '</div>'
+                                        );
+                openTab(id);
+            }
         }
+        
     </script>
 <body>
 <div class="container-fluid">
@@ -146,8 +178,8 @@
                                 <a  href="#" ><i class="glyphicon glyphicon-user"></i><span>个人信息</span><span class="label label-danger">New</span></a>
                                 <div class="sidebar-submenu">
                                     <ul>
-                                        <li><a href="#">账 户 详 情<span class="label label-success">1</span></a></li>
-                                        <li><a href="openStudentTable();">权 限 一 览</a></li>
+                                        <li><a href="javascript:addTabs('detl','账户详情');">账 户 详 情<span class="label label-success">1</span></a></li>
+                                        <li><a href="javascript:addTabs('Auth','权限一览');">权 限 一 览</a></li>
                                        <!--  <li><a href="#">权 限 一 览</a></li> -->
                                         <li><a href="#">系 统 公 告</a></li>
                                     </ul>
@@ -158,8 +190,8 @@
                                 <a href="#"><i class="glyphicon glyphicon-list-alt"></i><span>学生管理</span><span class="badge">3</span></a>
                                 <div class="sidebar-submenu">
                                     <ul>
-                                        <li><a href="#">学 生 列 表</a></li>
-                                        <li><a href="#">班 级 列 表</a></li>
+                                        <li><a href="javascript:addTabs('Stu','学生列表');">学 生 列 表</a></li>
+                                        <li><a href="javascript:addTabs('Cls','班级列表');">班 级 列 表</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -168,9 +200,9 @@
                                 <a href="#"><i class="glyphicon glyphicon-lock"></i><span>权限管理</span></a>
                                 <div class="sidebar-submenu">
                                     <ul>
-                                        <li><a href="#">成 员 列 表</a></li>
-                                        <li><a href="#">操 作 记 录</a></li>
-                                        <li><a href="#">公 告 管 理</a></li>
+                                        <li><a href="javascript:addTabs('Mem','成员列表');">成 员 列 表</a></li>
+                                        <li><a href="javascript:addTabs('Opt,'操作记录');">操 作 记 录</a></li>
+                                        <li><a href="javascript:addTabs('Not','公告管理');">公 告 管 理</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -179,8 +211,8 @@
                                 <a href="#"><i class="glyphicon glyphicon-folder-open"></i><span>文件相关</span></a>
                                 <div class="sidebar-submenu">
                                     <ul>
-                                        <li><a href="#">文件上传</a></li>
-                                        <li><a href="#">文件下载</a></li>
+                                        <li><a href="javascript:addTabs('ulf','文件上传');">文件上传</a></li>
+                                        <li><a href="javascript:addTabs('dlf','文件下载');">文件下载</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -241,26 +273,18 @@
             </div>
             <div class="container-float" style="margin: 0 auto;">
                 <ul id="myTab" class="nav nav-tabs" style="background-color:rgb(233,233,233);">
-                    <li class="active">
-                        <a href="#Main" data-toggle="tab" id="tab1">
+                    <li class="active" id="li_tabMain">
+                        <a href="#Main" data-toggle="tabMain" id="tabMain">
                             <span class="glyphicon glyphicon-home"></span> 主页
                         </a>
                     </li>
-                    <li><a href="#Stu" data-toggle="tab" id="tab2">学生列表 <span class="fa fa-close" id="t2close" ></span></a></li>
                 </ul>
             </div>
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade in active" id="Main">
                     <div class="container-fluid" style="padding: 1px;margin: auto;">
                         <div class="row">
-                            <iframe src="${pageContext.request.contextPath}/home"></iframe>
-                        </div>                
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="Stu">
-                    <div class="container-fluid" tabindex="-1" style="padding: 1px;margin: auto;">
-                        <div class="row">
-                            <iframe src="${pageContext.request.contextPath}/student"></iframe>
+                            <iframe src="${pageContext.request.contextPath}/Home"></iframe>
                         </div>                
                     </div>
                 </div>
