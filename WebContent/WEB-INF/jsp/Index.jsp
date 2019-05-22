@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-    <title>Base_Page</title>
+    <title>学生管理系统首页</title>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.1.1.min.js"></script>    
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
@@ -109,7 +109,6 @@
             var li_id = $(tabId).parent().attr('id');
             var id = li_id.replace("li_tab","");
             if($('#'+li_id).attr('class') == "active"){
-                $("li.active").prev().find("a").click();
                 var pre = $("#li_tabStu").prev().find("a").attr('id').replace('tab','');
             }
             $('#'+id).remove();
@@ -132,7 +131,7 @@
                 openTab(id);
             }else{
                 $('#myTab').append( '<li id="li_'+id+'">'+
-                                        '<a href="#'+tabName+'" data-toggle="'+id+'" id="'+id+'">'+
+                                        '<a href="#'+tabName+'" data-toggle="'+id+'" id="'+id+'" onclick="openTab(\''+id+'\');">'+
                                             ''+tagName+' <span class="fa fa-close" id="'+tabCloseId+'close" onmouseover="colorChange('+tabCloseId+'close);" onmouseleave="leave('+tabCloseId+'close)" onclick="closeTab('+id+')"></span>'+
                                         '</a>'+
                                     '</li>'
@@ -274,7 +273,7 @@
             <div class="container-float" style="margin: 0 auto;">
                 <ul id="myTab" class="nav nav-tabs" style="background-color:rgb(233,233,233);">
                     <li class="active" id="li_tabMain">
-                        <a href="#Main" data-toggle="tabMain" id="tabMain">
+                        <a href="#Main" data-toggle="tabMain" id="tabMain" onclick="openTab('tabMain')">
                             <span class="glyphicon glyphicon-home"></span> 主页
                         </a>
                     </li>
