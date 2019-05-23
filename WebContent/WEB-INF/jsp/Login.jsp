@@ -21,9 +21,11 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 <script src="${pageContext.request.contextPath}/resources/js/es6-promise-auto-min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/sweetalert2.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/loginJs.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <link rel="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css">
 <link rel="${pageContext.request.contextPath}/resources/css/animate.css">
-<script src="${pageContext.request.contextPath}/resources/js/loginJs.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery.mCustomScrollbar.min.css">
 <style type="text/css">
 	#ulw{
 			left: -30px;

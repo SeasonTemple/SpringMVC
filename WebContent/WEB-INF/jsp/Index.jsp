@@ -83,10 +83,11 @@
 	        if('${loguser.uname}'!=''){
 	            $('#drop').html("${loguser.uname}<strong class='caret'></strong>");
 	        }
-	        if(${loguser.flag}!=0){
+	        if(${loguser.flag}!= 0){
 	            $('#user_status').html("管理员");
-	        }else{
-	            $('#user_status').html("用户");
+	        }
+	        if(${loguser.flag} == 0){
+	            $('#user_status').html("教师");
 	        }
 	    }
 		

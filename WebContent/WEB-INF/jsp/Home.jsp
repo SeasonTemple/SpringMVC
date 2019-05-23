@@ -136,7 +136,7 @@
     <div class="col-md-12" >
         <form id="st_notify">
             <fieldset>
-                <legend><h3>系统通知</h3></legend>
+                <legend><h3>系统公告</h3></legend>
                 <table class="table table-bordered table-hover text-justify">
                     <tbody>
                         <tr>

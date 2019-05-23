@@ -159,9 +159,9 @@
                     </td>
                     <td>
                         <div class="btn-group" role="group" aria-label="web">
-                            <button class="btn btn-warning" type="button"><em class="glyphicon glyphicon-edit"></em> </button>
-                            <button class="btn btn-primary" type="button"><em class="glyphicon glyphicon-floppy-saved"></em> </button>
-                            <button class="btn btn-danger" type="button"><em class="glyphicon glyphicon-trash"></em> </button>
+                            <button class="btn btn-warning btn-lg" type="button"><em class="glyphicon glyphicon-edit"></em> </button>
+                            <button class="btn btn-primary btn-lg" type="button"><em class="glyphicon glyphicon-floppy-saved"></em> </button>
+                            <button class="btn btn-danger btn-lg" type="button"><em class="glyphicon glyphicon-trash"></em> </button>
                         </div>
                     </td>
                 </tr>
@@ -189,9 +189,9 @@
                     </td>
                     <td>
                         <div class="btn-group" role="group" aria-label="web">
-                            <button class="btn btn-warning" type="button"><em class="glyphicon glyphicon-edit"></em> </button>
-                            <button class="btn btn-primary" type="button"><em class="glyphicon glyphicon-floppy-saved"></em> </button>
-                            <button class="btn btn-danger" type="button"><em class="glyphicon glyphicon-trash"></em> </button>
+                            <button class="btn btn-warning btn-lg" type="button"><em class="glyphicon glyphicon-edit"></em> </button>
+                            <button class="btn btn-primary btn-lg" type="button"><em class="glyphicon glyphicon-floppy-saved"></em> </button>
+                            <button class="btn btn-danger btn-lg" type="button"><em class="glyphicon glyphicon-trash"></em> </button>
                         </div>
                     </td>
                 </tr>
@@ -219,9 +219,9 @@
                     </td>
                     <td>
                         <div class="btn-group" role="group" aria-label="web">
-                            <button class="btn btn-warning" type="button"><em class="glyphicon glyphicon-edit"></em> </button>
-                            <button class="btn btn-primary" type="button"><em class="glyphicon glyphicon-floppy-saved"></em> </button>
-                            <button class="btn btn-danger" type="button"><em class="glyphicon glyphicon-trash"></em> </button>
+                            <button class="btn btn-warning btn-lg" type="button"><em class="glyphicon glyphicon-edit"></em> </button>
+                            <button class="btn btn-primary btn-lg" type="button"><em class="glyphicon glyphicon-floppy-saved"></em> </button>
+                            <button class="btn btn-danger btn-lg" type="button"><em class="glyphicon glyphicon-trash"></em> </button>
                         </div>
                     </td>
                 </tr>
@@ -249,9 +249,9 @@
                     </td>
                     <td>
                         <div class="btn-group" role="group" aria-label="web">
-                            <button class="btn btn-warning" type="button"><em class="glyphicon glyphicon-edit"></em> </button>
-                            <button class="btn btn-primary" type="button"><em class="glyphicon glyphicon-floppy-saved"></em> </button>
-                            <button class="btn btn-danger" type="button"><em class="glyphicon glyphicon-trash"></em> </button>
+                            <button class="btn btn-warning btn-lg" type="button"><em class="glyphicon glyphicon-edit"></em> </button>
+                            <button class="btn btn-primary btn-lg" type="button"><em class="glyphicon glyphicon-floppy-saved"></em> </button>
+                            <button class="btn btn-danger btn-lg" type="button"><em class="glyphicon glyphicon-trash"></em> </button>
                         </div>
                     </td>
                 </tr>

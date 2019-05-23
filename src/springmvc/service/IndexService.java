@@ -1,7 +1,5 @@
 package springmvc.service;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.ui.Model;
 
 public interface IndexService {
