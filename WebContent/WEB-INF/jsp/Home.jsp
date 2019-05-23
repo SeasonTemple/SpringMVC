@@ -71,9 +71,20 @@
             border-color: green;
         }
 
-        a:hover{
+        a:link {
+            color: green;
             text-decoration:none;
+        }
+        a:visited {
+            color: green;
+            text-decoration:none;
+        }
+        a:hover {
             color: red;
+            text-decoration:none;
+        }
+        a:active {
+            text-decoration:none;
         }
 
         a{

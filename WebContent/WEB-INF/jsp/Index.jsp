@@ -106,14 +106,14 @@
         }
 
         function closeTab(tabId){
-            var li_id = $(tabId).parent().attr('id');
+        	var li_id = $(tabId).parent().attr('id');
             var id = li_id.replace("li_tab","");
             if($('#'+li_id).attr('class') == "active"){
-                var pre = $("#li_tabStu").prev().find("a").attr('id').replace('tab','');
+                var pre_id = $('#'+li_id).prev().find("a").attr('id');
             }
             $('#'+id).remove();
             $('#'+li_id).remove();
-            $('#myTab a[href="#'+pre+'"]').tab('show');
+            $('#'+pre_id).tab('show');
            
         }
 
@@ -177,9 +177,8 @@
                                 <a  href="#" ><i class="glyphicon glyphicon-user"></i><span>个人信息</span><span class="label label-danger">New</span></a>
                                 <div class="sidebar-submenu">
                                     <ul>
-                                        <li><a href="javascript:addTabs('detl','账户详情');">账 户 详 情<span class="label label-success">1</span></a></li>
+                                        <li><a href="javascript:addTabs('Detl','账户详情');">账 户 详 情<span class="label label-success">1</span></a></li>
                                         <li><a href="javascript:addTabs('Auth','权限一览');">权 限 一 览</a></li>
-                                       <!--  <li><a href="#">权 限 一 览</a></li> -->
                                         <li><a href="#">系 统 公 告</a></li>
                                     </ul>
                                 </div>
@@ -200,7 +199,7 @@
                                 <div class="sidebar-submenu">
                                     <ul>
                                         <li><a href="javascript:addTabs('Mem','成员列表');">成 员 列 表</a></li>
-                                        <li><a href="javascript:addTabs('Opt,'操作记录');">操 作 记 录</a></li>
+                                        <li><a href="javascript:addTabs('Opt','操作记录');">操 作 记 录</a></li>
                                         <li><a href="javascript:addTabs('Not','公告管理');">公 告 管 理</a></li>
                                     </ul>
                                 </div>
@@ -210,8 +209,8 @@
                                 <a href="#"><i class="glyphicon glyphicon-folder-open"></i><span>文件相关</span></a>
                                 <div class="sidebar-submenu">
                                     <ul>
-                                        <li><a href="javascript:addTabs('ulf','文件上传');">文件上传</a></li>
-                                        <li><a href="javascript:addTabs('dlf','文件下载');">文件下载</a></li>
+                                        <li><a href="javascript:addTabs('Upf','文件上传');">文件上传</a></li>
+                                        <li><a href="javascript:addTabs('Dlf','文件下载');">文件下载</a></li>
                                     </ul>
                                 </div>
                             </li>
