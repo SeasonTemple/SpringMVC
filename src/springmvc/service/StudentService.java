@@ -8,5 +8,5 @@ import springmvc.entity.Student;
 
 public interface StudentService {
 
-	public List<Student> findAll(String uid, Model m);
+	public List<Student> findAll(Model m, String uid);
 }

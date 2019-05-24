@@ -21,9 +21,8 @@ public class StudentController {
 	
 	@RequestMapping(value="findAll", method= {RequestMethod.POST})
 	@ResponseBody
-	public List<Student> findAll(@RequestBody String uid, Model m) {
-		List<Student> ls = studentService.findAll(uid, m);
-		m.addAttribute("Students", ls);
-		return ls;
+	public String findAll(Model m, String uid) {
+		List<Student> ls = studentService.findAll(m, uid);
+		return "OK";
 	}
 }

@@ -16,8 +16,10 @@ public class StudentServiceImpl implements StudentService {
 	private StudentDao studentDao;
 	
 	@Override
-	public List<Student> findAll(String uid, Model m) {
+	public List<Student> findAll(Model m, String uid) {
 		List<Student> ls = studentDao.findAll(uid);
+		m.addAttribute("Students", ls);
+		System.out.println(uid+"//"+ls);
 		return ls;
 	}
 
