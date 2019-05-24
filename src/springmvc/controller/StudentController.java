@@ -2,10 +2,10 @@ package springmvc.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,8 +21,8 @@ public class StudentController {
 	
 	@RequestMapping(value="findAll", method= {RequestMethod.POST})
 	@ResponseBody
-	public String findAll(Model m, String uid) {
-		List<Student> ls = studentService.findAll(m, uid);
-		return "OK";
+	public List<Student> findAll(String uid, HttpSession session) {
+		List<Student> ls = studentService.findAll(uid, session);
+		return ls;
 	}
 }

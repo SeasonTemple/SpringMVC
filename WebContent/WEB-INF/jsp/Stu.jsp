@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+	<base href="<%=basePath%>">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
@@ -69,8 +75,15 @@
 	<script type="text/javascript">
 		window.onload = function() {
 			var uid = ${loguser.uid};
-			$.post("${pageContext.request.contextPath}/findAll",{"uid":uid},
-					function(data){});
+			$.post("<%=basePath%>/findAll", {"uid":uid}, success: init);
+		}
+		
+		function init(){
+			var a = 1;
+			if(a > 0){
+				location.replace(location.href);
+				a-= 1;
+			}
 		}
 	</script>
 <body>
@@ -92,7 +105,7 @@
                         <div class="col-md-3">
                             <div class="btn-group btn-group-lg" role="group" aria-label="web">
                                 <button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-trash"></span> 批量删除</button>
-                                <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-floppy-saved"></span> 保存</button>
+                                <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-floppy-saved"></span> 筛选</button>
                                 <button class="btn btn-success" type="button"><em class="glyphicon glyphicon-plus"></em> 添加</button>
                                 <!-- <button class="btn btn-warning" type="button"><span class="glyphicon glyphicon-wrench"></span> 编辑</button> -->
                             </div>
@@ -157,7 +170,7 @@
 	                       	${Student.sname}
 	                    </td>
 	                    <td>
-	                        ${Student.clas.cid}
+	                        ${Student.clas.cname}
 	                    </td>
 	                    <td>
 	                        ${Student.snum}

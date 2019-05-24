@@ -2,11 +2,11 @@ package springmvc.service;
 
 import java.util.List;
 
-import org.springframework.ui.Model;
+import javax.servlet.http.HttpSession;
 
 import springmvc.entity.Student;
 
 public interface StudentService {
 
-	public List<Student> findAll(Model m, String uid);
+	public List<Student> findAll(String uid, HttpSession session);
 }
