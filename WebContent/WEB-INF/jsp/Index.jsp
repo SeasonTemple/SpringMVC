@@ -85,8 +85,7 @@
 	        }
 	        if(${loguser.flag}!= 0){
 	            $('#user_status').html("管理员");
-	        }
-	        if(${loguser.flag} == 0){
+	        }else{
 	            $('#user_status').html("教师");
 	        }
 	    }

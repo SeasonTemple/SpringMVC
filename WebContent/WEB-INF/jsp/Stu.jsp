@@ -66,6 +66,12 @@
 		
     </style>
 </head>
+	<script type="text/javascript">
+		window.onload = function() {
+			var uid = ${loguser.uid};
+			$.post("${pageContext.request.contextPath}/findAll",{"uid":uid});
+		}
+	</script>
 <body>
 <div class="container-fluid">
     <div class="row clearfix">
@@ -135,126 +141,38 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <div class="checkbox checkbox-success" style="margin-top: 10px;text-align: center;vertical-align: middle;">
-                            <input id="checkbox1" class="styled" type="checkbox">
-                            <label for="checkbox1"></label>
-                        </div>
-                    </td>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                       	蔡徐坤
-                    </td>
-                    <td>
-                        3
-                    </td>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                       	运球与舞蹈的联系
-                    </td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="web">
-                            <button class="btn btn-warning btn-lg" type="button"><em class="glyphicon glyphicon-edit"></em> </button>
-                            <button class="btn btn-primary btn-lg" type="button"><em class="glyphicon glyphicon-floppy-saved"></em> </button>
-                            <button class="btn btn-danger btn-lg" type="button"><em class="glyphicon glyphicon-trash"></em> </button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="checkbox checkbox-success" style="margin-top: 10px;text-align: center;vertical-align: middle">
-                            <input id="checkbox2" class="styled" type="checkbox">
-                            <label for="checkbox2"></label>
-                        </div>
-                    </td>
-                    <td>
-                        2
-                    </td>
-                    <td>
-                       	蔡徐坤
-                    </td>
-                    <td>
-                        3
-                    </td>
-                    <td>
-                        2
-                    </td>
-                    <td>
-                       	医学与娘化的艺术
-                    </td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="web">
-                            <button class="btn btn-warning btn-lg" type="button"><em class="glyphicon glyphicon-edit"></em> </button>
-                            <button class="btn btn-primary btn-lg" type="button"><em class="glyphicon glyphicon-floppy-saved"></em> </button>
-                            <button class="btn btn-danger btn-lg" type="button"><em class="glyphicon glyphicon-trash"></em> </button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="checkbox checkbox-success" style="margin-top: 10px;text-align: center;vertical-align: middle">
-                            <input id="checkbox3" class="styled" type="checkbox">
-                            <label for="checkbox3"></label>
-                        </div>
-                    </td>
-                    <td>
-                        3
-                    </td>
-                    <td>
-                       	吴亦凡
-                    </td>
-                    <td>
-                        3
-                    </td>
-                    <td>
-                        3
-                    </td>
-                    <td>
-                        Fake rap
-                    </td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="web">
-                            <button class="btn btn-warning btn-lg" type="button"><em class="glyphicon glyphicon-edit"></em> </button>
-                            <button class="btn btn-primary btn-lg" type="button"><em class="glyphicon glyphicon-floppy-saved"></em> </button>
-                            <button class="btn btn-danger btn-lg" type="button"><em class="glyphicon glyphicon-trash"></em> </button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="checkbox checkbox-success" style="margin-top: 10px;text-align: center;vertical-align: middle">
-                            <input id="checkbox4" class="styled" type="checkbox">
-                            <label for="checkbox4"></label>
-                        </div>
-                    </td>
-                    <td>
-                        4
-                    </td>
-                    <td>
-                       	吴亦凡
-                    </td>
-                    <td>
-                        3
-                    </td>
-                    <td>
-                        4
-                    </td>
-                    <td>
-                       	吃大碗面
-                    </td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="web">
-                            <button class="btn btn-warning btn-lg" type="button"><em class="glyphicon glyphicon-edit"></em> </button>
-                            <button class="btn btn-primary btn-lg" type="button"><em class="glyphicon glyphicon-floppy-saved"></em> </button>
-                            <button class="btn btn-danger btn-lg" type="button"><em class="glyphicon glyphicon-trash"></em> </button>
-                        </div>
-                    </td>
-                </tr>
+	            <c:forEach var="Student" items="${Students}">
+	                <tr>
+	                    <td>
+	                        <div class="checkbox checkbox-success" style="margin-top: 10px;text-align: center;vertical-align: middle;">
+	                            <input id="checkbox1" class="styled" type="checkbox">
+	                            <label for="checkbox1"></label>
+	                        </div>
+	                    </td>
+	                    <td>
+	                        ${Student.sid}
+	                    </td>
+	                    <td>
+	                       	${Student.sname}
+	                    </td>
+	                    <td>
+	                        ${Student.clas.cid}
+	                    </td>
+	                    <td>
+	                        ${Student.snum}
+	                    </td>
+	                    <td>
+	                       	${Student.subject}
+	                    </td>
+	                    <td>
+	                        <div class="btn-group" role="group" aria-label="web">
+	                            <button class="btn btn-warning btn-lg" type="button"><em class="glyphicon glyphicon-edit"></em> </button>
+	                            <button class="btn btn-primary btn-lg" type="button"><em class="glyphicon glyphicon-floppy-saved"></em> </button>
+	                            <button class="btn btn-danger btn-lg" type="button"><em class="glyphicon glyphicon-trash"></em> </button>
+	                        </div>
+	                    </td>
+	                </tr>
+	            </c:forEach>
             </tbody>
         </table>
     </div>
