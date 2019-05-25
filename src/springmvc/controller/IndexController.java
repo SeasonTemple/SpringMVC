@@ -33,9 +33,9 @@ public class IndexController {
 	}
 	
 	@RequestMapping(value="Stu", method={RequestMethod.GET})
-	public String getStudent(Integer uid, HttpSession session) {
+	public String getStudent(Integer uid, Model m) {
 		System.out.println(uid);
-		return indexService.student(uid, session);
+		return indexService.student(uid, m);
 	}
 	
 }

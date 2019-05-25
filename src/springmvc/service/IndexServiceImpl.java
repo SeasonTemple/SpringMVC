@@ -1,7 +1,5 @@
 package springmvc.service;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -28,8 +26,9 @@ public class IndexServiceImpl implements IndexService {
 	}
 
 	@Override
-	public String student(Integer uid, HttpSession session) {
-		return "foward:/findAll";
+	public String student(Integer uid, Model m) {
+		m.addAttribute("uid", uid);
+		return "redirect:/findAll/{uid}";
 	}
 
 }
