@@ -1,5 +1,7 @@
 package springmvc.service;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -26,8 +28,8 @@ public class IndexServiceImpl implements IndexService {
 	}
 
 	@Override
-	public String student(Model model) {
-		return "Stu";
+	public String student(int uid, HttpSession session) {
+		return "redirect:/findAll";
 	}
 
 }

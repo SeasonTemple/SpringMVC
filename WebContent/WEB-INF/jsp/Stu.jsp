@@ -73,13 +73,12 @@
     </style>
 </head>
 	<script type="text/javascript">
+		var a = 1;
 		window.onload = function() {
-			var uid = ${loguser.uid};
-			$.post("<%=basePath%>/findAll", {"uid":uid}, success: init);
+			init(a);
 		}
 		
-		function init(){
-			var a = 1;
+		function init(a){
 			if(a > 0){
 				location.replace(location.href);
 				a-= 1;

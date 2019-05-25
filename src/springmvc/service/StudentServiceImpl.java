@@ -17,11 +17,11 @@ public class StudentServiceImpl implements StudentService {
 	private StudentDao studentDao;
 	
 	@Override
-	public List<Student> findAll(String uid, HttpSession session) {
+	public String findAll(int uid, HttpSession session) {
 		List<Student> ls = studentDao.findAll(uid);
 		session.setAttribute("Students", ls);
 		System.out.println(uid+"//"+ls);
-		return ls;
+		return "Stu";
 	}
 
 }

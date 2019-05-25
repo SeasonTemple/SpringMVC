@@ -14,9 +14,9 @@ import springmvc.entity.User;
 @Mapper
 public interface StudentDao {
 	
-	public Student findStudent(String uid, Student s);
+	public Student findStudent(int uid, Student s);
 	@Select("select * from student where uid=#{uid}")
-	public List<Student> findAll(String uid);
+	public List<Student> findAll(int uid);
 	public List<Student> findStudentsByClass(User u, Classes c);
 	public List<Student> findStudentsBySubject(User u, Student s);
 	public int createStudents(List<Student> ls);
