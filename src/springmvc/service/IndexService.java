@@ -8,5 +8,5 @@ public interface IndexService {
 	public String toLogin(Model model);
 	public String toIndex(Model model);
 	public String home(Model model);
-	public String student(int uid, HttpSession session);
+	public String student(Integer uid, HttpSession session);
 }

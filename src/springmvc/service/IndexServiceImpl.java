@@ -28,8 +28,8 @@ public class IndexServiceImpl implements IndexService {
 	}
 
 	@Override
-	public String student(int uid, HttpSession session) {
-		return "redirect:/findAll";
+	public String student(Integer uid, HttpSession session) {
+		return "foward:/findAll";
 	}
 
 }

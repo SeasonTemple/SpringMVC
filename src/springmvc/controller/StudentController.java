@@ -16,7 +16,7 @@ public class StudentController {
 	private StudentService studentService;
 	
 	@RequestMapping(value="findAll", method= {RequestMethod.GET})
-	public String findAll(int uid, HttpSession session) {
+	public String findAll(Integer uid, HttpSession session) {
 		return studentService.findAll(uid, session);
 	}
 }

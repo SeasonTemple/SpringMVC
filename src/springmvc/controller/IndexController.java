@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import springmvc.service.IndexService;
 
@@ -31,8 +32,8 @@ public class IndexController {
 		return indexService.home(model);
 	}
 	
-	@RequestMapping(value="Stu/{uid}", method={RequestMethod.GET})
-	public String getStudent(@PathVariable int uid, HttpSession session) {
+	@RequestMapping(value="Stu", method={RequestMethod.GET})
+	public String getStudent(Integer uid, HttpSession session) {
 		System.out.println(uid);
 		return indexService.student(uid, session);
 	}

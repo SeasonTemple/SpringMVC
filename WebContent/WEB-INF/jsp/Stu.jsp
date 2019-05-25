@@ -74,10 +74,7 @@
 </head>
 	<script type="text/javascript">
 		var a = 1;
-		window.onload = function() {
-			init(a);
-		}
-		
+		init();
 		function init(a){
 			if(a > 0){
 				location.replace(location.href);

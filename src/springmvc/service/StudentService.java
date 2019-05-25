@@ -4,5 +4,5 @@ import javax.servlet.http.HttpSession;
 
 public interface StudentService {
 
-	public String findAll(int uid, HttpSession session);
+	public String findAll(Integer uid, HttpSession session);
 }

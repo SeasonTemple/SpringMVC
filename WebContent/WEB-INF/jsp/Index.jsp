@@ -139,7 +139,7 @@
                 $('#myTabContent').append(  '<div class="tab-pane fade" id="'+tabName+'">'+
                                                 '<div class="container-fluid" tabindex="-1" style="padding: 1px;margin: auto;">'+
                                                     '<div class="row">'+
-                                                        '<iframe src="${pageContext.request.contextPath}/'+tabName+'?${loguser.uid}"></iframe>'+
+                                                        '<iframe src="${pageContext.request.contextPath}/'+tabName+'?uid=${loguser.uid}"></iframe>'+
                                                     '</div>'+
                                                 '</div>'+
                                             '</div>'
