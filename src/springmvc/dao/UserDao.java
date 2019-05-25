@@ -17,4 +17,7 @@ public interface UserDao {
 	@Insert("insert into user(uid,uname,pwd,email,profile) values(null,#{uname},#{pwd},#{email},#{profile})")
 	public int register(User u);
 	
+	@Select("select * from user where uid=#{uid}")
+	public User findById(Integer uid);
+	
 }

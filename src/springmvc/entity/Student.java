@@ -63,7 +63,7 @@ public class Student {
 		return u;
 	}
 
-	public void setU(User u) {
+	public void setUi(User u) {
 		this.u = u;
 	}
 
