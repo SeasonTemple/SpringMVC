@@ -101,7 +101,7 @@
                         <div class="col-md-3">
                             <div class="btn-group btn-group-lg" role="group" aria-label="web">
                                 <button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-trash"></span> 批量删除</button>
-                                <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-floppy-saved"></span> 筛选</button>
+                                <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-floppy-saved"></span> 全选</button>
                                 <button class="btn btn-success" type="button"><em class="glyphicon glyphicon-plus"></em> 添加</button>
                                 <!-- <button class="btn btn-warning" type="button"><span class="glyphicon glyphicon-wrench"></span> 编辑</button> -->
                             </div>

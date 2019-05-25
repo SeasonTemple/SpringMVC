@@ -26,9 +26,9 @@ public interface StudentDao {
 		@Result(column="sname",property="sname"),
 		@Result(column="snum",property="snum"),
 		@Result(column="subject",property="subject"),
-		@Result(column="cid",property="cid",
+		@Result(column="cid",property="clas",
 		one=@One(select="springmvc.dao.ClassesDao.findById",fetchType=FetchType.EAGER)),
-		@Result(column="uid",property="sid",
+		@Result(column="uid",property="u",
 		one=@One(select="springmvc.dao.UserDao.findById",fetchType=FetchType.EAGER))
 	})
 	public List<Student> findAll(Integer uid);
