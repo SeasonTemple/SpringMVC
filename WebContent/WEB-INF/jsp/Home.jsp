@@ -271,13 +271,13 @@
                     Bootstrap3<small>没有它，真不知道该从哪里入手做前端.jpg。附上友情链接 <a href="https://v3.bootcss.com" target="_blank">Bootstrap3</a>。</small>
                 </li>
                 <li>
-                    SweetAlert 2<small>一款美观、响应迅速、可定制的弹出框插件，很强大。附上友情链接 <a href="https://sweetalert2.github.io/ target="_blank">SweetAlert 2</a>。</small>
+                    SweetAlert 2<small>一款美观、响应迅速、可定制的弹出框插件，很强大。附上友情链接 <a href="https://sweetalert2.github.io/" target="_blank">SweetAlert 2</a>。</small>
                 </li>
                 <li>
                     Glyphicons Halflings<small>该图标库一般是收费的，但他们的作者允许 Bootstrap 免费使用。为了表示感谢，使用时为 <a href="https://glyphicons.com" target="_blank">Glyphicons</a> 添加一个友情链接。</small>
                 </li>
                 <li>
-                    Font Awesome<small>你也是图标库。嗯，font awesome也很好用诶。友情链接<a href="http://fontawesome.dashgame.com" target="_blank">Font Awesome</a>。</small>
+                    Font Awesome<small>你也是图标库。嗯，font awesome也很好用。友情链接<a href="http://fontawesome.dashgame.com" target="_blank">Font Awesome</a>。</small>
                 </li>
                 <li>
                     jQuery插件库<small>该插件库为我们提供了不少的思路。同样附上友情链接 <a href="http://www.jq22.com" target="_blank">jQuery插件库</a>。</small>

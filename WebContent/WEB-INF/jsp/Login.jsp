@@ -503,7 +503,7 @@
 			Swal.fire({
 				title : '<h3>登录中</h3>',
 				type: 'info',
-				height: 300,
+				width: 400,
 			  	showLoaderOnConfirm: true,
 			  	timer: 1000,
 			  	onBeforeOpen:()=>{
