@@ -95,19 +95,19 @@
             var sid = selectId.replace('delete','');
             Swal.fire({
                 type: 'warning',
-                title: '删除学生?',
+                title: '真的要删除吗?',
                 text: '',
                 confirmButtonColor: '#3085d6',
-                confirmButtonText: '删除',
+                confirmButtonText: '是的呢',
                 showCancelButton: true,
                 cancelButtonColor: '#d33',
-                cancelButtonText: "取消",
+                cancelButtonText: "算了吧",
                 focusCancel: true,
                 reverseButtons: true
             }).then((isConfirm) => {
-                if(isConfirm.value){
-                    Swal.fire({
-                        type: 'question',
+				if(isConfirm.value){
+                	Swal.fire({
+                		type: 'question',
                         title: '删除中',
                         timer: 1500,
                         showLoaderOnConfirm: true,
@@ -115,7 +115,7 @@
                            Swal.showLoading()
                         },
                         allowOutsideClick: () => !Swal.isLoading()
-                    }).then(() =>{
+                   	}).then(() =>{
                         $.ajax({
                             type: 'post',
                             url: "www.baidu.com?sid",
@@ -130,9 +130,92 @@
                             Swal.fire('删除失败','data','error');
                         });
                     });
+				}
+            });
+		}
+		
+		$(function(){
+            var i=0;
+            //全选
+            $("#selectAll").on("click",function(){
+                if(i==0){
+                    //把所有复选框选中
+                    $("#stable td :checkbox").prop("checked", true);
+                    i=1;
+                }else{
+                    $("#stable td :checkbox").prop("checked", false);
+                    i=0;
+                }
+                
+            });
+            
+            //反选
+            $("#ReverseSelect").on("click",function(){
+                $('#selectAll').prop("checked", false);
+                $("#stable td :checkbox").each(function(){
+                    //遍历所有复选框，然后取值进行 !非操作
+                    $(this).prop("checked", !$(this).prop("checked"));
+                });
+            });
+
+            //批量删除
+            $('#deleteSome').on("click",function(){
+                var arr = new Array();
+                $('#stable input:checkbox[name=stu]:checked').each(function(i){
+                    arr[i] = $(this).attr('id').replace('checkbox','');
+                });
+                if(dels.length < 1){
+                	Swal.fire({
+                		type: 'error',
+                        title: '请选择至少一项记录',
+                        showConfirmButton: false,
+	               		timer: 2000
+               		})
+                }else{
+	                var dels = arr.join(",");
+	                alert(dels);
+	                Swal.fire({
+	                    type: 'warning',
+	                    title: '真的要删除这些吗?',
+	                    confirmButtonColor: '#3085d6',
+	                    confirmButtonText: '是的呀',
+	                    showCancelButton: true,
+	                    cancelButtonColor: '#d33',
+	                    cancelButtonText: "再想想",
+	                    focusCancel: true,
+	                    reverseButtons: true
+	                }).then((isConfirm) => {
+	                    if(isConfirm.value){
+	                        Swal.fire({
+	                            type: 'question',
+	                            title: '删除中',
+	                            timer: 2000,
+	                            showLoaderOnConfirm: true,
+	                            onBeforeOpen:()=>{
+	                               Swal.showLoading()
+	                            },
+	                            allowOutsideClick: () => !Swal.isLoading()
+	                        }).then(function() {
+	                            $.ajax({
+	                                type: 'post',
+	                                url: "www.baidu.com?sid",
+	                                data: JSON.stringify({sid: sid}),
+	                                dataType: 'Json',
+	                                contentType:"application/json"
+	                            }).done(function(data){
+	                                if(data=="ok"){
+	                                    Swal.fire('删除成功','','success');
+	                                }
+	                            }).error(function(){
+	                                Swal.fire('删除失败','data','error');
+	                            });
+	                        });
+	                    }
+	                });
                 }
             });
-        }
+		});
+		
 	</script>
 <body>
 <div class="container-fluid">
@@ -152,8 +235,11 @@
                     <div class="col-md-12">
                         <div class="col-md-3">
                             <div class="btn-group btn-group-lg" role="group" aria-label="web">
-									<button class="btn btn-danger" type="button">
+									<button class="btn btn-danger" type="button" id="deleteSome">
 										<span class="glyphicon glyphicon-trash"></span> 批量删除
+									</button>
+									<button class="btn btn-primary" type="button" id="reverseSelect">
+										<span class="glyphicon glyphicon-unchecked"></span> 反选
 									</button>
 									<button class="btn btn-success" type="button" onclick="add('添加学生信息')">
 										<em class="glyphicon glyphicon-plus"></em> 添加
@@ -209,8 +295,8 @@
 	                <tr>
 	                    <td>
 	                        <div class="checkbox checkbox-success" style="margin-top: 10px;text-align: center;vertical-align: middle;">
-	                            <input id="${Student.sid}" class="styled" type="checkbox">
-	                            <label for="checkbox${Student.sid}"></label>
+	                            <input id="checkbox${Student.sid}" name="stu" class="styled" type="checkbox">
+	                            <label for="checkbox${Student.sid}"> </label>
 	                        </div>
 	                    </td>
 	                    <td>

@@ -13,23 +13,24 @@ $(function() {
 
         });
 
-         $("#toggle-sidebar").mouseenter(function(){
-            var c = $('#navmenu').css('color');
-            if(c == 'rgb(155, 155, 155)'){
-                $('#navmenu').attr('style', 'color:rgba(0, 134, 253, 3)');
-            }else{
-                $('#navmenu').attr('style', 'color:rgba(155, 155, 155, 3)');
-            }
-            $(".page-wrapper").toggleClass("toggled");    
-       	 });
+    	$("#toggle-sidebar").mouseenter(function(){
+	        var c = $('#navmenu').css('color');
+	        if(c == 'rgb(155, 155, 155)'){
+	            $('#navmenu').attr('style', 'color:rgba(0, 134, 253, 3)');
+	        }
+	        $(".page-wrapper").toggleClass("toggled");    
+    	});
+    	
+    	$("#toggle-sidebar").mouseleave(function(){
+            $('#navmenu').attr('style', 'color:rgba(155, 155, 155, 3)');
+        });
 
-           if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-                   $(".sidebar-content").mCustomScrollbar({
-                            axis:"y",
-                            autoHideScrollbar: true,
-                            scrollInertia: 300
-                    });
-                    $(".sidebar-content").addClass("desktop");
-
-            }
+	   if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	       $(".sidebar-content").mCustomScrollbar({
+	                axis:"y",
+	                autoHideScrollbar: true,
+	                scrollInertia: 300
+	        });
+	        $(".sidebar-content").addClass("desktop");
+	    }
     });
