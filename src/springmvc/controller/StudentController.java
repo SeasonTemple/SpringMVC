@@ -5,9 +5,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import springmvc.entity.Student;
 import springmvc.service.StudentService;
 
 @Controller
@@ -19,5 +22,23 @@ public class StudentController {
 	@RequestMapping(value="/findAll/{uid}", method= {RequestMethod.GET})
 	public String findAll(@PathVariable(value="uid") Integer uid, HttpSession session) {
 		return studentService.findAll(uid, session);
+	}
+	
+	@RequestMapping(value="/preLoadClassInfo/{uid}", method= {RequestMethod.GET})
+	public String preLoadClassInfo(@PathVariable(value="uid") Integer uid, HttpSession session) {
+//		System.out.println(Integer.parseInt(uid.replace("uid=","")));
+		return studentService.preLoadClassInfo(uid, session);
+	}
+	
+	@RequestMapping(value="createStudent", method= {RequestMethod.POST})
+	@ResponseBody
+	public String createStudent(@RequestBody Student s) {
+		System.out.println(s);
+		int rows = studentService.createStudents(s);
+		if(rows > 0 ) {
+			return "ok";
+		}else {
+			return "error";
+		}
 	}
 }

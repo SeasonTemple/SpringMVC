@@ -77,17 +77,68 @@
             location.replace(location.href);
         }
 		
+		function clearInput(){
+			$("input[name='sname']").val("");
+			$("input[name='grade']").val("");
+			$("input[name='snum']").val("");
+			$("input[name='subject']").val("");
+			$("input[name='tel']").val("");
+			$("#icon_sname").attr("class","form-group");
+			$("#icon_grade").attr("class","form-group");
+			$("#icon_snum").attr("class","form-group");
+			$("#icon_subject").attr("class","form-group");
+			$("#icon_tel").attr("class","form-group");
+		}
+		
+		$(function(){
+			$('#submit').click(function(){
+				var tag = $('#submit').html();
+				if(tag == "添加"){
+					var sname = $("input[name='sname']").val();
+					var grade = $("input[name='grade']").val();
+					var snum = $("input[name='snum']").val();
+					var subject = $("input[name='subject']").val();
+					var uid = $("input[name='uid']").val();
+					var cid = $("#cid option:selected").val();
+	       			$.ajax({
+	                    type: 'post',
+	                    url: "${pageContext.request.contextPath}/createStudent",
+	                    data: JSON.stringify({sname: sname,grade: grade,snum: snum,subject: subject,uid: uid,cid: cid}),
+	                    dataType: 'Json',
+	                    contentType:"application/json",
+	                    success: function(data){
+	                    	if(data =="ok"){
+		                        Swal.fire('添加成功','','success');
+		                        refresh();
+		                    }else{
+		                    	Swal.fire('添加失败','','error');
+		                    	refresh();
+		                    }
+	                    },
+	                    error: function(){
+		                    Swal.fire('添加失败','','error');
+		                    refresh();
+		                }
+	                });
+				}
+			});
+		});
+		
 		function add(title){
+			clearInput();
+			var uid = ${loguser.uid};
 			$('#h3').html(title);
             $('#submit').html('添加');
             $('#studentEditDialog').modal('show');
+            $('#studentEditDialog').on('shown.bs.modal',function(e){
+				 $("input[name='sname']").focus();
+		    });
         }
 
         function edit(selectId,title){
             var sid = selectId.replace('edit','');
             $('#h3').html(title);
             $('#submit').html('更新');
-            $.ajax();
             $('#studentEditDialog').modal('show');
         }
 		
@@ -150,10 +201,9 @@
             });
             
             //反选
-            $("#ReverseSelect").on("click",function(){
+            $("#reverseSelect").on("click",function(){
                 $('#selectAll').prop("checked", false);
                 $("#stable td :checkbox").each(function(){
-                    //遍历所有复选框，然后取值进行 !非操作
                     $(this).prop("checked", !$(this).prop("checked"));
                 });
             });
@@ -164,6 +214,7 @@
                 $('#stable input:checkbox[name=stu]:checked').each(function(i){
                     arr[i] = $(this).attr('id').replace('checkbox','');
                 });
+                var dels = arr.join(",");
                 if(dels.length < 1){
                 	Swal.fire({
                 		type: 'error',
@@ -173,7 +224,6 @@
                		})
                 }else{
 	                var dels = arr.join(",");
-	                alert(dels);
 	                Swal.fire({
 	                    type: 'warning',
 	                    title: '真的要删除这些吗?',
@@ -261,13 +311,13 @@
                 </div>
             </fieldset>
         </form>
-        <table class="table table-hover table-condensed table-bordered text-left">
+        <table class="table table-hover table-condensed table-bordered text-left" id="stable">
             <thead style="background: rgb(244, 244, 244)">
                 <tr>
                     <th>
                          <div class="checkbox checkbox-success" style="margin-bottom: 8px;text-align: center;vertical-align: middle">
-                            <input id="checkbox0" class="styled" type="checkbox">
-                            <label for="checkbox0"></label>
+                            <input id="selectAll" name="stu" class="styled" type="checkbox">
+                            <label for="selectAll"></label>
                         </div>
                     </th>
                     <th>
@@ -275,6 +325,9 @@
                     </th>
                     <th>
                        	姓名
+                    </th>
+                    <th>
+                       	年级
                     </th>
                     <th>
                        	班级
@@ -304,6 +357,9 @@
 	                    </td>
 	                    <td>
 	                       	${Student.sname}
+	                    </td>
+	                     <td>
+	                       	${Student.grade}
 	                    </td>
 	                    <td>
 	                        ${Student.clas.cname}
@@ -358,7 +414,7 @@
 	                <h3 class="modal-title" style="text-align: center"><span id="h2">学生信息</span></h3>
 	            </div>
 	            <div class="modal-body" style="width: 80%; margin: 0 auto;">
-	                <form class="bs-example bs-example-form" role="form" modelAttribute="student">
+	                <form class="bs-example bs-example-form" role="form" id="sform" >
 	                    <label style="font-size:18px;">姓名</label>
 	                    <div class="form-group" id="icon_sname">
 	                        <input type="text" class="form-control" name="sname" data-toggle="dtname" data-placement="top" data-html="true" />
@@ -375,19 +431,18 @@
 	                    <label style="font-size:18px;">班级</label>
 	                    <div class="form-group">
 	                        <div class="col-md-5 fluid pull-left" style="margin-left: -14px;">
-	                            <select class="form-control" id="edit_class"
-	                                name="class">
+	                            <select class="form-control" id="cid"
+	                                name="cid">
 	                                <option value="">--请选择班级--</option>
-	                                <%-- <c:forEach items="${classes}" var="clas">
-	                                    <option value="${clas.cid}"
-	                                        <c:if test="${clas.cid == class}"> selected</c:if>>${clas.cname}</option>
-	                                </c:forEach> --%>
+	                                <c:forEach items="${classes}" var="clas">
+	                                    <option value="${clas.cid}">${clas.cname}</option>
+	                                </c:forEach>
 	                            </select>
 	                        </div>
 	                        <span class="col-md-12"></span>
 	                    </div>
-	                    
-	                    <label style="font-size:18px;">专业</label>
+	                    <input type="hidden" id="uid" name="uid" value="${uid}" >
+	                    <label style="font-size:18px;">特长</label>
 	                    <div class="form-group" id="icon_subject">
 	                        <input class="form-control" type="text" name="subject" data-toggle="dtsubject" data-placement="top" data-html="true" />
 	                        <span id="span4"></span>
@@ -399,12 +454,12 @@
 	                        <span id="span5"></span>
 	                        <span id="helpBlock5" class="help-block" style="color:rgba(255, 0, 0, .9);"></span>
 	                    </div>
-	                    <label style="font-size:18px;">联系电话</label>
+	                    <!-- <label style="font-size:18px;">联系电话</label>
 	                    <div class="form-group" id="icon_tel">
-	                        <input class="form-control" type="text" name="tel" data-toggle="dttel" data-placement="top" data-html="true" />
+	                        <input class="form-control" type="text" id="tel" name="tel" data-toggle="dttel" data-placement="top" data-html="true" />
 	                        <span id="span6"></span>
 	                        <span id="helpBlock6" class="help-block" style="color:rgba(255, 0, 0, .9);"></span>
-	                    </div>
+	                    </div> -->
 	                </form>
 	            </div>
 	            <div class="modal-footer">
