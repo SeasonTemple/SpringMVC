@@ -2,6 +2,7 @@ package springmvc.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.One;
@@ -33,12 +34,20 @@ public interface StudentDao {
 		one=@One(select="springmvc.dao.UserDao.findById",fetchType=FetchType.EAGER))
 	})
 	public List<Student> findAll(Integer uid);
+	
 	public List<Student> findStudentsByClass(Integer uid, Classes c);
 	public List<Student> findStudentsBySubject(Integer uid, Student s);
 	
 	@Insert("insert into student(sid,sname,grade,snum,subject,cid,uid) value(null,#{sname},#{grade},#{snum},#{subject},#{cid},#{uid})")
 	public int createStudents(Student s);
 	public String updateStudents(List<Student> ls);
-	public String deleteStudents(List<Student> ls);
+	
+	@Delete({"<script>",
+			"delete from student where sid in ",
+			"<foreach item=\"ids\" collection=\"list\" index=\"no\" open=\"(\" separator=\",\" close=\")\">",
+			"#{ids}",
+			"</foreach>",
+			"</script>"})
+	public int deleteStudents(List<String> ids);
 	
 }

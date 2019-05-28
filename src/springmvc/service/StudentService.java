@@ -10,5 +10,7 @@ public interface StudentService {
 	
 	public String preLoadClassInfo(Integer uid, HttpSession session);
 	
-	public int createStudents(Student s);
+	public String createStudents(Student s);
+	
+	public String deleteStudents(String ids, HttpSession session);
 }

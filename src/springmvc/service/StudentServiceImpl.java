@@ -48,15 +48,33 @@ public class StudentServiceImpl implements StudentService {
 		});
 		System.out.println(lc);
 		session.setAttribute("classes", lc);
-		/*for(User_Classes uc: luc) {
-			lc.add(uc.getClas());
-		}*/
 		return "Stu";
 	}
 
 	@Override
-	public int createStudents(Student s) {
-		return studentDao.createStudents(s);
+	public String createStudents(Student s) {
+		int rows = studentDao.createStudents(s);
+		if(rows > 0 ) {
+			return "ok";
+		}else {
+			return "error";
+		}
+	}
+
+	@Override
+	public String deleteStudents(String ids, HttpSession session) {
+		List<String> ls = new ArrayList<>();
+		for (String id: ids.split(",")){
+            System.out.println(id);
+            ls.add(id);
+        }
+		System.out.println(ls);
+		int rows = studentDao.deleteStudents(ls);
+		if(rows > 0) {
+			return "ok";
+		}else {
+			return "error";
+		}
 	}
 
 }

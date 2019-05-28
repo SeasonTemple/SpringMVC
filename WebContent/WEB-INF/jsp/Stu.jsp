@@ -74,7 +74,12 @@
 </head>
 	<script type="text/javascript">
 		function refresh(){
-            location.replace(location.href);
+            $.ajax({
+            	type: "get",
+            	url: '${pageContext.request.contextPath}/findAll/${uid}',
+            }).done(function(){
+	            location.replace(location.href);
+            });
         }
 		
 		function clearInput(){
@@ -122,7 +127,7 @@
 	                    type: 'post',
 	                    url: "${pageContext.request.contextPath}/createStudent",
 	                    data: JSON.stringify({sname: sname,grade: grade,snum: snum,subject: subject,uid: uid,cid: cid}),
-	                    dataType: 'Json',
+	                    dataType: 'text',
 	                    contentType:"application/json;charset=utf-8",
 	                    success:function(data){
 	                    	if(data =="ok"){
@@ -131,9 +136,8 @@
 	 		                        title: '添加成功',
 	 		                        showConfirmButton: false,
 	 		                        timer: 1500
-	 		                    }).then(() => {
-	                        		alert(data);
-	                        		refresh();
+	 		                    }).then(function() {
+	 		                    	refresh();
 	                        	});
 		                    }else{
 		                    	 Swal.fire({
@@ -142,7 +146,7 @@
 			                        showConfirmButton: false,
 			                        timer: 1500
 			                    }).then(() => {
-	                        		refresh();
+			                    	refresh();
 	                        	});
 		                    }
 	                    },
@@ -153,8 +157,7 @@
 		                        showConfirmButton: false,
 		                        timer: 1500
 		                    }).then(() =>{
-		                    		alert(data);
-                        			refresh();
+		                    	refresh();
                        		});
 		                }
 	                });
@@ -192,16 +195,41 @@
                    	}).then(() =>{
                         $.ajax({
                             type: 'post',
-                            url: "www.baidu.com?sid",
-                            data: JSON.stringify({sid: sid}),
-                            dataType: 'Json',
+                            url: "${pageContext.request.contextPath}/deleteStudents",
+                            data: JSON.stringify(sid),
+                            dataType: 'text',
+                            traditional: true,
                             contentType:"application/json"
                         }).done(function(data){
-                            if(data=="ok"){
-                                Swal.fire('删除成功','','success');
+                            if(data =="ok"){
+                            	Swal.fire({
+			                    	type: 'error',
+			                        title: '删除成功',
+			                        showConfirmButton: false,
+			                        timer: 1500
+			                    }).then(() => {
+			                    	refresh();
+	                        	});
+                                
+                            }else{
+                            	Swal.fire({
+			                    	type: 'error',
+			                        title: '删除失败',
+			                        showConfirmButton: false,
+			                        timer: 1500
+			                    }).then(() => {
+			                    	refresh();
+	                        	});
                             }
                         }).error(function(){
-                            Swal.fire('删除失败','data','error');
+                        	Swal.fire({
+		                    	type: 'error',
+		                        title: '删除失败',
+		                        showConfirmButton: false,
+		                        timer: 1500
+		                    }).then(() => {
+		                    	refresh();
+                        	});
                         });
                     });
 				}
@@ -243,10 +271,9 @@
                 		type: 'error',
                         title: '请选择至少一项记录',
                         showConfirmButton: false,
-	               		timer: 2000
+	               		timer: 1500
                		})
                 }else{
-	                var dels = arr.join(",");
 	                Swal.fire({
 	                    type: 'warning',
 	                    title: '真的要删除这些吗?',
@@ -271,16 +298,39 @@
 	                        }).then(function() {
 	                            $.ajax({
 	                                type: 'post',
-	                                url: "www.baidu.com?sid",
-	                                data: JSON.stringify({sid: sid}),
-	                                dataType: 'Json',
+	                                url: "${pageContext.request.contextPath}/deleteStudents",
+	                                data: JSON.stringify(dels),
+	                                dataType: 'text',
 	                                contentType:"application/json"
 	                            }).done(function(data){
-	                                if(data=="ok"){
-	                                    Swal.fire('删除成功','','success');
+	                                if(data =="ok"){
+	                                	Swal.fire({
+	    			                    	type: 'error',
+	    			                        title: '删除成功',
+	    			                        showConfirmButton: false,
+	    			                        timer: 1500
+	    			                    }).then(() => {
+	    			                    	refresh();
+	    	                        	});
+	                                }else{
+	                                	Swal.fire({
+	    			                    	type: 'error',
+	    			                        title: '删除失败',
+	    			                        showConfirmButton: false,
+	    			                        timer: 1500
+	    			                    }).then(() => {
+	    			                    	refresh();
+	    	                        	});
 	                                }
 	                            }).error(function(){
-	                                Swal.fire('删除失败','data','error');
+	                            	Swal.fire({
+				                    	type: 'error',
+				                        title: '删除失败',
+				                        showConfirmButton: false,
+				                        timer: 1500
+				                    }).then(() => {
+				                    	refresh();
+		                        	});
 	                            });
 	                        });
 	                    }
@@ -339,7 +389,7 @@
                 <tr>
                     <th>
                          <div class="checkbox checkbox-success" style="margin-bottom: 8px;text-align: center;vertical-align: middle">
-                            <input id="selectAll" name="stu" class="styled" type="checkbox">
+                            <input id="selectAll"  class="styled" type="checkbox">
                             <label for="selectAll"></label>
                         </div>
                     </th>
