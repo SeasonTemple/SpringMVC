@@ -6,11 +6,15 @@ import springmvc.entity.Student;
 
 public interface StudentService {
 
+	public String updateStudent(Integer sid);
+	
+	public Student preLoadStuInfo(Integer sid);
+	
 	public String findAll(Integer uid, HttpSession session);
 	
 	public String preLoadClassInfo(Integer uid, HttpSession session);
 	
 	public String createStudents(Student s);
 	
-	public String deleteStudents(String ids, HttpSession session);
+	public String deleteStudents(String ids);
 }

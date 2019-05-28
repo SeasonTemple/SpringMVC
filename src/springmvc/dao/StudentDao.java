@@ -19,7 +19,19 @@ import springmvc.entity.Student;
 @Mapper
 public interface StudentDao {
 	
-	public Student findStudent(int uid, Student s);
+	@Select("select * from student where sid=#{sid}")
+	@Results({
+		@Result(id=true,column="sid",property="sid"),
+		@Result(column="sname",property="sname"),
+		@Result(column="grade",property="grade"),
+		@Result(column="snum",property="snum"),
+		@Result(column="subject",property="subject"),
+		@Result(column="cid",property="clas",
+		one=@One(select="springmvc.dao.ClassesDao.findById",fetchType=FetchType.EAGER)),
+		@Result(column="uid",property="u",
+		one=@One(select="springmvc.dao.UserDao.findById",fetchType=FetchType.EAGER))
+	})
+	public Student findStudent(int sid);
 	
 	@Select("select * from student where uid=#{uid}")
 	@Results({

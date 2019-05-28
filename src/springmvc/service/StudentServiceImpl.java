@@ -62,7 +62,7 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public String deleteStudents(String ids, HttpSession session) {
+	public String deleteStudents(String ids) {
 		List<String> ls = new ArrayList<>();
 		for (String id: ids.split(",")){
             System.out.println(id);
@@ -75,6 +75,18 @@ public class StudentServiceImpl implements StudentService {
 		}else {
 			return "error";
 		}
+	}
+
+	@Override
+	public Student preLoadStuInfo(Integer sid) {
+		Student s = studentDao.findStudent(sid);
+		return s;
+	}
+
+	@Override
+	public String updateStudent(Integer sid) {
+		
+		return null;
 	}
 
 }

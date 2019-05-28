@@ -62,13 +62,20 @@
         }
 
 		a:hover{
-            text-decoration:none;
-            color: green;
+           	text-decoration:none;
+       	 	color: green;
         }
 
         a{
             color: gray;
         }
+        
+		.Swal{
+			width: 250em;
+			margin: 0 auto;
+			left: 0;
+			right: 0;
+    	}
 		
     </style>
 </head>
@@ -87,7 +94,7 @@
 			$("input[name='grade']").val("");
 			$("input[name='snum']").val("");
 			$("input[name='subject']").val("");
-			$("input[name='tel']").val("");
+			$("#cid").val('0');
 			$("#icon_sname").attr("class","form-group");
 			$("#icon_grade").attr("class","form-group");
 			$("#icon_snum").attr("class","form-group");
@@ -98,7 +105,7 @@
 		function add(title){
 			clearInput();
 			var uid = ${loguser.uid};
-			$('#h3').html(title);
+			$('#h2').html(title);
             $('#submit').html('添加');
             $('#studentEditDialog').modal('show');
             $('#studentEditDialog').on('shown.bs.modal',function(e){
@@ -107,14 +114,30 @@
         }
 
         function edit(selectId,title){
+        	clearInput();
             var sid = selectId.replace('edit','');
-            $('#h3').html(title);
+            $('#h2').html(title);
             $('#submit').html('更新');
-            $('#studentEditDialog').modal('show');
+            $.ajax({
+            	type: "get",
+            	url: '${pageContext.request.contextPath}/preLoadStuInfo/'+sid,
+            	dataType: 'Json',
+                contentType:"application/json;charset=utf-8",
+                success:function(data){
+	            	$("input[name='sname']").val(data.sname);
+	    			$("input[name='grade']").val(data.grade);
+	    			$("#cid").val(data.clas.cid);
+	    			$("input[name='subject']").val(data.subject);
+	    			$("input[name='snum']").val(data.snum);
+	    			$('#studentEditDialog').modal('show');
+            	}
+            });
+            
         }
 		
 		$(function(){
 			$('#submit').click(function(){
+				$('#studentEditDialog').modal('hide');
 				var tag = $('#submit').html();
 				if(tag == "添加"){
 					var sname = $("input[name='sname']").val();
@@ -203,14 +226,13 @@
                         }).done(function(data){
                             if(data =="ok"){
                             	Swal.fire({
-			                    	type: 'error',
+			                    	type: 'success',
 			                        title: '删除成功',
 			                        showConfirmButton: false,
 			                        timer: 1500
 			                    }).then(() => {
 			                    	refresh();
 	                        	});
-                                
                             }else{
                             	Swal.fire({
 			                    	type: 'error',
@@ -305,7 +327,7 @@
 	                            }).done(function(data){
 	                                if(data =="ok"){
 	                                	Swal.fire({
-	    			                    	type: 'error',
+	    			                    	type: 'success',
 	    			                        title: '删除成功',
 	    			                        showConfirmButton: false,
 	    			                        timer: 1500
@@ -506,7 +528,7 @@
 	                        <div class="col-md-5 fluid pull-left" style="margin-left: -14px;">
 	                            <select class="form-control" id="cid"
 	                                name="cid">
-	                                <option value="">--请选择班级--</option>
+	                                <option value="0">--请选择班级--</option>
 	                                <c:forEach items="${classes}" var="clas">
 	                                    <option value="${clas.cid}">${clas.cname}</option>
 	                                </c:forEach>

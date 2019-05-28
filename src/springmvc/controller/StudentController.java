@@ -33,6 +33,13 @@ public class StudentController {
 		return studentService.preLoadClassInfo(uid, session);
 	}
 	
+	@RequestMapping(value="/preLoadStuInfo/{sid}", method= {RequestMethod.GET})
+	@ResponseBody
+	public Student preLoadStuInfo(@PathVariable(value="sid") Integer sid) {
+		System.out.println(sid);
+		return studentService.preLoadStuInfo(sid);
+	}
+	
 	@RequestMapping(value="createStudent", method= {RequestMethod.POST})
 	@ResponseBody
 	public String createStudent(@RequestBody Student s) {
@@ -42,9 +49,17 @@ public class StudentController {
 	
 	@RequestMapping(value="deleteStudents", method= {RequestMethod.POST})
 	@ResponseBody
-	public String deleteStudents(@RequestBody String ids, HttpSession session) {
+	public String deleteStudents(@RequestBody String ids) {
 		System.out.println(ids);
-		return studentService.deleteStudents(ids.replace("\"", ""), session);
+		return studentService.deleteStudents(ids.replace("\"", ""));
+	}
+	
+	@RequestMapping(value="updateStudent", method= {RequestMethod.POST})
+	@ResponseBody
+	public String updateStudent(@RequestBody String id) {
+		
+		
+		return null;
 	}
 	
 }

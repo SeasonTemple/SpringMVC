@@ -9,6 +9,13 @@
     transition: all 0.3s;
 }
 
+.Swal{
+	        width: 250em;
+	        margin: 0 auto;
+	        left: 0;
+	        right: 0;
+    }
+
 /*----------------page-wrapper----------------*/
 .page-wrapper{
     height: 100vh;
