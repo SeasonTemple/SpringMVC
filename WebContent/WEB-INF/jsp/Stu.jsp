@@ -90,40 +90,6 @@
 			$("#icon_tel").attr("class","form-group");
 		}
 		
-		$(function(){
-			$('#submit').click(function(){
-				var tag = $('#submit').html();
-				if(tag == "添加"){
-					var sname = $("input[name='sname']").val();
-					var grade = $("input[name='grade']").val();
-					var snum = $("input[name='snum']").val();
-					var subject = $("input[name='subject']").val();
-					var uid = $("input[name='uid']").val();
-					var cid = $("#cid option:selected").val();
-	       			$.ajax({
-	                    type: 'post',
-	                    url: "${pageContext.request.contextPath}/createStudent",
-	                    data: JSON.stringify({sname: sname,grade: grade,snum: snum,subject: subject,uid: uid,cid: cid}),
-	                    dataType: 'Json',
-	                    contentType:"application/json",
-	                    success: function(data){
-	                    	if(data =="ok"){
-		                        Swal.fire('添加成功','','success');
-		                        refresh();
-		                    }else{
-		                    	Swal.fire('添加失败','','error');
-		                    	refresh();
-		                    }
-	                    },
-	                    error: function(){
-		                    Swal.fire('添加失败','','error');
-		                    refresh();
-		                }
-	                });
-				}
-			});
-		});
-		
 		function add(title){
 			clearInput();
 			var uid = ${loguser.uid};
@@ -141,6 +107,63 @@
             $('#submit').html('更新');
             $('#studentEditDialog').modal('show');
         }
+		
+		$(function(){
+			$('#submit').click(function(){
+				var tag = $('#submit').html();
+				if(tag == "添加"){
+					var sname = $("input[name='sname']").val();
+					var grade = $("input[name='grade']").val();
+					var snum = $("input[name='snum']").val();
+					var subject = $("input[name='subject']").val();
+					var uid = $("input[name='uid']").val();
+					var cid = $("#cid option:selected").val();
+	       			$.ajax({
+	                    type: 'post',
+	                    url: "${pageContext.request.contextPath}/createStudent",
+	                    data: JSON.stringify({sname: sname,grade: grade,snum: snum,subject: subject,uid: uid,cid: cid}),
+	                    dataType: 'Json',
+	                    contentType:"application/json;charset=utf-8",
+	                    success:function(data){
+	                    	if(data =="ok"){
+	                    		 Swal.fire({
+	 		                    	type: 'success',
+	 		                        title: '添加成功',
+	 		                        showConfirmButton: false,
+	 		                        timer: 1500
+	 		                    }).then(() => {
+	                        		alert(data);
+	                        		refresh();
+	                        	});
+		                    }else{
+		                    	 Swal.fire({
+			                    	type: 'error',
+			                        title: '添加失败',
+			                        showConfirmButton: false,
+			                        timer: 1500
+			                    }).then(() => {
+	                        		refresh();
+	                        	});
+		                    }
+	                    },
+	                    error:function(){
+		                    Swal.fire({
+		                    	type: 'error',
+		                        title: '添加失败',
+		                        showConfirmButton: false,
+		                        timer: 1500
+		                    }).then(() =>{
+		                    		alert(data);
+                        			refresh();
+                       		});
+		                }
+	                });
+				}
+				if(tag == '更新'){
+					
+				}
+			});
+		});
 		
 		function deleteOne(selectId){
             var sid = selectId.replace('delete','');
