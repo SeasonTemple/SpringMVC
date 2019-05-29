@@ -84,9 +84,12 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public String updateStudent(Integer sid) {
-		
-		return null;
+	public String updateStudent(Student s) {
+		int rows = studentDao.updateStudents(s);
+		if(rows > 0) {
+			return "ok";
+		}else {
+			return "error";
+		}
 	}
-
 }

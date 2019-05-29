@@ -29,7 +29,6 @@ public class StudentController {
 	
 	@RequestMapping(value="/preLoadClassInfo/{uid}", method= {RequestMethod.GET})
 	public String preLoadClassInfo(@PathVariable(value="uid") Integer uid, HttpSession session) {
-//		System.out.println(Integer.parseInt(uid.replace("uid=","")));
 		return studentService.preLoadClassInfo(uid, session);
 	}
 	
@@ -56,10 +55,9 @@ public class StudentController {
 	
 	@RequestMapping(value="updateStudent", method= {RequestMethod.POST})
 	@ResponseBody
-	public String updateStudent(@RequestBody String id) {
-		
-		
-		return null;
+	public String updateStudent(@RequestBody Student s) {
+		System.out.println(s);
+		return studentService.updateStudent(s);
 	}
 	
 }

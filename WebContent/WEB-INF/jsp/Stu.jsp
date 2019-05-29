@@ -155,15 +155,58 @@
 	                    success:function(data){
 	                    	if(data =="ok"){
 	                    		 Swal.fire({
-	 		                    	type: 'success',
-	 		                        title: '添加成功',
-	 		                        showConfirmButton: false,
-	 		                        timer: 1500
-	 		                    }).then(function() {
-	 		                    	refresh();
-	                        	});
+		 		                    	type: 'question',
+		 		                        title: '添加中',
+		 		                        showConfirmButton: false,
+		 		                        timer: 1500,
+		 		                       	onBeforeOpen:()=>{
+		 		                           Swal.showLoading()
+		 		                        },
+		 		                        allowOutsideClick: () => !Swal.isLoading()
+		 		                    }).then(function() {
+		 		                    	Swal.fire({
+			 		                    	type: 'success',
+			 		                        title: '添加成功',
+			 		                        showConfirmButton: false,
+			 		                        timer: 1500
+			 		                    }).then(function() {
+			 		                    	refresh();
+			                        	});
+		                        	});
 		                    }else{
-		                    	 Swal.fire({
+		                    	Swal.fire({
+	 		                    	type: 'question',
+	 		                        title: '添加中',
+	 		                        showConfirmButton: false,
+	 		                        timer: 1500,
+	 		                       	onBeforeOpen:()=>{
+	 		                           Swal.showLoading()
+	 		                        },
+	 		                        allowOutsideClick: () => !Swal.isLoading()
+	 		                    }).then(function() {
+	 		                    	Swal.fire({
+				                    	type: 'error',
+				                        title: '添加失败',
+				                        showConfirmButton: false,
+				                        timer: 1500
+				                    }).then(() => {
+				                    	refresh();
+		                        	});
+	                        	});
+		                    }
+	                    },
+	                    error:function(){
+	                    	Swal.fire({
+ 		                    	type: 'question',
+ 		                        title: '添加中',
+ 		                        showConfirmButton: false,
+ 		                        timer: 1500,
+ 		                       	onBeforeOpen:()=>{
+ 		                           Swal.showLoading()
+ 		                        },
+ 		                        allowOutsideClick: () => !Swal.isLoading()
+ 		                    }).then(function() {
+ 		                    	Swal.fire({
 			                    	type: 'error',
 			                        title: '添加失败',
 			                        showConfirmButton: false,
@@ -171,22 +214,88 @@
 			                    }).then(() => {
 			                    	refresh();
 	                        	});
-		                    }
-	                    },
-	                    error:function(){
-		                    Swal.fire({
-		                    	type: 'error',
-		                        title: '添加失败',
-		                        showConfirmButton: false,
-		                        timer: 1500
-		                    }).then(() =>{
-		                    	refresh();
-                       		});
+                        	});
 		                }
 	                });
 				}
 				if(tag == '更新'){
-					
+					var sname = $("input[name='sname']").val();
+					var grade = $("input[name='grade']").val();
+					var snum = $("input[name='snum']").val();
+					var subject = $("input[name='subject']").val();
+					var uid = $("input[name='uid']").val();
+					var cid = $("#cid option:selected").val();
+	       			$.ajax({
+	                    type: 'post',
+	                    url: "${pageContext.request.contextPath}/updateStudent",
+	                    data: JSON.stringify({sname: sname,grade: grade,snum: snum,subject: subject,uid: uid,cid: cid}),
+	                    dataType: 'text',
+	                    contentType:"application/json;charset=utf-8",
+	                    success:function(data){
+	                    	if(data =="ok"){
+	                    		 Swal.fire({
+	 		                    	type: 'question',
+	 		                        title: '修改中',
+	 		                        showConfirmButton: false,
+	 		                        timer: 1500,
+	 		                       	onBeforeOpen:()=>{
+	 		                           Swal.showLoading()
+	 		                        },
+	 		                        allowOutsideClick: () => !Swal.isLoading()
+	 		                    }).then(function() {
+	 		                    	Swal.fire({
+				                    	type: 'success',
+				                        title: '修改成功',
+				                        showConfirmButton: false,
+				                        timer: 1500
+				                    }).then(() => {
+				                    	refresh();
+		                        	});
+	                        	});
+		                    }else{
+		                    	Swal.fire({
+	 		                    	type: 'question',
+	 		                        title: '修改中',
+	 		                        showConfirmButton: false,
+	 		                        timer: 1500,
+	 		                       	onBeforeOpen:()=>{
+	 		                           Swal.showLoading()
+	 		                        },
+	 		                        allowOutsideClick: () => !Swal.isLoading()
+	 		                    }).then(function() {
+	 		                    	Swal.fire({
+				                    	type: 'error',
+				                        title: '修改失败',
+				                        showConfirmButton: false,
+				                        timer: 1500
+				                    }).then(() => {
+				                    	refresh();
+		                        	});
+	                        	});
+		                    }
+	                    },
+	                    error:function(){
+	                    	Swal.fire({
+ 		                    	type: 'question',
+ 		                        title: '修改中',
+ 		                        showConfirmButton: false,
+ 		                        timer: 1500,
+ 		                       	onBeforeOpen:()=>{
+ 		                           Swal.showLoading()
+ 		                        },
+ 		                        allowOutsideClick: () => !Swal.isLoading()
+ 		                    }).then(function() {
+ 		                    	Swal.fire({
+			                    	type: 'error',
+			                        title: '修改失败',
+			                        showConfirmButton: false,
+			                        timer: 1500
+			                    }).then(() => {
+			                    	refresh();
+	                        	});
+                        	});
+		                }
+	                });
 				}
 			});
 		});
@@ -480,24 +589,15 @@
             </tbody>
         </table>
     </div>
-    <div class="col-md-offset-5 col-lg-offset-5 col-xl-offset-5">
+    <div class="">
         <nav aria-label="Page navigation">
-            <ul class="pagination">
+            <ul class="pager">
+                <li><a href="${pageContext.request.contextPath}/list">上一页</a></li>
                 <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
+                	<c:if test="${pageInfo.hasNextPage }">
+            			<a href="${pageContext.request.contextPath}/list?pageNo=${pageInfo.pageNum+1}">下一页</a>
+        			</c:if>
+        		</li>
             </ul>
         </nav>
     </div>
@@ -537,7 +637,7 @@
 	                        <span class="col-md-12"></span>
 	                    </div>
 	                    <input type="hidden" id="uid" name="uid" value="${uid}" >
-	                    <label style="font-size:18px;">特长</label>
+	                    <label style="font-size:18px;">专业</label>
 	                    <div class="form-group" id="icon_subject">
 	                        <input class="form-control" type="text" name="subject" data-toggle="dtsubject" data-placement="top" data-html="true" />
 	                        <span id="span4"></span>

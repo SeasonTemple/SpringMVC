@@ -1,6 +1,14 @@
 package springmvc.entity;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private int sid;
 	private String sname;
 	private int grade;

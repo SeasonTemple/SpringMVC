@@ -6,7 +6,7 @@ import springmvc.entity.Student;
 
 public interface StudentService {
 
-	public String updateStudent(Integer sid);
+	public String updateStudent(Student s);
 	
 	public Student preLoadStuInfo(Integer sid);
 	
