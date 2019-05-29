@@ -8,7 +8,7 @@ import static springmvc.util.SpringMvcConstants.STUDENTTABLE;;
 
 public class StudentDynaSqlProvider {
 
-public String updateStudent(final Student s){
+public String updateStudent(Student s){
 		
 		return new SQL(){
 			{
@@ -25,11 +25,11 @@ public String updateStudent(final Student s){
 				if(s.getSubject()!= null){
 					SET(" subject = #{subject} ");
 				}
-				if(s.getClas()!= null){
-					SET(" cid = #{clas.id} ");
+				if(s.getCid()!= 0){
+					SET(" cid = #{cid} ");
 				}
-				if(s.getU()!= null){
-					SET(" uid = #{u.id} ");
+				if(s.getUid()!= 0){
+					SET(" uid = #{uid} ");
 				}
 				WHERE(" sid = #{sid} ");
 			}

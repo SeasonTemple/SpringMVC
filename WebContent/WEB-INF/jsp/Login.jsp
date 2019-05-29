@@ -23,6 +23,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/sweetalert2.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/loginJs.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
 <link rel="${pageContext.request.contextPath}/resources/css/sweetalert2.min.css">
 <link rel="${pageContext.request.contextPath}/resources/css/animate.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery.mCustomScrollbar.min.css">
@@ -102,7 +103,7 @@
 </head>
 <body id="gradient">
 <span id="as"></span>
-<div class="container-fluid">
+<div class="container-fluid" >
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 			<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
