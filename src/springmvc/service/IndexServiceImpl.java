@@ -31,4 +31,29 @@ public class IndexServiceImpl implements IndexService {
 		return "redirect:/findAll/{uid}";
 	}
 
+	@Override
+	public String clas(Integer uid, Model m) {
+		return "Cls";
+	}
+
+	@Override
+	public String detail(Integer uid, Model m) {
+		return "Detl";
+	}
+
+	@Override
+	public String notice(Integer uid, Model m) {
+		return "Not";
+	}
+
+	@Override
+	public String uploadFile(Integer uid, Model m) {
+		return "Upf";
+	}
+
+	@Override
+	public String downloadFile(Integer uid, Model m) {
+		return "Dlf";
+	}
+
 }

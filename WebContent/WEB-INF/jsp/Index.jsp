@@ -148,6 +148,31 @@
             }
         }
         
+        function checkAuth(tabName,tagName){
+        	var flag = ${loguser.flag};
+        	Swal.fire({
+             	type: 'question',
+                 title: '权限确认',
+                 showConfirmButton: false,
+                 timer: 1500,
+                 onBeforeOpen:()=>{
+                      Swal.showLoading()
+                  },
+                  allowOutsideClick: () => !Swal.isLoading()
+              }).then(function() {
+             	if(flag==0){
+             		Swal.fire({
+	                    	type: 'error',
+	                        title: '您没有权限',
+	                        showConfirmButton: false,
+	                        timer: 1500
+	                    })
+             	}else{
+             		addTabs(tabName,tagName);
+             	}
+        	});
+        }
+        
     </script>
 <body>
 <div class="container-fluid">
@@ -174,12 +199,11 @@
                         <ul>
                             <hr style="height:1px;background-color:black;border:none;">
                             <li class="sidebar-dropdown">
-                                <a  href="#" ><i class="glyphicon glyphicon-user"></i><span>个人信息</span><span class="label label-danger">New</span></a>
+                                <a  href="#" ><i class="glyphicon glyphicon-user"></i><span>个人信息</span><!-- <span class="label label-danger">New</span> --></a>
                                 <div class="sidebar-submenu">
                                     <ul>
-                                        <li><a href="javascript:addTabs('Detl','账户详情');">账 户 详 情<span class="label label-success">1</span></a></li>
-                                        <li><a href="javascript:addTabs('Auth','权限一览');">权 限 一 览</a></li>
-                                        <li><a href="#">系 统 公 告</a></li>
+                                        <li><a href="javascript:addTabs('Detl','账户详情');">账 户 详 情<!-- <span class="label label-success">1</span> --></a></li>
+                                        <li><a href="javascript:addTabs('Not','系统公告');">系 统 公 告</a></li>
                                     </ul>
                                 </div>
                             </li> 
@@ -198,9 +222,9 @@
                                 <a href="#"><i class="glyphicon glyphicon-lock"></i><span>权限管理</span></a>
                                 <div class="sidebar-submenu">
                                     <ul>
-                                        <li><a href="javascript:addTabs('Mem','成员列表');">成 员 列 表</a></li>
-                                        <li><a href="javascript:addTabs('Opt','操作记录');">操 作 记 录</a></li>
-                                        <li><a href="javascript:addTabs('Not','公告管理');">公 告 管 理</a></li>
+                                        <li><a href="javascript:checkAuth('Mem','成员列表');">成 员 列 表</a></li>
+                                        <li><a href="javascript:checkAuth('Opt','操作记录');">操 作 记 录</a></li>
+                                        <li><a href="javascript:checkAuth('NotM','公告管理');">公 告 管 理</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -218,8 +242,7 @@
                     </div><!-- sidebar-menu  -->            
                 </div><!-- sidebar-content  -->
                 <div class="sidebar-footer">
-                    <a href="#"><i class="fa fa-bell"></i><span class="label label-warning notification">3</span></a>
-                    <a href="#"><i class="fa fa-envelope"></i><span class="label label-success notification">7</span></a>
+                    <a href="#"><i class="fa fa-bell"></i><!-- <span class="label label-warning notification">3</span> --></a>
                     <a href="#"><i class="fa fa-gear"></i></a>
                     <a href="#"><i class="fa fa-power-off"></i></a>
                 </div>

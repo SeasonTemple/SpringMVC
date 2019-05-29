@@ -28,9 +28,6 @@ public class IndexController {
 	@Autowired
 	private IndexService indexService;
 	
-	@Autowired
-	private StudentService studentService;
-	
 	@RequestMapping(value="toLog", method= {RequestMethod.GET})
 	public String toLogin(Model model) {
 		return indexService.toLogin(model);
@@ -51,6 +48,38 @@ public class IndexController {
 		System.out.println(uid);
 		return indexService.student(uid, m);
 	}
+	
+	@RequestMapping(value="Cls", method={RequestMethod.GET})
+	public String getClas(Integer uid, Model m) {
+		System.out.println(uid);
+		return indexService.clas(uid, m);
+	}
+	
+	@RequestMapping(value="Detl", method={RequestMethod.GET})
+	public String getDetail(Integer uid, Model m) {
+		System.out.println(uid);
+		return indexService.detail(uid, m);
+	}
+	
+	@RequestMapping(value="Not", method={RequestMethod.GET})
+	public String getNotice(Integer uid, Model m) {
+		System.out.println(uid);
+		return indexService.notice(uid, m);
+	}
+	
+	@RequestMapping(value="Upf", method={RequestMethod.GET})
+	public String getUploadFile(Integer uid, Model m) {
+		System.out.println(uid);
+		return indexService.uploadFile(uid, m);
+	}
+	
+	@RequestMapping(value="Dlf", method={RequestMethod.GET})
+	public String getDownloadFile(Integer uid, Model m) {
+		System.out.println(uid);
+		return indexService.downloadFile(uid, m);
+	}
+	
+	
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/list",method=RequestMethod.GET)

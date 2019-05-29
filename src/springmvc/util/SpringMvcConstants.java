@@ -10,9 +10,13 @@ public class SpringMvcConstants {
 		public static final String INFOTABLE = "user";
 		
 		// 登录
-		public static final String LOGIN = "login";
+		public static final String LOGIN = "toLog";
+		
+		//退出
+		public static final String EXIT = "exit";
+		
 		// 用户的session对象
-		public static final String USER_SESSION = "user_session";
+		public static final String USER_SESSION = "loguser";
 		
 		// 默认每页6条数据
 		public static int PAGE_DEFAULT_SIZE = 6;

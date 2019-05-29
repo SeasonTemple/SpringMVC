@@ -255,13 +255,6 @@
 			        </div><!-- /.modal-content -->
 			      </div><!-- /.modal-dialog -->
 			</div>
-			<div class="alert alert-danger alert-dismissable hide" id="myalert" style="opacity: 0;">
-			 	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-				<h4>
-					<strong>警告!</strong>
-				</h4> 
-					${msg }
-			</div>
 			<ul id="ulw" >
 				<li>
 					Lorem ipsum dolor sit amet
@@ -306,9 +299,6 @@
 							<h4>
 								First Picture.
 							</h4>
-<!-- 							<p>
-								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-							</p> -->
 						</div>
 					</div>
 					<div class="item">
@@ -317,9 +307,6 @@
 							<h4>
 								Second Picture.
 							</h4>
-<!-- 							<p>
-								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-							</p> -->
 						</div>
 					</div>
 					<div class="item">
@@ -328,9 +315,6 @@
 							<h4>
 								Third Picture.
 							</h4>
-<!-- 							<p>
-								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-							</p> -->
 						</div>
 					</div>
 				</div>
@@ -419,6 +403,14 @@
 		$('#carousel-700475').carousel('cycle');
 		if('${loguser.uname}'!=''){
 			$('#drop').html("${loguser.uname}");
+		}
+		if('${message}'!= ''){
+			Swal.fire({
+					title : '${message}',
+					type: 'warning',
+					showConfirmButton: false,
+					timer: 1500
+			});
 		}
 	}
 	
@@ -555,7 +547,7 @@
 		  						getCode();
 	  						})
 		  				}
-					}).error(function(){
+					}).error(function(data){
 	 					Swal.fire('<h3>登录失败:</h3>', data.msg, 'error')
 	 					.then(function(){
 	  						getCode();
