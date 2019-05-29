@@ -85,6 +85,7 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public String updateStudent(Student s) {
+		System.out.println("StudentServiceImpl");
 		int rows = studentDao.updateStudents(s);
 		if(rows > 0) {
 			return "ok";

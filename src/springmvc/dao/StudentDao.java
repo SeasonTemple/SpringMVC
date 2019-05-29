@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.mapping.FetchType;
 import org.springframework.stereotype.Repository;
 
@@ -55,7 +56,7 @@ public interface StudentDao {
 	@Insert("insert into student(sid,sname,grade,snum,subject,cid,uid) value(null,#{sname},#{grade},#{snum},#{subject},#{cid},#{uid})")
 	public int createStudents(Student s);
 	
-	@SelectProvider(type=StudentDynaSqlProvider.class,method="updateStudent")
+	@UpdateProvider(type=StudentDynaSqlProvider.class,method="updateStudent")
 	public int updateStudents(Student s);
 	
 	@Delete({"<script>",

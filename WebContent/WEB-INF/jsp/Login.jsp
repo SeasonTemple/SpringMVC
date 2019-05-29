@@ -372,10 +372,10 @@
 					 <a href="#">主页</a>
 				</li>
 				<li>
-					 <a href="#">帮助</a>
+					 <a href="https://github.com/SeasonTemple/SpringMVC" target="_blank">帮助</a>
 				</li>
 				<li>
-					 <a href="#">简介</a>
+					 <a href="https://github.com/SeasonTemple/SpringMVC" target="_blank">简介</a>
 				</li>
 				<li>
 					 <a href="https://github.com/SeasonTemple/SpringMVC" target="_blank">更多</a>
@@ -384,7 +384,7 @@
 		</div>
 	</div>
 </div>
-	<a href="https://github.com/SeasonTemple/SpringMVC"
+	<a href="https://github.com/SeasonTemple/SpringMVC" target="_blank"
 		class="github-corner" tabindex="-1"><svg width="90" height="90"
 			viewBox="0 0 250 250"
 			style="fill: #CCEEEE; color: #000; position: absolute; top: 55px; border: 0; right: 0;">
@@ -405,9 +405,10 @@
 		if('${loguser.uname}'!=''){
 			$('#drop').html("${loguser.uname}");
 		}
-		if('${message}'!= ''){
+		if('${message}'!= ''&&'${message}'!=null){
 			Swal.fire({
 					title : '${message}',
+					text: ' ',
 					type: 'warning',
 					showConfirmButton: false,
 					timer: 1500

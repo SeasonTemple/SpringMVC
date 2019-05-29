@@ -596,9 +596,7 @@
             <ul class="pager">
                 <li><a href="${pageContext.request.contextPath}/list">上一页</a></li>
                 <li>
-                	<c:if test="${pageInfo.hasNextPage }">
-            			<a href="${pageContext.request.contextPath}/list?pageNo=${pageInfo.pageNum+1}">下一页</a>
-        			</c:if>
+           			<a href="${pageContext.request.contextPath}/list?pageNo=${pageInfo.pageNum+1}">下一页</a>
         		</li>
             </ul>
         </nav>
