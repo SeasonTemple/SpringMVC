@@ -209,7 +209,7 @@
                             </li> 
                             <hr style="height:1px;background-color:black;border:none;">
                             <li class="sidebar-dropdown">
-                                <a href="#"><i class="glyphicon glyphicon-list-alt"></i><span>学生管理</span><span class="badge">3</span></a>
+                                <a href="#"><i class="glyphicon glyphicon-list-alt"></i><span>学生管理</span><!-- <span class="badge">3</span> --></a>
                                 <div class="sidebar-submenu">
                                     <ul>
                                         <li><a href="javascript:addTabs('Stu','学生列表');">学 生 列 表</a></li>

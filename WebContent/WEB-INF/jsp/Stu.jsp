@@ -124,6 +124,7 @@
             	dataType: 'Json',
                 contentType:"application/json;charset=utf-8",
                 success:function(data){
+                	$("input[name='sid']").val(sid);
 	            	$("input[name='sname']").val(data.sname);
 	    			$("input[name='grade']").val(data.grade);
 	    			$("#cid").val(data.clas.cid);
@@ -219,6 +220,7 @@
 	                });
 				}
 				if(tag == '更新'){
+					var sid = $("input[name='sid']").val();
 					var sname = $("input[name='sname']").val();
 					var grade = $("input[name='grade']").val();
 					var snum = $("input[name='snum']").val();
@@ -228,7 +230,7 @@
 	       			$.ajax({
 	                    type: 'post',
 	                    url: "${pageContext.request.contextPath}/updateStudent",
-	                    data: JSON.stringify({sname: sname,grade: grade,snum: snum,subject: subject,uid: uid,cid: cid}),
+	                    data: JSON.stringify({sid: sid,sname: sname,grade: grade,snum: snum,subject: subject,uid: uid,cid: cid}),
 	                    dataType: 'text',
 	                    contentType:"application/json;charset=utf-8",
 	                    success:function(data){
@@ -637,6 +639,7 @@
 	                        <span class="col-md-12"></span>
 	                    </div>
 	                    <input type="hidden" id="uid" name="uid" value="${uid}" >
+	                    <input type="hidden" id="sid" name="sid" value="" >
 	                    <label style="font-size:18px;">专业</label>
 	                    <div class="form-group" id="icon_subject">
 	                        <input class="form-control" type="text" name="subject" data-toggle="dtsubject" data-placement="top" data-html="true" />

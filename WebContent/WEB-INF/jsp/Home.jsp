@@ -130,7 +130,7 @@
 <div class="container-fluid">
     <div class="col-md-12">
         <blockquote id="welcome">
-          <p>欢迎用户：${loguser.uname}！现在是2019-5-10 17:50:22</span>
+          <p>欢迎用户：${loguser.uname}！现在是2019-5-29 19:30:22</span>
         </blockquote>
     </div>
     <div class="col-md-12" >
