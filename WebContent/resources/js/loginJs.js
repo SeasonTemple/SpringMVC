@@ -1,11 +1,11 @@
 	
-	$(function() {
+	/*$(function() {
 		$("[data-toggle='tooltip']").tooltip();
 	});
 	
   	$(function() {
 		$("[data-toggle='modal']").tooltip();
-	});
+	});*/
   	
   	$(function() {
 	 	$('#register').click(function() {
@@ -41,7 +41,7 @@
 		  	var re = /^(?!\d+$)[a-zA-Z0-9\u4E00-\u9FA5]\S+$/g;
 	 		if(getLength(uname)<4||10<getLength(uname)||!re.test(uname)){
 	 			/* setTooltip("runame", "username", "用户名不合法!应由英文字母,数字或汉字组成(不能为纯数字或字母,4-10个字符之内)"); */
-	 			changeInfo(icon_uname, span1, helpBlock1,"error", "用户名不合法!应由英文字母,数字组成或汉字(4-10个字符以内)");
+	 			changeInfo(icon_uname, span1, helpBlock1,"error", "用户名不合法!应由英文字母,数字组成或汉字(3-10个字符以内)");
 	 			$("#submit").addClass("disabled");
 	 		}
 	 		else{

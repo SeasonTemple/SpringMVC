@@ -89,6 +89,11 @@
             });
         }
 		
+		$(function() {
+			$("[data-toggle='edit']").tooltip();
+			$("[data-toggle='delete']").tooltip();
+		});
+		
 		function clearInput(){
 			$("input[name='sname']").val("");
 			$("input[name='grade']").val("");
@@ -146,11 +151,13 @@
 					var snum = $("input[name='snum']").val();
 					var subject = $("input[name='subject']").val();
 					var uid = $("input[name='uid']").val();
+					var u = {uid:uid};
 					var cid = $("#cid option:selected").val();
+					var clas = {cid:cid};
 	       			$.ajax({
 	                    type: 'post',
 	                    url: "${pageContext.request.contextPath}/createStudent",
-	                    data: JSON.stringify({sname: sname,grade: grade,snum: snum,subject: subject,uid: uid,cid: cid}),
+	                    data: JSON.stringify({sname: sname,grade: grade,snum: snum,subject: subject,u: u,clas: clas}),
 	                    dataType: 'text',
 	                    contentType:"application/json;charset=utf-8",
 	                    success:function(data){
@@ -226,11 +233,13 @@
 					var snum = $("input[name='snum']").val();
 					var subject = $("input[name='subject']").val();
 					var uid = $("input[name='uid']").val();
+					var u = {uid:uid};
 					var cid = $("#cid option:selected").val();
+					var clas = {cid:cid};
 	       			$.ajax({
 	                    type: 'post',
 	                    url: "${pageContext.request.contextPath}/updateStudent",
-	                    data: JSON.stringify({sid: sid,sname: sname,grade: grade,snum: snum,subject: subject,uid: uid,cid: cid}),
+	                    data: JSON.stringify({sid: sid,sname: sname,grade: grade,snum: snum,subject: subject,u: u,clas: clas}),
 	                    dataType: 'text',
 	                    contentType:"application/json;charset=utf-8",
 	                    success:function(data){
@@ -578,10 +587,10 @@
 	                    </td>
 	                    <td>
 	                        <div class="btn-group" role="group" aria-label="web">
-	                            <button class="btn btn-primary btn-lg" type="button" id="edit${Student.sid}" onclick="edit(this.id,'编辑学生信息')">
+	                            <button class="btn btn-primary btn-lg" type="button" id="edit${Student.sid}" data-toggle="edit"  title="编辑" data-placement="top" onclick="edit(this.id,'编辑学生信息')">
 	                            	<em class="glyphicon glyphicon-edit"></em> 
                             	</button>
-	                            <button class="btn btn-danger btn-lg" type="button" id="delete${Student.sid}" onclick="deleteOne(this.id)">
+	                            <button class="btn btn-danger btn-lg" type="button" id="delete${Student.sid}" data-toggle="delete"  title="删除" data-placement="top" onclick="deleteOne(this.id)">
 	                            	<em class="glyphicon glyphicon-trash"></em> 
 	                            </button>
 	                        </div>

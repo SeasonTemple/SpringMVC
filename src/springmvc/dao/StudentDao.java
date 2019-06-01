@@ -53,7 +53,7 @@ public interface StudentDao {
 	public List<Student> findStudentsByClass(Integer uid, Classes c);
 	public List<Student> findStudentsBySubject(Integer uid, Student s);
 	
-	@Insert("insert into student(sid,sname,grade,snum,subject,cid,uid) value(null,#{sname},#{grade},#{snum},#{subject},#{cid},#{uid})")
+	@Insert("insert into student(sid,sname,grade,snum,subject,cid,uid) value(null,#{sname},#{grade},#{snum},#{subject},#{clas.cid},#{u.uid})")
 	public int createStudents(Student s);
 	
 	@UpdateProvider(type=StudentDynaSqlProvider.class,method="updateStudent")

@@ -25,11 +25,11 @@ public String updateStudent(Student s){
 				if(s.getSubject()!= null){
 					SET(" subject = #{subject} ");
 				}
-				if(s.getCid()!= 0){
-					SET(" cid = #{cid} ");
+				if(s.getClas()!= null){
+					SET(" cid = #{clas.cid} ");
 				}
-				if(s.getUid()!= 0){
-					SET(" uid = #{uid} ");
+				if(s.getU() != null){
+					SET(" uid = #{u.uid} ");
 				}
 				WHERE(" sid = #{sid} ");
 			}
