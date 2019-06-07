@@ -17,4 +17,7 @@ public interface StudentService {
 	public String createStudents(Student s);
 	
 	public String deleteStudents(String ids);
+
+	public String findStudent(Student s);
+	
 }

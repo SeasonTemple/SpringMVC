@@ -118,6 +118,7 @@
 		    });
         }
 
+		/* 编辑预加载 */
         function edit(selectId,title){
         	clearInput();
             var sid = selectId.replace('edit','');
@@ -141,6 +142,7 @@
             
         }
 		
+        /* 更新以及添加 */
 		$(function(){
 			$('#submit').click(function(){
 				$('#studentEditDialog').modal('hide');
@@ -311,6 +313,7 @@
 			});
 		});
 		
+		/*删除  */
 		function deleteOne(selectId){
             var sid = selectId.replace('delete','');
             Swal.fire({

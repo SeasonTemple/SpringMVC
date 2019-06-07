@@ -93,4 +93,10 @@ public class StudentServiceImpl implements StudentService {
 			return "error";
 		}
 	}
+
+	@Override
+	public String findStudent(Student s) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
 }

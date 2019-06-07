@@ -57,4 +57,11 @@ public class StudentController {
 		return studentService.updateStudent(s);
 	}
 	
+	@RequestMapping(value="findStudent", method= {RequestMethod.POST})
+	@ResponseBody
+	public String findStudent(@RequestBody Student s) {
+		System.out.println(s);
+		return studentService.findStudent(s);
+	}
+	
 }
