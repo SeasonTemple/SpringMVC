@@ -1,6 +1,9 @@
 package springmvc.entity;
 
-public class Classes {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Classes implements Serializable{
 	private int cid;
 	private String cname;
 	

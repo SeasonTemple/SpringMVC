@@ -1,8 +1,11 @@
 package springmvc.entity;
 
+import java.io.Serializable;
+
 import javax.validation.constraints.Pattern;
 
-public class User {
+@SuppressWarnings("serial")
+public class User implements Serializable{
 	
 	private int uid;
 	@Pattern(regexp = "^(?!\\d+$)[a-zA-Z0-9\\u4E00-\\u9FA5]\\S{1,10}$", message = "用户名不合法!请重试")

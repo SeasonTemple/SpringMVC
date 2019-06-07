@@ -92,6 +92,7 @@
 		$(function() {
 			$("[data-toggle='edit']").tooltip();
 			$("[data-toggle='delete']").tooltip();
+			$("[data-toggle='selectAll']").tooltip();
 		});
 		
 		function clearInput(){
@@ -421,7 +422,7 @@
                 }else{
 	                Swal.fire({
 	                    type: 'warning',
-	                    title: '真的要删除这些吗?',
+	                    title: '真的要删除他们吗?',
 	                    confirmButtonColor: '#3085d6',
 	                    confirmButtonText: '是的呀',
 	                    showCancelButton: true,
@@ -532,37 +533,37 @@
         <table class="table table-hover table-condensed table-bordered text-left" id="stable">
             <thead style="background: rgb(244, 244, 244)">
                 <tr>
-                    <th>
+                    <th width="5%">
                          <div class="checkbox checkbox-success" style="margin-bottom: 8px;text-align: center;vertical-align: middle">
-                            <input id="selectAll"  class="styled" type="checkbox">
-                            <label for="selectAll"></label>
+                            <input id="selectAll" class="styled" type="checkbox" >
+                            <label for="selectAll" data-toggle="selectAll"  title="全选" data-placement=top> </label>
                         </div>
                     </th>
-                    <th>
+                    <th width="5%">
                         ID
                     </th>
-                    <th>
+                    <th width="6%">
                        	姓名
                     </th>
-                    <th>
+                    <th width="8%">
                        	年级
                     </th>
-                    <th>
+                    <th width="10%">
                        	班级
                     </th>
-                    <th>
+                    <th width="10%">
                        	学号
                     </th>
                     <th>
                        	专业
                     </th>
-                    <th style="width: 20%">
+                    <th width="10%">
                        	操作
                     </th>
                 </tr>
             </thead>
             <tbody>
-	            <c:forEach var="Student" items="${Students}">
+	            <c:forEach var="Student" items="${pageInfo.list}" >
 	                <tr>
 	                    <td>
 	                        <div class="checkbox checkbox-success" style="margin-top: 10px;text-align: center;vertical-align: middle;">
@@ -606,7 +607,15 @@
     <div class="">
         <nav aria-label="Page navigation">
             <ul class="pager">
-                <li><a href="${pageContext.request.contextPath}/list">上一页</a></li>
+                <li>
+                	<a href="${pageContext.request.contextPath}/list">上一页</a>
+               	</li>
+				<li>
+					<a>第${pageInfo.pageNum}页</a>
+				</li>
+				<li>
+					<a>共${pageInfo.pages}页</a>
+				</li>
                 <li>
            			<a href="${pageContext.request.contextPath}/list?pageNo=${pageInfo.pageNum+1}">下一页</a>
         		</li>

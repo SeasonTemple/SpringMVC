@@ -1,11 +1,9 @@
 package springmvc.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import static springmvc.util.SpringMvcConstants.PAGE_DEFAULT_SIZE;
-
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,15 +16,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
+import springmvc.dao.StudentDao;
 import springmvc.entity.Student;
 import springmvc.service.IndexService;
-import springmvc.service.StudentService;
 
 @Controller
 public class IndexController {
 	
 	@Autowired
 	private IndexService indexService;
+	
+	@Autowired
+	private StudentDao studentDao;
 	
 	@RequestMapping(value="toLog", method= {RequestMethod.GET})
 	public String toLogin(Model model) {
@@ -79,16 +80,13 @@ public class IndexController {
 		return indexService.downloadFile(uid, m);
 	}
 	
-	
-	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/list",method=RequestMethod.GET)
-    public String pageList(ModelMap map,@RequestParam(defaultValue="1",required=true,value="pageNo") Integer pageNo, HttpSession session, HttpServletRequest request){
-        PageHelper.startPage(pageNo, PAGE_DEFAULT_SIZE);
+    public String pageList(Model model,@RequestParam(defaultValue="1",required=true,value="pageNo") Integer pageNo, HttpSession session, HttpServletRequest request){
+        PageHelper.startPage(pageNo, 5);
         List<Student> ls = (List<Student>) request.getSession().getAttribute("Students");
-        System.out.println(ls);
         PageInfo<Student> pageInfo=new PageInfo<Student>(ls);
-        map.addAttribute("pageInfo", pageInfo);
+        model.addAttribute("pageInfo", pageInfo);
         System.out.println(pageInfo);
         return "Stu";
     }
