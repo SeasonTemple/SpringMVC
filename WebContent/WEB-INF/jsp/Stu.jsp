@@ -95,6 +95,13 @@
 			$("[data-toggle='selectAll']").tooltip();
 		});
 		
+		$(function(){
+			$('#jumpTo').blur(function(){
+				var pageNo = $('#jumpTo').val();
+				location.href='${pageContext.request.contextPath}/pageList?pageNo='+pageNo;
+			});
+		});
+		
 		function clearInput(){
 			$("input[name='sname']").val("");
 			$("input[name='grade']").val("");
@@ -608,16 +615,19 @@
         <nav aria-label="Page navigation">
             <ul class="pager">
                 <li>
-                	<a href="${pageContext.request.contextPath}/list">上一页</a>
+                	<a href="${pageContext.request.contextPath}/pageList?pageNo=${pageInfo.pageNum-1}">上一页</a>
                	</li>
 				<li>
 					<a>第${pageInfo.pageNum}页</a>
 				</li>
 				<li>
+					<a>跳转到第<input type="text" id="jumpTo" style="width: 20px;height: 20px;text-align: center" >页</a>
+				</li>
+				<li>
 					<a>共${pageInfo.pages}页</a>
 				</li>
                 <li>
-           			<a href="${pageContext.request.contextPath}/list?pageNo=${pageInfo.pageNum+1}">下一页</a>
+           			<a href="${pageContext.request.contextPath}/pageList?pageNo=${pageInfo.pageNum+1}">下一页</a>
         		</li>
             </ul>
         </nav>

@@ -3,6 +3,7 @@ package springmvc.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
@@ -10,11 +11,16 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 import springmvc.dao.StudentDao;
 import springmvc.dao.User_ClassesDao;
 import springmvc.entity.Classes;
 import springmvc.entity.Student;
+import static springmvc.util.SpringMvcConstants.PAGE_DEFAULT_SIZE;
 import springmvc.entity.User_Classes;
 
 @Service("studentService")
@@ -31,10 +37,8 @@ public class StudentServiceImpl implements StudentService {
 	
 	@Override
 	public String findAll(Integer uid, HttpSession session) {
-		List<Student> ls = studentDao.findAll(uid);
-		session.setAttribute("Students", ls);
 		session.setAttribute("uid", uid);
-		System.out.println(uid+"//"+ls);
+		System.out.println("Now uid is: "+uid);
 		return "redirect:/preLoadClassInfo/{uid}";
 	}
 
@@ -48,7 +52,7 @@ public class StudentServiceImpl implements StudentService {
 		});
 		System.out.println(lc);
 		session.setAttribute("classes", lc);
-		return "Stu";
+		return "redirect:/pageList";
 	}
 
 	@Override
@@ -98,5 +102,16 @@ public class StudentServiceImpl implements StudentService {
 	public String findStudent(Student s) {
 		// TODO 自动生成的方法存根
 		return null;
+	}
+
+	@Override
+	public String pageList(Integer pageNo, Model model, HttpServletRequest request) {
+		Integer uid = (Integer) request.getSession().getAttribute("uid");
+		PageHelper.startPage(pageNo, PAGE_DEFAULT_SIZE);
+		List<Student> ls = studentDao.findAll(uid);
+		PageInfo<Student> pageInfo=new PageInfo<Student>(ls);
+		model.addAttribute("pageInfo", pageInfo);
+		System.out.println(pageInfo);
+		return "Stu";
 	}
 }

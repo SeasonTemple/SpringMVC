@@ -18,6 +18,6 @@ public class SpringMvcConstants {
 		// 用户的session对象
 		public static final String USER_SESSION = "loguser";
 		
-		// 默认每页6条数据
-		public static int PAGE_DEFAULT_SIZE = 6;
+		// 默认每页10条数据
+		public static int PAGE_DEFAULT_SIZE = 10;
 }

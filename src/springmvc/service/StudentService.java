@@ -1,6 +1,9 @@
 package springmvc.service;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import org.springframework.ui.Model;
 
 import springmvc.entity.Student;
 
@@ -19,5 +22,7 @@ public interface StudentService {
 	public String deleteStudents(String ids);
 
 	public String findStudent(Student s);
+	
+	public String pageList(Integer pageNo, Model model, HttpServletRequest request);
 	
 }
