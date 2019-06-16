@@ -38,12 +38,12 @@ public class StudentDynaSqlProvider {
 		}.toString();
 	}
 	
-	public String searchStudent(Student s) {
+	public String searchStudent(String str) {
 		return new SQL() {
 			{
 				SELECT("*");
 				FROM(STUDENTTABLE);
-				if(s!=null) {
+				if(str!=null) {
 					
 				}
 			}
