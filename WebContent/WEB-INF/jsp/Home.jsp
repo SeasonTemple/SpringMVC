@@ -126,11 +126,43 @@
 
     </style>
 </head>
+<script type="text/javascript">
+	$(function(){
+		$("#time").tooltip('show');
+		function time() {
+			var date = new Date();
+			var n = date.getFullYear();
+			var y = date.getMonth()+1;
+			var t = date.getDate();
+			var h = date.getHours();
+			var m = date.getMinutes();
+			var s = date.getSeconds();
+			m = extra(m);
+			s = extra(s);
+			var now = n+"/"+y+"/"+t+" "+h+":"+m+":"+s;
+			$("#time").html(now);
+		}
+		time();
+		setInterval(time, 1000);
+		
+		function extra(x)
+		{
+			if(x < 10)
+			{
+				return "0" + x;
+			}
+			else
+			{
+				return x;
+			}
+		}
+	});
+</script>
 <body>
 <div class="container-fluid">
     <div class="col-md-12">
         <blockquote id="welcome">
-          <p>欢迎用户：${loguser.uname}！现在是2019-5-29 19:30:22</span>
+          	欢迎用户：${loguser.uname}！<span id="time">现在是 </span>
         </blockquote>
     </div>
     <div class="col-md-12" >
