@@ -5,4 +5,4 @@ This is a J2EE project by using SSM framework.
 		后端框架：Spring+SpringMVC+Mybatis  
 		前段框架：Bootstrap v3
 ## 了解更多
-		http://seasontemple.top
+		我的博客: http://seasontemple.top
