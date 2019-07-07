@@ -2,22 +2,22 @@ package springmvc.util;
 
 public class SpringMvcConstants {
 
-	// Êı¾İ¿â±í³£Á¿
+		// æ•°æ®è¡¨å¸¸é‡å®šä¹‰
 		public static final String USERTABLE = "user";
 		public static final String CLASSTABLE = "class";
 		public static final String STUDENTTABLE = "student";
 		public static final String TEACHER_CLASSTABLE = "teacher_class";
 		public static final String INFOTABLE = "user";
 		
-		// µÇÂ¼
+		// ç™»å½•å¸¸é‡å®šä¹‰
 		public static final String LOGIN = "toLog";
 		
-		//ÍË³ö
+		// é€€å‡ºå¸¸é‡å®šä¹‰
 		public static final String EXIT = "exit";
 		
-		// ÓÃ»§µÄsession¶ÔÏó
+		// ç™»å½•session
 		public static final String USER_SESSION = "loguser";
 		
-		// Ä¬ÈÏÃ¿Ò³10ÌõÊı¾İ
+		// é»˜è®¤åˆ†é¡µæ•°
 		public static int PAGE_DEFAULT_SIZE = 10;
 }

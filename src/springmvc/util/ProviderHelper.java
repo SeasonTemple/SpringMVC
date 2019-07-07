@@ -7,9 +7,9 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * ¸Ã·½·¨ÎªProviderÌá¹©½âÎöºóµÄ²ÎÊı£¬ÒÔÓÃÓÚproviderµÄÄ£ºı²éÑ¯
+ * è¯¥æ–¹æ³•ä¸ºProvideræä¾›è§£æåçš„å‚æ•°ï¼Œä»¥ç”¨äºproviderçš„æ¨¡ç³ŠæŸ¥è¯¢
  * @author Season-Temple
- * 2019Äê5ÔÂ16ÈÕ ÏÂÎç6:03:21
+ * 2019å¹´5æœˆ16æ—¥ ä¸‹åˆ6:03:21
  * package springmvc.util
  * class-name ProviderHelper.java
  */
@@ -27,7 +27,7 @@ public class ProviderHelper {
 		}
 		String[] strs = str.trim().replaceAll(" ", "").split(",");
 		for(int i=0;i<strs.length;i++) {
-			System.out.println("µÚ"+i+"¸öÔªËØ£º"+strs[i]);
+			System.out.println("ï¿½ï¿½"+i+"ï¿½ï¿½Ôªï¿½Ø£ï¿½"+strs[i]);
 		}
 		List<Map<String, Object>> maplist = new ArrayList<>(); 
 		for(String s: strs) {
@@ -39,7 +39,7 @@ public class ProviderHelper {
 				smap.put("snum", Integer.parseInt(s));
 				maplist.add(smap);
 			}
-			else if(s.endsWith("°à")) {
+			else if(s.endsWith("ï¿½ï¿½")) {
 				smap.put("cname", s);
 				maplist.add(smap);
 			}
